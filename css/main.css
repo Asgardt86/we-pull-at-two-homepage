@@ -871,7 +871,7 @@ body {
 
 .next-raid {
 
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 
 }
 
@@ -889,15 +889,29 @@ body {
 
     background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212, 175, 55, .35);
+    border: 1px solid rgba(212,175,55,.35);
 
     border-radius: 18px;
 
-    padding: 40px;
+    padding: 30px 40px;
 
     box-shadow:
-        0 12px 35px rgba(0, 0, 0, .45),
-        0 0 18px rgba(212, 175, 55, .08);
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+    transition: .25s;
+
+}
+
+.next-raid-panel:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(212,175,55,.6);
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,.55),
+        0 0 24px rgba(212,175,55,.18);
 
 }
 
@@ -905,75 +919,166 @@ body {
 
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1.2fr 1fr 1fr 1fr;
 
-    gap: 35px;
+    gap: 40px;
 
     align-items: center;
 
 }
 
-.next-raid-box {
+.next-raid-difficulty-box {
 
-    background: linear-gradient(180deg, #222831, #181d24);
+    display: flex;
 
-    border: 1px solid rgba(255, 255, 255, .08);
+    align-items: center;
 
-    border-radius: 14px;
-
-    padding: 25px;
+    gap: 20px;
 
 }
 
-.next-raid-label {
+.next-raid-difficulty-box img {
 
-    color: #8b949e;
+    width: 84px;
 
-    font-size: 14px;
+    height: 84px;
 
-    text-transform: uppercase;
+    object-fit: contain;
+
+}
+
+.next-raid-difficulty {
+
+    font-size: 40px;
+
+    font-weight: 700;
 
     letter-spacing: 1px;
 
-    margin-bottom: 10px;
+    color: #a970ff;
 
 }
 
-.next-raid-value {
+.difficulty-mythic {
 
-    color: white;
+    color: #a970ff;
+
+    text-shadow:
+        0 0 10px rgba(169,112,255,.45);
+
+}
+
+.difficulty-heroic {
+
+    color: #ff9838;
+
+    text-shadow:
+        0 0 10px rgba(255,152,56,.45);
+
+}
+
+.difficulty-normal {
+
+    color: #37d66b;
+
+    text-shadow:
+        0 0 10px rgba(55,214,107,.45);
+
+}
+
+.next-raid-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+.next-raid-info img {
+
+    width: 52px;
+
+    height: 52px;
+
+    margin-bottom: 14px;
+
+    object-fit: contain;
+
+}
+
+.next-raid-date,
+
+.next-raid-countdown,
+
+.next-raid-signups {
+
+    color: #f5f5f5;
+
+    font-size: 20px;
+
+    line-height: 1.5;
+
+}
+
+.next-raid-countdown strong {
+
+    display: block;
 
     font-size: 24px;
 
-    font-weight: 700;
-
-}
-
-.next-raid-countdown {
-
-    margin-top: 10px;
-
     color: #d4af37;
-
-    font-size: 32px;
-
-    font-weight: 700;
 
 }
 
 .next-raid-signups {
 
-    margin-top: 10px;
-
-    color: #22c55e;
-
-    font-size: 22px;
-
-    font-weight: 700;
+    font-size: 18px;
 
 }
 
+.countdown-label {
 
+    display: block;
+
+    color: #9ea7b3;
+
+    font-size: 15px;
+
+    margin-bottom: 6px;
+
+    letter-spacing: 0.5px;
+
+}
+
+.next-raid-countdown strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    color: #d4af37;
+
+}
+
+.next-raid-label {
+
+    color: #9ea7b3;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 8px;
+
+}
 
 /* ===================================================
    Timeline
@@ -1188,5 +1293,189 @@ body {
     color: #888;
 
     font-style: italic;
+
+}
+
+/* ===================================================
+   Raid Ranking
+=================================================== */
+
+.raid-ranking {
+
+    margin-top: 70px;
+
+    margin-bottom: 70px;
+
+}
+
+.raid-ranking h2 {
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    margin-bottom: 30px;
+
+}
+
+.ranking-panel {
+
+    background: linear-gradient(180deg, #0f1318, #1b2027);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+}
+
+.ranking-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+
+}
+
+.ranking-card {
+
+    background: #1c222b;
+
+    border-radius: 16px;
+
+    padding: 28px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    transition: .25s;
+
+}
+
+.ranking-card:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.ranking-card.mythic {
+
+    border-color: #8b5cf6;
+
+    box-shadow: 0 0 18px rgba(139,92,246,.18);
+
+}
+
+.ranking-card.heroic {
+
+    border-color: #fb923c;
+
+    box-shadow: 0 0 18px rgba(251,146,60,.18);
+
+}
+
+.ranking-card.normal {
+
+    border-color: #22c55e;
+
+    box-shadow: 0 0 18px rgba(34,197,94,.18);
+
+}
+
+.ranking-title {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 28px;
+
+}
+
+.ranking-title.mythic {
+
+    color: #a970ff;
+
+}
+
+.ranking-title.heroic {
+
+    color: #ff9838;
+
+}
+
+.ranking-title.normal {
+
+    color: #37d66b;
+
+}
+
+.ranking-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 24px;
+
+}
+
+.ranking-label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    font-size: 18px;
+
+    color: #d8dde5;
+
+}
+
+.ranking-label img {
+
+    width: 42px;
+
+    height: 42px;
+
+}
+
+.ranking-value {
+
+    font-size: 26px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+}
+
+.ranking-panel {
+
+    margin-bottom: 50px;
+
+}
+
+.ranking-panel:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.ranking-raid-name {
+
+    color: #d4af37;
+
+    font-size: 28px;
+
+    margin-bottom: 25px;
+
+    text-transform: capitalize;
 
 }

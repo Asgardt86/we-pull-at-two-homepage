@@ -180,6 +180,10 @@
 
             <div class="hero-divider"></div>
 
+            <!-- ===================================================
+     Nächster Raid
+=================================================== -->
+
             <section class="next-raid">
 
                 <h2>Nächster Raid</h2>
@@ -188,34 +192,79 @@
 
                     <div class="next-raid-content">
 
-                        <div class="next-raid-difficulty">
-                            🟣 Mythic
-                        </div>
+                        <div class="next-raid-difficulty-box">
 
-                        <div class="next-raid-date">
+                            <img id="next-raid-icon" src="../images/icons/mythic-mode-icon.png" alt="Difficulty">
 
-                            Mittwoch
+                            <div id="next-raid-difficulty" class="next-raid-difficulty">
 
-                            <br>
+                                Loading...
 
-                            20:00 – 23:00 Uhr
+                            </div>
 
                         </div>
 
-                        <div class="next-raid-countdown">
+                        <div class="next-raid-info">
 
-                            Noch
+                            <img src="../images/icons/kalender-icon.png" alt="Kalender">
 
-                            <strong>2 Tage 4 Stunden</strong>
+                            <span class="next-raid-label">
+
+                                Raidtag
+
+                            </span>
+
+                            <div id="next-raid-date" class="next-raid-date">
+
+                                Loading...
+
+                            </div>
 
                         </div>
 
-                        <div class="next-raid-signups">
+                        <div class="next-raid-info">
 
-                            24 / 25 Spieler angemeldet
+                            <img src="../images/icons/sanduhr-icon.png" alt="Countdown">
+
+                            <div class="next-raid-countdown">
+                                <span class="next-raid-label">
+
+                                    Countdown
+
+                                </span>
+
+                                <span class="countdown-label">
+
+                                    Noch
+
+                                </span>
+                                <strong id="next-raid-countdown">
+
+                                    Loading...
+
+                                </strong>
+
+                            </div>
 
                         </div>
 
+                        <div class="next-raid-info">
+
+                            <img src="../images/icons/anmeldungen-icon.png" alt="Anmeldungen">
+
+                            <span class="next-raid-label">
+
+                                Anmeldungen
+
+                            </span>
+
+                            <div id="next-raid-signups" class="next-raid-signups">
+
+                                Loading...
+
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>
@@ -312,6 +361,8 @@
 
             </section>
 
+            <!-- Timeline -->
+
             <section class="raid-timeline">
 
                 <h2>Raid Timeline</h2>
@@ -324,9 +375,27 @@
 
                     </div>
 
-                    <!-- Timeline -->
-
                     <div id="timeline-content"></div>
+
+                </div>
+
+            </section>
+
+            <!-- ===================================================
+     Raid Ranking
+=================================================== -->
+
+            <section class="raid-ranking">
+
+                <h2>Raid Ranking</h2>
+
+                <div id="ranking">
+
+                    <div class="loading-placeholder">
+
+                        Loading...
+
+                    </div>
 
                 </div>
 
@@ -371,6 +440,7 @@
     <script src="../js/main.js"></script>
     <script src="../js/api.js"></script>
     <script src="../js/raid.js"></script>
+    <script src="../js/ranking.js"></script>
 
 </body>
 
