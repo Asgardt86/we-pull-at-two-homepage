@@ -29,19 +29,49 @@
             <nav class="sidebar-nav">
 
                 <a href="../index.html">
-                    <img src="../images/icons/home-icon.png" alt="Home">
+                    <img src="../images/sidenavigation/home-icon.png" alt="Home">
                     Home
                 </a>
-                <a class="active" href="../pages/raid.html">
-                    <img src="../images/icons/raid-icon.png" alt="Raid">
+
+                <a class="active" href="raid.html">
+                    <img src="../images/sidenavigation/raid-icon.png" alt="Raid">
                     Raid
                 </a>
 
-                <a href="#">Über uns</a>
-                <a href="#">Dashboard</a>
-                <a href="#">Bewerbung</a>
-                <a href="#">Newsletter</a>
-                <a href="#">Media</a>
+                <a href="raid-info.html">
+                    <img src="../images/sidenavigation/raidinfo-icon.png" alt="Raid-Infos">
+                    Raid-Infos
+                </a>
+
+                <a href="dashboard.html">
+                    <img src="../images/sidenavigation/dashboard-icon.png" alt="Dashboard">
+                    Dashboard
+                </a>
+
+                <a href="about.html">
+                    <img src="../images/sidenavigation/ueberuns-icon.png" alt="Über uns">
+                    Über Uns
+                </a>
+
+                <a href="apply.html">
+                    <img src="../images/sidenavigation/bewerber-icon.png" alt="Infos für Bewerber">
+                    Bewerber
+                </a>
+
+                <a href="housing.html">
+                    <img src="../images/sidenavigation/housing-icon.png" alt="Housing">
+                    Housing
+                </a>
+
+                <a href="faq.html">
+                    <img src="../images/sidenavigation/faq-icon.png" alt="FAQ">
+                    FAQ
+                </a>
+
+                <a href="contact.html">
+                    <img src="../images/sidenavigation/kontakt-icon.png" alt="Kontakt">
+                    Kontakt
+                </a>
 
             </nav>
 
@@ -228,27 +258,51 @@
 
                         </div>
 
-                    </div>
+                        <!-- Heroisch -->
 
-                    <!-- Heroisch -->
+                        <div class="difficulty-card" data-mode="heroic">
 
-                    <div class="difficulty-card" data-mode="heroic">
+                            <img src="../images/icons/heroic-mode-icon.png" alt="Heroisch">
 
-                        <img src="../images/icons/heroic-mode-icon.png" alt="Heroisch">
+                            <h3>Heroisch Progress</h3>
 
-                        <h3>Heroisch Progress</h3>
+                            <div class="difficulty-value" id="heroic-progress">
+                                0 / 0
+                            </div>
 
-                        <div class="difficulty-value" id="heroic-progress">
-                            0 / 0
+                            <div class="difficulty-bar">
+                                <div class="difficulty-fill heroic-fill" id="heroic-bar"></div>
+                            </div>
+
+                            <div class="boss-status">
+
+                                <div class="boss-container" id="heroic-bosses"></div>
+
+                            </div>
+
                         </div>
 
-                        <div class="difficulty-bar">
-                            <div class="difficulty-fill heroic-fill" id="heroic-bar"></div>
-                        </div>
+                        <!-- Normal -->
 
-                        <div class="boss-status">
+                        <div class="difficulty-card" data-mode="normal">
 
-                            <div class="boss-container" id="heroic-bosses"></div>
+                            <img src="../images/icons/normal-mode-icon.png" alt="Normal">
+
+                            <h3>Normal Progress</h3>
+
+                            <div class="difficulty-value" id="normal-progress">
+                                0 / 0
+                            </div>
+
+                            <div class="difficulty-bar">
+                                <div class="difficulty-fill normal-fill" id="normal-bar"></div>
+                            </div>
+
+                            <div class="boss-status">
+
+                                <div class="boss-container" id="normal-bosses"></div>
+
+                            </div>
 
                         </div>
 
@@ -256,95 +310,61 @@
 
                 </div>
 
-                <!-- Normal -->
+            </section>
 
-                <div class="difficulty-card" data-mode="normal">
+            <section class="raid-timeline">
 
-                    <img src="../images/icons/normal-mode-icon.png" alt="Normal">
+                <h2>Raid Timeline</h2>
 
-                    <h3>Normal Progress</h3>
+                <div class="timeline-panel">
 
-                    <div class="difficulty-value" id="normal-progress">
-                        0 / 0
-                    </div>
+                    <div id="timeline-title">
 
-                    <div class="difficulty-bar">
-                        <div class="difficulty-fill normal-fill" id="normal-bar"></div>
-                    </div>
-
-                    <div class="boss-status">
-
-                        <div class="boss-container" id="normal-bosses"></div>
+                        Mythic Progress
 
                     </div>
+
+                    <!-- Timeline -->
+
+                    <div id="timeline-content"></div>
 
                 </div>
 
-    </div>
+            </section>
 
-    </div>
+            <!-- Footer -->
 
-    </div>
+            <footer class="footer">
 
-    </section>
+                <p class="footer-text">
+                    World of Warcraft Gilde auf Blackrock (EU)
+                </p>
 
-    <section class="raid-timeline">
+                <p class="footer-subtext">
+                    Mythic Progress • Teamgeist • Langfristige Entwicklung
+                </p>
 
-        <h2>Raid Timeline</h2>
+                <nav class="footer-links">
 
-        <div class="timeline-panel">
+                    <a href="imprint.html">Impressum</a>
 
-            <div id="timeline-title">
+                    <span>|</span>
 
-                Mythic Progress
+                    <a href="privacy.html">Datenschutz</a>
 
-            </div>
+                    <span>|</span>
 
-            <div id="timeline-content">
+                    <a href="contact.html">Kontakt</a>
 
-                <div class="timeline-placeholder">
+                </nav>
 
-                    Wähle oben einen Schwierigkeitsgrad aus.
+                <p class="footer-copy">
+                    © 2026 We Pull at Two
+                </p>
 
-                </div>
+            </footer>
 
-            </div>
-
-        </div>
-
-    </section>
-
-    <footer class="footer">
-
-        <p class="footer-text">
-            World of Warcraft Gilde auf Blackrock (EU)
-        </p>
-
-        <p class="footer-subtext">
-            Mythic Progress • Teamgeist • Langfristige Entwicklung
-        </p>
-
-        <nav class="footer-links">
-
-            <a href="#">Impressum</a>
-
-            <span>|</span>
-
-            <a href="#">Datenschutz</a>
-
-            <span>|</span>
-
-            <a href="#">Kontakt</a>
-
-        </nav>
-
-        <p class="footer-copy">
-            © 2026 We Pull at Two
-        </p>
-
-    </footer>
-
-    </main>
+        </main>
 
     </div>
 

@@ -5,17 +5,6 @@ let cache = {
 
 const CACHE_TIME = 30 * 60 * 1000;
 
-const RAID_TIERS = [
-    {
-        slug: "tier-mn-1",
-        name: "Midnight – Season 1"
-    },
-    {
-        slug: "sporefall",
-        name: "Sporefall"
-    }
-];
-
 export default async function handler(req, res) {
 
     try {
@@ -35,49 +24,111 @@ export default async function handler(req, res) {
 
         const progression = data.raid_progression || {};
 
-        const raids = RAID_TIERS.map(raid => {
+        const raids = Object.entries(progression)
+            .map(([slug, raidData]) => ({
 
-            const raidData = progression[raid.slug];
+                slug,
 
-            return {
-
-                slug: raid.slug,
-
-                name: raid.name,
+                name: slug,
 
                 mythic: {
 
-                    completed: raidData?.mythic_bosses_killed || 0,
+                    completed: raidData.mythic_bosses_killed || 0,
 
-                    total: raidData?.total_bosses || 0
+                    total: raidData.total_bosses || 0
 
                 },
 
                 heroic: {
 
-                    completed: raidData?.heroic_bosses_killed || 0,
+                    completed: raidData.heroic_bosses_killed || 0,
 
-                    total: raidData?.total_bosses || 0
+                    total: raidData.total_bosses || 0
 
                 },
 
                 normal: {
 
-                    completed: raidData?.normal_bosses_killed || 0,
+                    completed: raidData.normal_bosses_killed || 0,
 
-                    total: raidData?.total_bosses || 0
+                    total: raidData.total_bosses || 0
 
                 }
 
-            };
+            }))
+            .filter(raid =>
 
-        });
+                raid.mythic.completed > 0 ||
+                raid.heroic.completed > 0 ||
+                raid.normal.completed > 0
+
+            );
+
+        const totalProgress = {
+
+            mythic: {
+
+                completed: raids.reduce(
+                    (sum, raid) => sum + raid.mythic.completed,
+                    0
+                ),
+
+                total: raids.reduce(
+                    (sum, raid) => sum + raid.mythic.total,
+                    0
+                )
+
+            },
+
+            heroic: {
+
+                completed: raids.reduce(
+                    (sum, raid) => sum + raid.heroic.completed,
+                    0
+                ),
+
+                total: raids.reduce(
+                    (sum, raid) => sum + raid.heroic.total,
+                    0
+                )
+
+            },
+
+            normal: {
+
+                completed: raids.reduce(
+                    (sum, raid) => sum + raid.normal.completed,
+                    0
+                ),
+
+                total: raids.reduce(
+                    (sum, raid) => sum + raid.normal.total,
+                    0
+                )
+
+            }
+
+        };
 
         const result = {
 
-            defaultRaid: "tier-mn-1",
+            defaultRaid: "current",
 
-            raids
+            raids: [
+
+                {
+
+                    slug: "current",
+
+                    name: "Current Raid",
+
+                    ...totalProgress
+
+                }
+
+            ],
+
+            activeRaids: raids
 
         };
 

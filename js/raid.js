@@ -1,9 +1,15 @@
+/* ===================================================
+   Raid Progress
+=================================================== */
+
 async function loadRaidProgress() {
 
     try {
 
         const response = await fetch("/api/raid");
-        const data = await response.json();
+
+        const data =
+            await response.json();
 
         const raid = data.raids.find(
             r => r.slug === data.defaultRaid
@@ -34,66 +40,50 @@ function updateDifficulty(mode, progress) {
     const barElement = document.getElementById(`${mode}-bar`);
 
     if (progressElement) {
+
         progressElement.textContent =
             `${progress.completed} / ${progress.total}`;
+
     }
 
     if (barElement) {
+
         barElement.style.width = `${percent}%`;
+
     }
 
 }
 
+/* ===================================================
+   Timeline Navigation
+=================================================== */
+
 const cards = document.querySelectorAll(".difficulty-card");
 
-const timelineTitle = document.getElementById("timeline-title");
-const timelineContent = document.getElementById("timeline-content");
+const timelineTitle =
+    document.getElementById("timeline-title");
 
-const timelines = {
+const timelineContent =
+    document.getElementById("timeline-content");
 
-    mythic: {
-        title: "Mythic Progress",
-        color: "mythic",
-        html: `
-            <div class="timeline-placeholder">
-                Mythic Timeline wird hier angezeigt.
-            </div>
-        `
-    },
+let bossData = null;
 
-    heroic: {
-        title: "Heroisch Progress",
-        color: "heroic",
-        html: `
-            <div class="timeline-placeholder">
-                Heroisch Timeline wird hier angezeigt.
-            </div>
-        `
-    },
-
-    normal: {
-        title: "Normal Progress",
-        color: "normal",
-        html: `
-            <div class="timeline-placeholder">
-                Normal Timeline wird hier angezeigt.
-            </div>
-        `
-    }
-
-};
+let currentMode = "mythic";
 
 cards.forEach(card => {
 
     card.addEventListener("click", () => {
 
-        cards.forEach(c => c.classList.remove("active"));
+        cards.forEach(c =>
+            c.classList.remove("active")
+        );
 
         card.classList.add("active");
 
-        const mode = card.dataset.mode;
+        currentMode = card.dataset.mode;
 
-        timelineTitle.textContent = timelines[mode].title;
+        timelineTitle.textContent =
+            card.querySelector("h3").textContent;
 
         timelineTitle.classList.remove(
             "mythic",
@@ -101,31 +91,44 @@ cards.forEach(card => {
             "normal"
         );
 
-        timelineTitle.classList.add(
-            timelines[mode].color
-        );
+        timelineTitle.classList.add(currentMode);
 
-        timelineContent.innerHTML =
-            timelines[mode].html;
+        loadTimeline(currentMode);
 
     });
 
 });
 
-loadRaidProgress();
-loadBossStatus();
+/* ===================================================
+   Boss Status
+=================================================== */
 
 async function loadBossStatus() {
 
     try {
 
-        const response = await fetch("/api/raid-bosses");
+        const response =
+            await fetch("/api/raid-bosses");
 
-        const data = await response.json();
+        bossData =
+            await response.json();
 
-        renderBossList("mythic", data.mythic);
-        renderBossList("heroic", data.heroic);
-        renderBossList("normal", data.normal);
+        renderBossList(
+            "mythic",
+            bossData.mythic
+        );
+
+        renderBossList(
+            "heroic",
+            bossData.heroic
+        );
+
+        renderBossList(
+            "normal",
+            bossData.normal
+        );
+
+        loadTimeline(currentMode);
 
     }
 
@@ -217,3 +220,110 @@ function renderBossList(mode, bosses) {
     container.innerHTML = html;
 
 }
+
+/* ===================================================
+   Raid Timeline
+=================================================== */
+
+async function loadTimeline(mode) {
+
+    try {
+
+        if (!bossData) return;
+
+        const bosses = bossData[mode];
+
+        const raids = [
+
+            "Die Leerenspitze",
+
+            "Der Traumriss",
+
+            "Marsch auf Quel'Danas",
+
+            "Sporefall"
+
+        ];
+
+        let html = "";
+
+        raids.forEach(raid => {
+
+            const raidBosses =
+                bosses.filter(b => b.raid === raid);
+
+            html += `
+
+                <div class="timeline-raid">
+
+                    <div class="timeline-raid-title">
+
+                        ${raid}
+
+                    </div>
+
+            `;
+
+            raidBosses.forEach(boss => {
+
+                const status =
+                    boss.killed
+                        ? "timeline-killed"
+                        : "timeline-open";
+
+                const icon =
+                    boss.killed
+                        ? "✔"
+                        : "○";
+
+                const date =
+                    boss.killed
+                        ? new Date(
+                            boss.defeatedAt
+                        ).toLocaleDateString("de-DE")
+                        : "Noch nicht besiegt";
+
+                html += `
+
+                    <div class="timeline-boss ${status}">
+
+                        <div class="timeline-boss-title">
+
+                            ${icon} ${boss.name}
+
+                        </div>
+
+                        <div class="timeline-boss-date">
+
+                            ${date}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            });
+
+            html += `</div>`;
+
+        });
+
+        timelineContent.innerHTML = html;
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+/* ===================================================
+   Initialisierung
+=================================================== */
+
+loadRaidProgress();
+loadBossStatus();
