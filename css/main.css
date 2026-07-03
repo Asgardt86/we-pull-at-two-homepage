@@ -1717,3 +1717,367 @@ body {
     margin-top: 30px;
 
 }
+
+/* ===================================================
+   Mythic+ Affixe
+=================================================== */
+
+.affixes {
+
+    margin-bottom: 70px;
+
+}
+
+.affixes h2 {
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    margin-bottom: 30px;
+
+}
+
+.affixes-panel {
+
+    background: linear-gradient(180deg, #0f1318, #1b2027);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+}
+
+.affix {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 22px;
+
+    padding: 22px 0;
+
+}
+
+.affix:not(:last-child) {
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+}
+
+.affix img {
+
+    width: 64px;
+
+    height: 64px;
+
+    border-radius: 12px;
+
+    flex-shrink: 0;
+
+}
+
+.affix-content {
+
+    flex: 1;
+
+}
+
+.affix-name {
+
+    color: #d4af37;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+.affix-description {
+
+    color: #d0d7df;
+
+    line-height: 1.6;
+
+    font-size: 17px;
+
+}
+
+.affixes-empty {
+
+    text-align: center;
+
+    color: #c7ced8;
+
+    font-size: 18px;
+
+    padding: 20px 0;
+
+}
+
+/* ===================================================
+   Mythic+ Hall of Fame
+=================================================== */
+
+.mythic-hof {
+
+    margin-bottom: 70px;
+
+}
+
+.mythic-hof h2 {
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    margin-bottom: 30px;
+
+}
+
+.hof-panel {
+
+    background: linear-gradient(180deg,#0f1318,#1b2027);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+}
+
+.hof-player {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding: 18px 20px;
+
+    margin-bottom: 18px;
+
+    border-radius: 14px;
+
+    background: rgba(255,255,255,.02);
+
+    border: 1px solid rgba(255,255,255,.05);
+
+    transition: .2s;
+
+}
+
+.hof-player:hover {
+
+    transform: translateX(6px);
+
+    background: rgba(255,255,255,.04);
+
+}
+
+.hof-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.hof-rank {
+
+    width: 46px;
+
+    text-align: center;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+}
+
+.hof-name {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}
+
+.hof-score {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+}
+
+.hof-first {
+
+    border-color: #d4af37;
+
+    box-shadow: 0 0 34px rgba(212,175,55,.18);
+
+}
+
+.hof-second {
+
+    border-color: #b8bcc6;
+
+    box-shadow: 0 0 18px rgba(184,188,198,.12);
+
+}
+
+.hof-third {
+
+    border-color: #c9823a;
+
+    box-shadow: 0 0 18px rgba(201,130,58,.12);
+
+}
+
+.hof-empty {
+
+    text-align: center;
+
+    color: #c7ced8;
+
+    font-size: 18px;
+
+    padding: 20px;
+
+}
+
+.hof-score {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.hof-score img {
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 6px;
+
+}
+
+.hof-right {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 12px;
+
+    min-width: 180px;
+
+}
+
+.hof-dungeon {
+
+    color: #9ea7b3;
+
+    font-size: 15px;
+
+    margin-top: 6px;
+
+    margin-bottom: 14px;
+
+}
+
+.hof-bar {
+
+    width: 340px;
+
+    height: 8px;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+    background: rgba(255,255,255,.08);
+
+}
+
+.hof-bar-fill {
+
+    height: 100%;
+
+    border-radius: inherit;
+
+}
+
+.hof-bar-fill.hof-first {
+
+    background: linear-gradient(90deg,#ffd54a,#d4af37);
+
+}
+
+.hof-bar-fill.hof-second {
+
+    background: linear-gradient(90deg,#d7dce3,#aeb6c2);
+
+}
+
+.hof-bar-fill.hof-third {
+
+    background: linear-gradient(90deg,#d89b63,#b86d2f);
+
+}
+
+.hof-bar-fill {
+
+    background: linear-gradient(90deg,#8b5cf6,#6d28d9);
+
+}
+
+.hof-link {
+
+    color: #d4af37;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: .2s;
+
+}
+
+.hof-link:hover {
+
+    color: #f4d66d;
+
+    transform: translateX(4px);
+
+}
