@@ -1493,3 +1493,227 @@ body {
         0 0 10px rgba(212,175,55,.18);
 
 }
+
+/* ===================================================
+   Live Raid Tracker
+=================================================== */
+
+.live-raid {
+
+    margin-bottom: 70px;
+
+}
+
+.live-raid h2 {
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    margin-bottom: 30px;
+
+}
+
+.live-raid-panel {
+
+    background: linear-gradient(180deg, #0f1318, #1b2027);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    border-radius: 18px;
+
+    padding: 35px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+    transition: .25s;
+
+}
+
+.live-raid-panel:hover {
+
+    transform: translateY(-3px);
+
+    border-color: rgba(212,175,55,.6);
+
+}
+
+.live-raid-status {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 22px;
+
+}
+
+.live-raid-status.live {
+
+    color: #37d66b;
+
+}
+
+.live-raid-status.summary {
+
+    color: #ff9838;
+
+}
+
+.live-raid-status.offline {
+
+    color: #9ea7b3;
+
+}
+
+.live-indicator {
+
+    width: 14px;
+
+    height: 14px;
+
+    border-radius: 50%;
+
+    background: #37d66b;
+
+    animation: livePulse 1.8s infinite;
+
+}
+
+@keyframes livePulse {
+
+    0% {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        opacity: .35;
+
+        transform: scale(1.35);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform: scale(1);
+
+    }
+
+}
+
+.live-raid-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 28px;
+
+    margin-top: 20px;
+
+}
+
+.live-item {
+
+    text-align: center;
+
+}
+
+.live-label {
+
+    color: #9ea7b3;
+
+    font-size: 14px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+
+}
+
+.live-value {
+
+    color: #f5f5f5;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+}
+
+.live-raid-message {
+
+    color: #c7ced8;
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+}
+
+.live-expand {
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color: #d4af37;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    font-size: 18px;
+
+    transition: .2s;
+
+}
+
+.live-expand:hover {
+
+    color: #f2d57a;
+
+}
+
+.live-details {
+
+    display: none;
+
+    margin-top: 35px;
+
+    padding-top: 30px;
+
+    border-top: 1px solid rgba(255,255,255,.08);
+
+}
+
+.live-details.open {
+
+    display: block;
+
+}
+
+.live-log {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+}
