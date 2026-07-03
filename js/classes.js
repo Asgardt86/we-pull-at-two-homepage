@@ -1,15 +1,11 @@
-/* ===================================================
-   Klassenverteilung
+/* =================================================== Klassenverteilung
 =================================================== */
 
 function renderClassRow(classData, total) {
 
-    const percent =
-
-        (classData.count / total) * 100;
+    const percent = (classData.count / total) * 100;
 
     const icon =
-
         `https://wow.zamimg.com/images/wow/icons/medium/class_${classData.icon}.jpg`;
 
     return `
@@ -47,11 +43,8 @@ function renderClassRow(classData, total) {
             <div class="class-bar">
 
                 <div
-
                     class="class-bar-fill"
-
                     style="width:${percent}%; background:${classData.color};"
-
                 ></div>
 
             </div>
@@ -70,136 +63,70 @@ async function loadClasses() {
     try {
 
         const response =
-
             await fetch("/api/classes");
 
         const data =
-
             await response.json();
 
         let html = `
 
             <div class="classes-panel">
 
+                <div class="classes-grid">
+
+                    <div class="classes-section">
+
+                        <div class="classes-title">
+
+                            Gesamte Gilde (${data.total80})
+
+                        </div>
+
         `;
-        /* ===================================================
-   Max Level
-=================================================== */
 
-        if (
+        if (data.classes80?.length) {
 
-            data.classesMax &&
-            data.classesMax.length > 0
+            [...data.classes80]
+                .sort((a, b) => b.count - a.count)
+                .forEach(classData => {
 
-        ) {
+                    html += renderClassRow(classData, data.total80);
 
-            const sortedMax =
-
-                [...data.classesMax]
-
-                    .sort((a, b) => b.count - a.count);
-
-            html += `
-
-                <div class="classes-section">
-
-                    <div class="classes-title">
-
-                        Max Level (${data.totalMax})
-
-                    </div>
-
-            `;
-
-            sortedMax.forEach(classData => {
-
-                html += renderClassRow(
-
-                    classData,
-
-                    data.totalMax
-
-                );
-
-            });
-
-            html += `
-
-                </div>
-
-            `;
-
-        }
-
-        /* ===================================================
-           Gesamt
-        =================================================== */
-
-        if (
-
-            data.classes80 &&
-            data.classes80.length > 0
-
-        ) {
-
-            const sortedAll =
-
-                [...data.classes80]
-
-                    .sort((a, b) => b.count - a.count);
-
-            html += `
-
-                <div class="classes-section">
-
-                    <div class="classes-title">
-
-                        Gesamte Gilde (${data.total80})
-
-                    </div>
-
-            `;
-
-            sortedAll.forEach(classData => {
-
-                html += renderClassRow(
-
-                    classData,
-
-                    data.total80
-
-                );
-
-            });
-
-            html += `
-
-                </div>
-
-            `;
-
-        }
-
-        if (
-
-            !data.classesMax?.length &&
-            !data.classes80?.length
-
-        ) {
-
-            html += `
-
-                <div class="classes-empty">
-
-                    Keine Klassendaten vorhanden.
-
-                </div>
-
-            `;
+                });
 
         }
 
         html += `
+
+                    </div>
+
+                    <div class="classes-section">
+
+                        <div class="classes-title">
+
+                            Max Level (${data.totalMax})
+
+                        </div>
+
+        `;
+
+        if (data.classesMax?.length) {
+
+            [...data.classesMax]
+                .sort((a, b) => b.count - a.count)
+                .forEach(classData => {
+
+                    html += renderClassRow(classData, data.totalMax);
+
+                });
+
+        }
+
+        html += `
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -231,10 +158,4 @@ async function loadClasses() {
 
 }
 
-document.addEventListener(
-
-    "DOMContentLoaded",
-
-    loadClasses
-
-);
+document.addEventListener("DOMContentLoaded", loadClasses);

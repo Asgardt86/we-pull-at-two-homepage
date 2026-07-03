@@ -45,26 +45,20 @@ async function loadAffixes() {
 
             html += `
 
-                <div class="affix">
+                <div
+                    class="affix-card"
+                    title="${affix.description}"
+                >
 
                     <img
                         src="${affix.icon}"
                         alt="${affix.name}"
+                        class="affix-card-icon"
                     >
 
-                    <div class="affix-content">
+                    <div class="affix-card-name">
 
-                        <div class="affix-name">
-
-                            ${affix.name}
-
-                        </div>
-
-                        <div class="affix-description">
-
-                            ${affix.description}
-
-                        </div>
+                        ${affix.name}
 
                     </div>
 
