@@ -105,11 +105,31 @@ export default async function handler(req, res) {
 
         const progression = raidData.raid_progression || {};
 
-        const midnight = progression["tier-mn-1"];
+        const activeRaids = Object.values(progression).filter(raid =>
 
-        const progress = midnight
-            ? `${midnight.mythic_bosses_killed} / ${midnight.total_bosses}`
-            : "0 / 0";
+            raid.mythic_bosses_killed > 0 ||
+            raid.heroic_bosses_killed > 0 ||
+            raid.normal_bosses_killed > 0
+
+        );
+
+        const mythicCompleted = activeRaids.reduce(
+
+            (sum, raid) => sum + (raid.mythic_bosses_killed || 0),
+
+            0
+
+        );
+
+        const totalBosses = activeRaids.reduce(
+
+            (sum, raid) => sum + (raid.total_bosses || 0),
+
+            0
+
+        );
+
+        const progress = `${mythicCompleted} / ${totalBosses}`;
 
         res.status(200).json({
 
