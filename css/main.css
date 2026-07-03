@@ -68,6 +68,26 @@ body {
     transition: 0.25s;
 }
 
+.sidebar-nav a img {
+
+    width: 40px;
+    height: 40px;
+
+    margin-right: 12px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+
+}
+
+.sidebar-nav a {
+
+    display: flex;
+    align-items: center;
+
+}
+
 .sidebar-nav a:hover {
     background: rgba(212, 175, 55, 0.15);
     color: #d4af37;
@@ -122,8 +142,7 @@ body {
     transform: scale(1.15);
 
     filter:
-        drop-shadow(0 0 6px rgba(212,175,55,.8))
-        drop-shadow(0 0 12px rgba(212,175,55,.4));
+        drop-shadow(0 0 6px rgba(212, 175, 55, .8)) drop-shadow(0 0 12px rgba(212, 175, 55, .4));
 }
 
 .banner-icons img {
@@ -142,14 +161,12 @@ body {
 
     margin: 30px 0 40px;
 
-    background: linear-gradient(
-        to right,
-        transparent,
-        #8c6b2d,
-        #d4af37,
-        #8c6b2d,
-        transparent
-    );
+    background: linear-gradient(to right,
+            transparent,
+            #8c6b2d,
+            #d4af37,
+            #8c6b2d,
+            transparent);
 }
 
 /* ===================================================
@@ -254,6 +271,7 @@ body {
     color: #d4af37;
     margin-bottom: 20px;
 }
+
 .intro-text {
     font-size: 16px;
     line-height: 1.8;
@@ -263,6 +281,7 @@ body {
 .intro-text strong {
     color: #d4af37;
 }
+
 .feature-list {
     list-style: none;
 }
@@ -359,6 +378,7 @@ body {
 .cta-small a:hover {
     text-decoration: underline;
 }
+
 /* ===================================================
    Footer
 =================================================== */
@@ -411,6 +431,7 @@ body {
     color: #666;
     font-size: 13px;
 }
+
 /* ===================================================
    API Info Bar
 =================================================== */
@@ -485,4 +506,519 @@ body {
     color: #9aa3ad;
 
     letter-spacing: .3px;
+}
+
+/* ===================================================
+   Raid Übersicht
+=================================================== */
+
+.raid-overview {
+    margin-top: 45px;
+    margin-bottom: 60px;
+}
+
+.raid-overview h2 {
+    color: #d4af37;
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+.raid-panel {
+
+    background: linear-gradient(180deg,#0f1318,#1b2027);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    border-radius: 18px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+}
+
+.difficulty-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+.difficulty-card {
+
+    background: linear-gradient(180deg,#222831,#181d24);
+
+    border-radius:16px;
+
+    padding:40px 30px;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:all .25s ease;
+
+}
+
+.difficulty-card:nth-child(1){
+
+    border:1px solid #8b5cf6;
+
+    box-shadow:
+        0 0 18px rgba(139,92,246,.20),
+        inset 0 0 20px rgba(139,92,246,.04);
+
+}
+
+.difficulty-card:nth-child(2){
+
+    border:1px solid #fb923c;
+
+    box-shadow:
+        0 0 18px rgba(251,146,60,.20),
+        inset 0 0 20px rgba(251,146,60,.04);
+
+}
+
+.difficulty-card:nth-child(3){
+
+    border:1px solid #22c55e;
+
+    box-shadow:
+        0 0 18px rgba(34,197,94,.20),
+        inset 0 0 20px rgba(34,197,94,.04);
+
+}
+
+.difficulty-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 0 30px rgba(212,175,55,.15);
+
+}
+
+.difficulty-card img{
+
+    width:105px;
+
+    height:105px;
+
+    object-fit:contain;
+
+    margin-bottom:22px;
+
+}
+
+.difficulty-card h3{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+}
+
+.difficulty-card:nth-child(1) h3{
+
+    color:#a970ff;
+
+}
+
+.difficulty-card:nth-child(2) h3{
+
+    color:#ff9b38;
+
+}
+
+.difficulty-card:nth-child(3) h3{
+
+    color:#45df74;
+
+}
+
+.difficulty-value{
+
+    color:#d4af37;
+
+    font-size:56px;
+
+    font-weight:700;
+
+    margin-bottom:24px;
+
+    letter-spacing:1px;
+
+}
+
+.difficulty-bar{
+
+    width:82%;
+
+    height:12px;
+
+    margin:0 auto 22px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+}
+
+.difficulty-fill{
+
+    height:100%;
+
+    border-radius:30px;
+
+    transition:width .8s ease;
+
+}
+
+.mythic-fill{
+
+    background:#8b5cf6;
+
+    box-shadow:0 0 15px #8b5cf6;
+
+}
+
+.heroic-fill{
+
+    background:#fb923c;
+
+    box-shadow:0 0 15px #fb923c;
+
+}
+
+.normal-fill{
+
+    background:#22c55e;
+
+    box-shadow:0 0 15px #22c55e;
+
+}
+
+.difficulty-card span{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+.status-open{
+
+    color:#facc15;
+
+}
+
+.status-cleared{
+
+    color:#22c55e;
+
+}
+
+.boss-status{
+
+    margin-top:18px;
+
+}
+
+.status-title{
+
+    color:#facc15;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+    font-size:16px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.5px;
+
+}
+
+.boss-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.boss-list li{
+
+    color:#d9d9d9;
+
+    margin:6px 0;
+
+    font-size:15px;
+
+}
+
+.boss-list li::before{
+
+    content:"• ";
+
+    color:#d4af37;
+
+}
+
+.status-cleared{
+
+    color:#22c55e;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.difficulty-card{
+
+    cursor:pointer;
+
+}
+
+.difficulty-card.active{
+
+    transform:translateY(-6px);
+
+}
+
+.difficulty-card.active:nth-child(1){
+
+    box-shadow:
+        0 0 30px rgba(139,92,246,.45);
+
+}
+
+.difficulty-card.active:nth-child(2){
+
+    box-shadow:
+        0 0 30px rgba(251,146,60,.45);
+
+}
+
+.difficulty-card.active:nth-child(3){
+
+    box-shadow:
+        0 0 30px rgba(34,197,94,.45);
+
+}
+
+/* ===================================================
+   Nächster Raid
+=================================================== */
+
+.next-raid{
+
+    margin-bottom:60px;
+
+}
+
+.next-raid h2{
+
+    color:#d4af37;
+
+    font-size:34px;
+
+    margin-bottom:30px;
+
+}
+
+.next-raid-panel{
+
+    background:linear-gradient(180deg,#0f1318,#1b2027);
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:18px;
+
+    padding:40px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+}
+
+.next-raid-content{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:35px;
+
+    align-items:center;
+
+}
+
+.next-raid-box{
+
+    background:linear-gradient(180deg,#222831,#181d24);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    padding:25px;
+
+}
+
+.next-raid-label{
+
+    color:#8b949e;
+
+    font-size:14px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    margin-bottom:10px;
+
+}
+
+.next-raid-value{
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.next-raid-countdown{
+
+    margin-top:10px;
+
+    color:#d4af37;
+
+    font-size:32px;
+
+    font-weight:700;
+
+}
+
+.next-raid-signups{
+
+    margin-top:10px;
+
+    color:#22c55e;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+
+/* ===================================================
+   Timeline
+=================================================== */
+
+.raid-timeline{
+
+    margin-bottom:70px;
+
+}
+
+.raid-timeline h2{
+
+    color:#d4af37;
+
+    font-size:34px;
+
+    margin-bottom:30px;
+
+}
+
+.timeline-panel{
+
+    background:linear-gradient(180deg,#0f1318,#1b2027);
+
+    border:1px solid rgba(212,175,55,.35);
+
+    border-radius:18px;
+
+    padding:40px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+}
+
+#timeline-title{
+
+    color:#a970ff;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin-bottom:30px;
+
+}
+
+.timeline-placeholder{
+
+    height:220px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#8b949e;
+
+    font-size:20px;
+
+    border:2px dashed rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+}
+
+#timeline-title.mythic{
+
+    color:#a970ff;
+
+}
+
+#timeline-title.heroic{
+
+    color:#fb923c;
+
+}
+
+#timeline-title.normal{
+
+    color:#22c55e;
+
 }

@@ -23,7 +23,11 @@ export default async function handler(req, res) {
             }
         );
 
-        const tokenData = await tokenResponse.json();
+        const tokenText = await tokenResponse.text();
+
+        console.log("TOKEN:", tokenText);
+
+        const tokenData = JSON.parse(tokenText);
 
         const accessToken = tokenData.access_token;
 
@@ -89,6 +93,24 @@ export default async function handler(req, res) {
             })
             .join(" & ");
 
+        // =========================
+        // Raider.IO Progress
+        // =========================
+
+        const raidResponse = await fetch(
+            "https://raider.io/api/v1/guilds/profile?region=eu&realm=blackrock&name=We%20Pull%20at%20Two&fields=raid_progression"
+        );
+
+        const raidData = await raidResponse.json();
+
+        const progression = raidData.raid_progression || {};
+
+        const midnight = progression["tier-mn-1"];
+
+        const progress = midnight
+            ? `${midnight.mythic_bosses_killed} / ${midnight.total_bosses}`
+            : "0 / 0";
+
         res.status(200).json({
 
             guild: guildData.name,
@@ -99,7 +121,9 @@ export default async function handler(req, res) {
 
             achievementPoints: guildData.achievement_points,
 
-            raidDays
+            raidDays,
+
+            progress
 
         });
 

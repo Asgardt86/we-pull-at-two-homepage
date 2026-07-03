@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>We Pull at Two</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <h1>WE PULL AT TWO</h1>
+
+                <p>Blackrock (EU)</p>
+
+                <span>Mythic Progress Guild</span>
+
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="../index.html">
+                    <img src="../images/icons/home-icon.png" alt="Home">
+                    Home
+                </a>
+                <a class="active" href="../pages/raid.html">
+                    <img src="../images/icons/raid-icon.png" alt="Raid">
+                    Raid
+                </a>
+
+                <a href="#">Über uns</a>
+                <a href="#">Dashboard</a>
+                <a href="#">Bewerbung</a>
+                <a href="#">Newsletter</a>
+                <a href="#">Media</a>
+
+            </nav>
+
+        </aside>
+
+        <main class="content">
+
+            <!-- Hero Banner -->
+
+            <section class="hero-banner">
+
+                <div class="banner-icons">
+
+                    <a href="https://wepullattwo.wowaudit.com/teams/main-raid" target="_blank" title="WoWAudit">
+
+                        <img src="../images/logo/wowaudit-logo.png" alt="WoWAudit">
+
+                    </a>
+
+                    <a href="https://raider.io/guilds/eu/blackrock/We%20Pull%20at%20Two" target="_blank"
+                        title="Raider.IO">
+
+                        <img src="../images/logo/raiderio-logo.png" alt="Raider.IO">
+
+                    </a>
+
+                    <a href="https://www.warcraftlogs.com/guild/id/782091" target="_blank" title="Warcraft Logs">
+
+                        <img src="../images/logo/warcraftlogs-logo.png" alt="Warcraft Logs">
+
+                    </a>
+
+                    <a href="https://www.wowprogress.com/guild/eu/blackrock/We+Pull+at+Two" target="_blank"
+                        title="WoWProgress">
+
+                        <img src="../images/logo/wowprogress-logo.png" alt="WoWProgress">
+
+                    </a>
+
+                </div>
+
+            </section>
+            <div class="hero-divider"></div>
+
+            <!-- API Info Bar -->
+
+            <section class="stats-bar">
+
+                <div class="stat-item">
+
+                    <div class="stat-header">
+
+                        <img src="../images/icons/mitglieder-icon.png" alt="Progress">
+
+                        <span>Mitglieder</span>
+
+                    </div>
+
+                    <div class="stat-value" id="member-count">164</div>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <div class="stat-header">
+
+                        <img src="../images/icons/progress-icon.png" alt="Roster">
+
+                        <span>Mythic Progress</span>
+
+                    </div>
+
+                    <div class="stat-value" id="raid-progress">7 / 9</div>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <div class="stat-header">
+
+                        <img src="../images/icons/raidtage-icon.png" alt="Nächster Raid">
+
+                        <span>Raidtage</span>
+
+                    </div>
+
+                    <div class="stat-value" id="raid-days">Mi &amp; So</div>
+
+                </div>
+
+                <div class="stat-item">
+
+                    <div class="stat-header">
+
+                        <img src="../images/icons/realm-icon.png" alt="Countdown">
+
+                        <span>Realm</span>
+
+                    </div>
+
+                    <div class="stat-value" id="realm-name">Blackrock (EU)</div>
+
+                </div>
+
+            </section>
+
+            <div class="hero-divider"></div>
+
+            <section class="next-raid">
+
+                <h2>Nächster Raid</h2>
+
+                <div class="next-raid-panel">
+
+                    <div class="next-raid-content">
+
+                        <div class="next-raid-difficulty">
+                            🟣 Mythic
+                        </div>
+
+                        <div class="next-raid-date">
+
+                            Mittwoch
+
+                            <br>
+
+                            20:00 – 23:00 Uhr
+
+                        </div>
+
+                        <div class="next-raid-countdown">
+
+                            Noch
+
+                            <strong>2 Tage 4 Stunden</strong>
+
+                        </div>
+
+                        <div class="next-raid-signups">
+
+                            24 / 25 Spieler angemeldet
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="raid-overview">
+
+                <h2>Raid Übersicht</h2>
+
+                <div class="raid-panel">
+
+                    <div class="difficulty-grid">
+
+                        <!-- Mythic -->
+
+                        <div class="difficulty-card active" data-mode="mythic">
+
+                            <img src="../images/icons/mythic-mode-icon.png" alt="Mythic">
+
+                            <h3>Mythic Progress</h3>
+
+                            <div class="difficulty-value" id="mythic-progress">
+                                0 / 0
+                            </div>
+
+                            <div class="difficulty-bar">
+                                <div class="difficulty-fill mythic-fill" id="mythic-bar"></div>
+                            </div>
+
+                            <div class="boss-status">
+
+                                <div class="status-title">
+                                    Noch offen
+                                </div>
+
+                                <div class="boss-container" id="mythic-bosses"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Heroisch -->
+
+                    <div class="difficulty-card" data-mode="heroic">
+
+                        <img src="../images/icons/heroic-mode-icon.png" alt="Heroisch">
+
+                        <h3>Heroisch Progress</h3>
+
+                        <div class="difficulty-value" id="heroic-progress">
+                            0 / 0
+                        </div>
+
+                        <div class="difficulty-bar">
+                            <div class="difficulty-fill heroic-fill" id="heroic-bar"></div>
+                        </div>
+
+                        <div class="boss-status">
+
+                            <div class="boss-container" id="heroic-bosses"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Normal -->
+
+                <div class="difficulty-card" data-mode="normal">
+
+                    <img src="../images/icons/normal-mode-icon.png" alt="Normal">
+
+                    <h3>Normal Progress</h3>
+
+                    <div class="difficulty-value" id="normal-progress">
+                        0 / 0
+                    </div>
+
+                    <div class="difficulty-bar">
+                        <div class="difficulty-fill normal-fill" id="normal-bar"></div>
+                    </div>
+
+                    <div class="boss-status">
+
+                        <div class="boss-container" id="normal-bosses"></div>
+
+                    </div>
+
+                </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </section>
+
+    <section class="raid-timeline">
+
+        <h2>Raid Timeline</h2>
+
+        <div class="timeline-panel">
+
+            <div id="timeline-title">
+
+                Mythic Progress
+
+            </div>
+
+            <div id="timeline-content">
+
+                <div class="timeline-placeholder">
+
+                    Wähle oben einen Schwierigkeitsgrad aus.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <p class="footer-text">
+            World of Warcraft Gilde auf Blackrock (EU)
+        </p>
+
+        <p class="footer-subtext">
+            Mythic Progress • Teamgeist • Langfristige Entwicklung
+        </p>
+
+        <nav class="footer-links">
+
+            <a href="#">Impressum</a>
+
+            <span>|</span>
+
+            <a href="#">Datenschutz</a>
+
+            <span>|</span>
+
+            <a href="#">Kontakt</a>
+
+        </nav>
+
+        <p class="footer-copy">
+            © 2026 We Pull at Two
+        </p>
+
+    </footer>
+
+    </main>
+
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/raid.js"></script>
+
+</body>
+
+</html>
