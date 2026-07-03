@@ -38,6 +38,57 @@ export default async function handler(req, res) {
 
         const guildData = await guildResponse.json();
 
+        // =========================
+        // WoWAudit Team
+        // =========================
+
+        const apiKey = process.env.WOWAUDIT_API_KEY;
+
+        const teamResponse = await fetch(
+            "https://wowaudit.com/v1/team",
+            {
+                headers: {
+                    Authorization: `Bearer ${apiKey}`
+                }
+            }
+        );
+
+        const teamData = await teamResponse.json();
+
+        const raidDays = teamData.raid_days
+            .map(day => {
+
+                switch (day.week_day) {
+
+                    case "Wednesday":
+                        return "Mi";
+
+                    case "Sunday":
+                        return "So";
+
+                    case "Monday":
+                        return "Mo";
+
+                    case "Tuesday":
+                        return "Di";
+
+                    case "Thursday":
+                        return "Do";
+
+                    case "Friday":
+                        return "Fr";
+
+                    case "Saturday":
+                        return "Sa";
+
+                    default:
+                        return day.week_day;
+
+                }
+
+            })
+            .join(" & ");
+
         res.status(200).json({
 
             guild: guildData.name,
@@ -46,7 +97,9 @@ export default async function handler(req, res) {
 
             members: guildData.member_count,
 
-            achievementPoints: guildData.achievement_points
+            achievementPoints: guildData.achievement_points,
+
+            raidDays
 
         });
 
