@@ -2081,3 +2081,101 @@ body {
     transform: translateX(4px);
 
 }
+
+/* ===================================================
+   Gildenaktivität
+=================================================== */
+
+.activity {
+
+    margin-bottom: 70px;
+
+}
+
+.activity h2 {
+
+    color: #d4af37;
+
+    font-size: 34px;
+
+    margin-bottom: 30px;
+
+}
+
+.activity-panel {
+
+    background: linear-gradient(180deg,#0f1318,#1b2027);
+
+    border: 1px solid rgba(212,175,55,.35);
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+}
+
+.activity-section {
+
+    margin-bottom: 28px;
+
+}
+
+.activity-section:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.activity-title {
+
+    color: #d4af37;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(255,255,255,.08);
+
+}
+
+.activity-entry {
+
+    margin-bottom: 14px;
+
+}
+
+.activity-text {
+
+    color: #f3f4f6;
+
+    line-height: 1.5;
+
+}
+
+.activity-time {
+
+    margin-top: 4px;
+
+    color: #9ea7b3;
+
+    font-size: 13px;
+
+}
+
+.activity-empty {
+
+    text-align: center;
+
+    color: #c7ced8;
+
+    padding: 20px;
+
+}
