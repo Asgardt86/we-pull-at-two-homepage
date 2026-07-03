@@ -1,31 +1,21 @@
-/* ==========================================
-   We Pull at Two
-   API Loader
-========================================== */
+async function loadHomepageData() {
 
-async function loadMembers() {
+    try {
 
-}
+        const response = await fetch("/api/homepage");
 
-async function loadRaidProgress() {
+        const data = await response.json();
 
-}
+        document.getElementById("member-count").textContent = data.members;
 
-async function loadRaidDays() {
+    }
 
-}
+    catch (error) {
 
-async function loadRealm() {
+        console.error(error);
 
-}
-
-async function initializeHomepage() {
-
-    await loadMembers();
-    await loadRaidProgress();
-    await loadRaidDays();
-    await loadRealm();
+    }
 
 }
 
-initializeHomepage();
+loadHomepageData();
