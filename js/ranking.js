@@ -32,13 +32,7 @@ async function loadRanking() {
 
         data.raids.forEach(raid => {
 
-            const raidName = raid.slug
-
-                .replace(/^tier-/, "")
-
-                .replace(/-/g, " ")
-
-                .replace(/\b\w/g, letter => letter.toUpperCase());
+            const raidName = raid.slug;
 
             html += `
 

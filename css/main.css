@@ -1472,10 +1472,24 @@ body {
 
     color: #d4af37;
 
-    font-size: 28px;
+    font-size: 22px;
 
-    margin-bottom: 25px;
+    font-weight: 700;
 
-    text-transform: capitalize;
+    font-family: "Trebuchet MS", sans-serif;
+
+    letter-spacing: 2px;
+
+    text-transform: none;
+
+    border-left: 4px solid #d4af37;
+
+    padding-left: 14px;
+
+    margin-bottom: 28px;
+
+    text-shadow:
+
+        0 0 10px rgba(212,175,55,.18);
 
 }
