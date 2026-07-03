@@ -122,7 +122,7 @@ body {
 
 .sidebar-nav a.active img {
 
-    filter: drop-shadow(0 0 8px rgba(212,175,55,.6));
+    filter: drop-shadow(0 0 8px rgba(212, 175, 55, .6));
 
 }
 
@@ -889,15 +889,15 @@ body {
 
     background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
     padding: 30px 40px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
     transition: .25s;
 
@@ -907,11 +907,11 @@ body {
 
     transform: translateY(-3px);
 
-    border-color: rgba(212,175,55,.6);
+    border-color: rgba(212, 175, 55, .6);
 
     box-shadow:
-        0 18px 40px rgba(0,0,0,.55),
-        0 0 24px rgba(212,175,55,.18);
+        0 18px 40px rgba(0, 0, 0, .55),
+        0 0 24px rgba(212, 175, 55, .18);
 
 }
 
@@ -964,7 +964,7 @@ body {
     color: #a970ff;
 
     text-shadow:
-        0 0 10px rgba(169,112,255,.45);
+        0 0 10px rgba(169, 112, 255, .45);
 
 }
 
@@ -973,7 +973,7 @@ body {
     color: #ff9838;
 
     text-shadow:
-        0 0 10px rgba(255,152,56,.45);
+        0 0 10px rgba(255, 152, 56, .45);
 
 }
 
@@ -982,7 +982,7 @@ body {
     color: #37d66b;
 
     text-shadow:
-        0 0 10px rgba(55,214,107,.45);
+        0 0 10px rgba(55, 214, 107, .45);
 
 }
 
@@ -1194,7 +1194,7 @@ body {
 
     padding-bottom: 10px;
 
-    border-bottom: 1px solid rgba(212,175,55,.25);
+    border-bottom: 1px solid rgba(212, 175, 55, .25);
 
 }
 
@@ -1202,9 +1202,9 @@ body {
 
     position: relative;
 
-    background: linear-gradient(180deg,#222831,#181d24);
+    background: linear-gradient(180deg, #222831, #181d24);
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
 
     border-radius: 14px;
 
@@ -1236,7 +1236,7 @@ body {
 
     height: calc(100% + 35px);
 
-    background: rgba(212,175,55,.35);
+    background: rgba(212, 175, 55, .35);
 
 }
 
@@ -1266,7 +1266,7 @@ body {
 
 .timeline-killed {
 
-    border-color: rgba(34,197,94,.45);
+    border-color: rgba(34, 197, 94, .45);
 
 }
 
@@ -1278,7 +1278,7 @@ body {
 
 .timeline-open {
 
-    border-color: rgba(255,255,255,.08);
+    border-color: rgba(255, 255, 255, .08);
 
 }
 
@@ -1322,7 +1322,7 @@ body {
 
     background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
@@ -1348,7 +1348,7 @@ body {
 
     padding: 28px;
 
-    border: 1px solid rgba(255,255,255,.08);
+    border: 1px solid rgba(255, 255, 255, .08);
 
     transition: .25s;
 
@@ -1364,7 +1364,7 @@ body {
 
     border-color: #8b5cf6;
 
-    box-shadow: 0 0 18px rgba(139,92,246,.18);
+    box-shadow: 0 0 18px rgba(139, 92, 246, .18);
 
 }
 
@@ -1372,7 +1372,7 @@ body {
 
     border-color: #fb923c;
 
-    box-shadow: 0 0 18px rgba(251,146,60,.18);
+    box-shadow: 0 0 18px rgba(251, 146, 60, .18);
 
 }
 
@@ -1380,7 +1380,7 @@ body {
 
     border-color: #22c55e;
 
-    box-shadow: 0 0 18px rgba(34,197,94,.18);
+    box-shadow: 0 0 18px rgba(34, 197, 94, .18);
 
 }
 
@@ -1490,7 +1490,7 @@ body {
 
     text-shadow:
 
-        0 0 10px rgba(212,175,55,.18);
+        0 0 10px rgba(212, 175, 55, .18);
 
 }
 
@@ -1518,15 +1518,15 @@ body {
 
     background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
     padding: 35px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
     transition: .25s;
 
@@ -1536,7 +1536,7 @@ body {
 
     transform: translateY(-3px);
 
-    border-color: rgba(212,175,55,.6);
+    border-color: rgba(212, 175, 55, .6);
 
 }
 
@@ -1620,7 +1620,7 @@ body {
 
     display: grid;
 
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
 
     gap: 28px;
 
@@ -1700,7 +1700,7 @@ body {
 
     padding-top: 30px;
 
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255, 255, 255, .08);
 
 }
 
@@ -1742,15 +1742,15 @@ body {
 
     background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
     padding: 35px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
 }
 
@@ -1768,7 +1768,7 @@ body {
 
 .affix:not(:last-child) {
 
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 
 }
 
@@ -1846,17 +1846,17 @@ body {
 
 .hof-panel {
 
-    background: linear-gradient(180deg,#0f1318,#1b2027);
+    background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
     padding: 30px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
 }
 
@@ -1876,9 +1876,9 @@ body {
 
     border-radius: 14px;
 
-    background: rgba(255,255,255,.02);
+    background: rgba(255, 255, 255, .02);
 
-    border: 1px solid rgba(255,255,255,.05);
+    border: 1px solid rgba(255, 255, 255, .05);
 
     transition: .2s;
 
@@ -1888,7 +1888,7 @@ body {
 
     transform: translateX(6px);
 
-    background: rgba(255,255,255,.04);
+    background: rgba(255, 255, 255, .04);
 
 }
 
@@ -1938,7 +1938,7 @@ body {
 
     border-color: #d4af37;
 
-    box-shadow: 0 0 34px rgba(212,175,55,.18);
+    box-shadow: 0 0 34px rgba(212, 175, 55, .18);
 
 }
 
@@ -1946,7 +1946,7 @@ body {
 
     border-color: #b8bcc6;
 
-    box-shadow: 0 0 18px rgba(184,188,198,.12);
+    box-shadow: 0 0 18px rgba(184, 188, 198, .12);
 
 }
 
@@ -1954,7 +1954,7 @@ body {
 
     border-color: #c9823a;
 
-    box-shadow: 0 0 18px rgba(201,130,58,.12);
+    box-shadow: 0 0 18px rgba(201, 130, 58, .12);
 
 }
 
@@ -2026,7 +2026,7 @@ body {
 
     overflow: hidden;
 
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
 
 }
 
@@ -2040,25 +2040,25 @@ body {
 
 .hof-bar-fill.hof-first {
 
-    background: linear-gradient(90deg,#ffd54a,#d4af37);
+    background: linear-gradient(90deg, #ffd54a, #d4af37);
 
 }
 
 .hof-bar-fill.hof-second {
 
-    background: linear-gradient(90deg,#d7dce3,#aeb6c2);
+    background: linear-gradient(90deg, #d7dce3, #aeb6c2);
 
 }
 
 .hof-bar-fill.hof-third {
 
-    background: linear-gradient(90deg,#d89b63,#b86d2f);
+    background: linear-gradient(90deg, #d89b63, #b86d2f);
 
 }
 
 .hof-bar-fill {
 
-    background: linear-gradient(90deg,#8b5cf6,#6d28d9);
+    background: linear-gradient(90deg, #8b5cf6, #6d28d9);
 
 }
 
@@ -2104,17 +2104,17 @@ body {
 
 .activity-panel {
 
-    background: linear-gradient(180deg,#0f1318,#1b2027);
+    background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
     padding: 30px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
 }
 
@@ -2142,7 +2142,7 @@ body {
 
     padding-bottom: 10px;
 
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 
 }
 
@@ -2202,17 +2202,17 @@ body {
 
 .classes-panel {
 
-    background: linear-gradient(180deg,#0f1318,#1b2027);
+    background: linear-gradient(180deg, #0f1318, #1b2027);
 
-    border: 1px solid rgba(212,175,55,.35);
+    border: 1px solid rgba(212, 175, 55, .35);
 
     border-radius: 18px;
 
     padding: 30px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
 }
 
@@ -2240,7 +2240,7 @@ body {
 
     padding-bottom: 10px;
 
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
 
 }
 
@@ -2308,7 +2308,7 @@ body {
 
     overflow: hidden;
 
-    background: rgba(255,255,255,.08);
+    background: rgba(255, 255, 255, .08);
 
 }
 
@@ -2328,4 +2328,146 @@ body {
 
     padding: 20px;
 
+}
+
+/* =================================================== RAID ROSTER
+=================================================== */
+
+.raid-roster {
+    margin-bottom: 70px;
+}
+
+.raid-roster h2 {
+    color: #d4af37;
+    font-size: 34px;
+    margin-bottom: 30px;
+}
+
+.raid-roster-panel {
+    background: linear-gradient(180deg, #0f1318, #1b2027);
+    border: 1px solid rgba(212, 175, 55, .35);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .45), 0 0 18px rgba(212, 175, 55, .08);
+}
+
+.raid-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.raid-total {
+    font-size: 22px;
+    font-weight: 700;
+    color: #d4af37;
+}
+
+.raid-counts {
+    display: flex;
+    gap: 18px;
+    font-weight: 700;
+    color: #d6dde7;
+}
+
+.raid-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.raid-role {
+    background: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .06);
+    border-radius: 14px;
+    padding: 18px;
+}
+
+.raid-role-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(212, 175, 55, .20);
+}
+
+.raid-frame {
+    background: #20252c;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    transition: .18s ease;
+}
+
+.raid-frame:hover {
+    transform: translateY(-2px);
+    border-color: rgba(212, 175, 55, .45);
+    box-shadow: 0 0 12px rgba(212, 175, 55, .18);
+}
+
+.raid-frame-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.raid-player {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.raid-class-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.raid-player-name {
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.raid-rank {
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    letter-spacing: .4px;
+}
+
+.raid-healthbar {
+    height: 12px;
+    background: #1a1f25;
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.raid-health-fill {
+    height: 100%;
+    position: relative;
+}
+
+.raid-health-fill::after {
+    content: ““;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, .22), rgba(255, 255, 255, 0));
+}
+
+@media (max-width:1100px) {
+    .raid-grid {
+        grid-template-columns: 1fr;
+    }
 }
