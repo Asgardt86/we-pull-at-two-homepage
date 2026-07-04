@@ -98,21 +98,59 @@ function createRaidFrame(player) {
 
             </div>
 
-            <div class="raid-tooltip">
+<div class="raid-tooltip">
 
-                <strong>${player.name}</strong><br>
+    <div class="tooltip-name">
 
-                ${player.class}<br>
+        ${player.name}
 
-                ${player.role}<br>
+    </div>
 
-                Rang: ${player.rank}<br>
+    <div class="tooltip-realm">
 
-                Itemlevel: ${player.itemLevel}<br>
+        ${player.realm}
 
-                ${player.realm}
+    </div>
 
-            </div>
+    <hr>
+
+    <div>
+
+        <strong>Klasse:</strong> ${player.class}
+
+    </div>
+
+    <div>
+
+        <strong>Rolle:</strong> ${player.role === "Tank" ? "Tank" :
+            player.role === "Heal" ? "Heiler" :
+                player.role === "Melee" ? "Nahkampf" :
+                    "Fernkampf"
+        }
+
+    </div>
+
+    <div>
+
+        <strong>Rang:</strong> ${player.rank}
+
+    </div>
+
+    <div>
+
+        <strong>Itemlevel:</strong> ${player.itemLevel}
+
+    </div>
+
+    <hr>
+
+    <div class="tooltip-link">
+
+        ↗ Blizzard Charakterprofil öffnen
+
+    </div>
+
+</div>
 
         </a>
 
@@ -180,7 +218,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            "🛡 Tanks",
+            '<img src="../images/role-icons/tank-role-icon.png" class="role-icon"> Tanks',
 
             data.tanks
 
@@ -188,7 +226,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            "❤ Heiler",
+            '<img src="../images/role-icons/heal-role-icon.png" class="role-icon"> Heiler',
 
             data.heals
 
@@ -196,7 +234,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            "⚔ Nahkampf",
+            '<img src="../images/role-icons/meele-role-icon.png" class="role-icon"> Melees',
 
             data.melee
 
@@ -204,7 +242,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            "🏹 Fernkampf",
+            '<img src="../images/role-icons/range-role-icon.png" class="role-icon"> Ranges',
 
             data.ranged
 

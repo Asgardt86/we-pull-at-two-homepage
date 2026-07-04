@@ -44,9 +44,29 @@
 
 .raid-role-count{
 
-    color:#9ca3af;
+    color:#cfd8e3;
 
-    font-size:16px;
+    font-size:22px;
+
+    font-weight:700;
+
+    min-width:24px;
+
+    text-align:right;
+
+}
+
+.role-icon{
+
+    width:55px;
+
+    height:55px;
+
+    object-fit:contain;
+
+    margin-right:10px;
+
+    vertical-align:middle;
 
 }
 
@@ -68,13 +88,13 @@
 
     transition:.2s;
 
-    overflow:hidden;
+    overflow:visible;
 
-    text-decoration: none;
+    text-decoration:none;
 
-    color: inherit;
+    color:inherit;
 
-    display: block;
+    display:block;
 
 }
 
@@ -248,5 +268,47 @@
         grid-template-columns:1fr;
 
     }
+
+}
+
+.tooltip-name{
+
+    color:#d4af37;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    margin-bottom:4px;
+
+}
+
+.tooltip-realm{
+
+    color:#9ca3af;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+
+}
+
+.raid-tooltip hr{
+
+    border:none;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    margin:8px 0;
+
+}
+
+.tooltip-link{
+
+    margin-top:8px;
+
+    color:#d4af37;
+
+    font-size:12px;
 
 }

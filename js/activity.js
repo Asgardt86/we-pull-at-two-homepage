@@ -36,8 +36,20 @@ async function loadActivity() {
         `;
 
         /* ===================================================
-           Charakteraktivitäten
-        =================================================== */
+    Charakteraktivitäten
+ =================================================== */
+
+        html += `
+
+    <div class="activity-section">
+
+        <div class="activity-title">
+
+            Charakteraktivitäten
+
+        </div>
+
+`;
 
         if (
 
@@ -46,18 +58,6 @@ async function loadActivity() {
 
         ) {
 
-            html += `
-
-                <div class="activity-section">
-
-                    <div class="activity-title">
-
-                        Charakteraktivitäten
-
-                    </div>
-
-            `;
-
             activityData.activities.forEach(entry => {
 
                 let text = "";
@@ -65,58 +65,72 @@ async function loadActivity() {
                 if (entry.type === "achievement") {
 
                     text = `
-            🎯 <span style="color:${entry.color}; font-weight:700;">
-                ${entry.player}
-            </span>
-            hat den Erfolg
-            "<strong>${entry.achievement}</strong>"
-            erhalten
-        `;
+                🎯 <span style="color:${entry.color}; font-weight:700;">
+                    ${entry.player}
+                </span>
+                hat den Erfolg
+                "<strong>${entry.achievement}</strong>"
+                erhalten
+            `;
 
                 }
 
                 else if (entry.type === "level") {
 
                     text = `
-            ⭐ <span style="color:${entry.color}; font-weight:700;">
-                ${entry.player}
-            </span>
-            hat Level
-            <strong>${entry.level}</strong>
-            erreicht
-        `;
+                ⭐ <span style="color:${entry.color}; font-weight:700;">
+                    ${entry.player}
+                </span>
+                hat Level
+                <strong>${entry.level}</strong>
+                erreicht
+            `;
 
                 }
 
                 html += `
 
-        <div class="activity-entry">
+            <div class="activity-entry">
 
-            <div class="activity-text">
+                <div class="activity-text">
 
-                ${text}
+                    ${text}
+
+                </div>
+
+                <div class="activity-time">
+
+                    ${entry.time}
+
+                </div>
 
             </div>
 
-            <div class="activity-time">
+        `;
 
-                ${entry.time}
+            });
 
-            </div>
+        }
+
+        else {
+
+            html += `
+
+        <div class="activity-empty">
+
+            Keine aktuellen Charakteraktivitäten vorhanden.
 
         </div>
 
     `;
 
-            });
-
-            html += `
-
-                </div>
-
-            `;
-
         }
+
+        html += `
+
+    </div>
+
+`;
 
         /* ===================================================
            Gildenerfolge
