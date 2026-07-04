@@ -159,13 +159,23 @@ body {
 }
 
 .banner-icons {
+
     position: absolute;
 
-    top: 30px;
-    right: 780px;
+    top: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
 
     display: flex;
-    gap: 25px;
+
+    align-items: center;
+
+    gap: 28px;
+
+    z-index: 10;
+
 }
 
 .banner-icons a {

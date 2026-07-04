@@ -1,8 +1,8 @@
 /* ===================================================
-   Raid Roster
+   Raid Roster V2
 =================================================== */
 
-const RAID_CLASS_COLORS = {
+const ROSTER_CLASS_COLORS = {
 
     "Death Knight": "#C41F3B",
     "Demon Hunter": "#A330C9",
@@ -20,64 +20,40 @@ const RAID_CLASS_COLORS = {
 
 };
 
-const RAID_CLASS_ICONS = {
-
-    "Death Knight": "deathknight",
-    "Demon Hunter": "demonhunter",
-    "Druid": "druid",
-    "Evoker": "evoker",
-    "Hunter": "hunter",
-    "Mage": "mage",
-    "Monk": "monk",
-    "Paladin": "paladin",
-    "Priest": "priest",
-    "Rogue": "rogue",
-    "Shaman": "shaman",
-    "Warlock": "warlock",
-    "Warrior": "warrior"
-
-};
-
-const RAID_RANK_COLORS = {
+const RANK_COLORS = {
 
     Offi: "#3b82f6",
     Raider: "#22c55e",
     Trial: "#f59e0b",
-    Alt: "#a855f7",
     Member: "#eab308"
 
 };
+
 function createRaidFrame(player) {
 
-    const color =
-        RAID_CLASS_COLORS[player.class] || "#ffffff";
-
-    const icon =
-        RAID_CLASS_ICONS[player.class];
+    const classColor =
+        ROSTER_CLASS_COLORS[player.class] || "#ffffff";
 
     const rankColor =
-        RAID_RANK_COLORS[player.rank] || "#6b7280";
-
-    const iconUrl =
-        `https://wow.zamimg.com/images/wow/icons/medium/class_${icon}.jpg`;
+        RANK_COLORS[player.rank] || "#6b7280";
 
     return `
 
         <div class="raid-frame">
 
-            <div class="raid-frame-top">
+            <div class="raid-frame-header">
 
                 <div class="raid-player">
 
                     <img
-                        src="${iconUrl}"
-                        alt="${player.class}"
-                        class="raid-class-icon"
+                        src="${player.avatar}"
+                        class="raid-avatar"
+                        alt="${player.name}"
                     >
 
                     <span
-                        class="raid-player-name"
-                        style="color:${color};"
+                        class="raid-name"
+                        style="color:${classColor};"
                     >
 
                         ${player.name}
@@ -101,8 +77,30 @@ function createRaidFrame(player) {
 
                 <div
                     class="raid-health-fill"
-                    style="background:${color}; width:100%;"
+                    style="background:${classColor}; width:100%;"
                 ></div>
+
+            </div>
+
+            <div class="raid-ilvl">
+
+                ilvl ${player.itemLevel}
+
+            </div>
+
+            <div class="raid-tooltip">
+
+                <strong>${player.name}</strong><br>
+
+                ${player.class}<br>
+
+                ${player.role}<br>
+
+                Rang: ${player.rank}<br>
+
+                Itemlevel: ${player.itemLevel}<br>
+
+                ${player.realm}
 
             </div>
 
@@ -111,101 +109,98 @@ function createRaidFrame(player) {
     `;
 
 }
+
+function createRole(title, players) {
+
+    let html = `
+
+        <div class="raid-role">
+
+            <div class="raid-role-title">
+
+                ${title}
+
+                <span class="raid-role-count">
+
+                    ${players.length}
+
+                </span>
+
+            </div>
+
+    `;
+
+    players.forEach(player => {
+
+        html += createRaidFrame(player);
+
+    });
+
+    html += `
+
+        </div>
+
+    `;
+
+    return html;
+
+}
+
 async function loadRaidRoster() {
 
-    const container = document.getElementById("raid-roster");
+    const container =
+
+        document.getElementById("raid-roster");
 
     try {
 
         const response =
+
             await fetch("/api/raid-roster");
 
         const data =
+
             await response.json();
 
         let html = `
 
-            <div class="raid-roster-panel">
-
-                <div class="raid-summary">
-
-                    <div class="raid-total">
-
-                        ${data.total} Charaktere
-
-                    </div>
-
-                    <div class="raid-counts">
-
-                        <span>🛡 ${data.tanks.length}</span>
-                        <span>❤ ${data.heals.length}</span>
-                        <span>⚔ ${data.melee.length}</span>
-                        <span>🏹 ${data.ranged.length}</span>
-
-                    </div>
-
-                </div>
-
-                <div class="raid-grid">
+            <div class="raid-roster">
 
         `;
 
-        const groups = [
+        html += createRole(
 
-            {
-                title: "🛡 Tanks",
-                players: data.tanks
-            },
+            "🛡 Tanks",
 
-            {
-                title: "❤ Heiler",
-                players: data.heals
-            },
+            data.tanks
 
-            {
-                title: "⚔ Nahkampf",
-                players: data.melee
-            },
+        );
 
-            {
-                title: "🏹 Fernkampf",
-                players: data.ranged
-            }
+        html += createRole(
 
-        ];
+            "❤ Heiler",
 
-        groups.forEach(group => {
+            data.heals
 
-            html += `
+        );
 
-                <div class="raid-role">
+        html += createRole(
 
-                    <div class="raid-role-title">
+            "⚔ Nahkampf",
 
-                        ${group.title}
-                        (${group.players.length})
+            data.melee
 
-                    </div>
+        );
 
-            `;
+        html += createRole(
 
-            group.players.forEach(player => {
+            "🏹 Fernkampf",
 
-                html += createRaidFrame(player);
+            data.ranged
 
-            });
-
-            html += `
-
-                </div>
-
-            `;
-
-        });
+        );
 
         html += `
-
-                </div>
 
             </div>
 
@@ -221,7 +216,7 @@ async function loadRaidRoster() {
 
         container.innerHTML = `
 
-            <div class="raid-roster-panel">
+            <div class="raid-error">
 
                 Raid Roster konnte nicht geladen werden.
 
