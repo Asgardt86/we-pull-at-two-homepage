@@ -1,0 +1,51 @@
+/* ===================================================
+   PAGE HEADER
+=================================================== */
+
+.page-header {
+
+    margin-bottom: 40px;
+
+}
+
+.page-header h1 {
+
+    color: #d4af37;
+
+    font-size: 42px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    letter-spacing: .5px;
+
+}
+
+.page-header p {
+
+    color: #9ea7b3;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    max-width: 900px;
+
+}
+
+@media (max-width: 768px) {
+
+    .page-header h1 {
+
+        font-size: 34px;
+
+    }
+
+    .page-header p {
+
+        font-size: 16px;
+
+    }
+
+}

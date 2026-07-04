@@ -1,0 +1,99 @@
+/* =================================================== RAID INFO
+=================================================== */
+
+.raid-info{
+
+    margin-bottom:70px;
+
+}
+
+.raid-info h2{
+
+    color:#d4af37;
+    font-size:34px;
+    margin-bottom:30px;
+
+}
+
+.raid-info-grid{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:30px;
+
+}
+
+.raid-card{
+
+    background:linear-gradient(180deg,#0f1318,#1b2027);
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:18px;
+
+    padding:30px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 18px rgba(212,175,55,.08);
+
+    margin-bottom:30px;
+
+}
+
+.raid-card h3{
+
+    color:#d4af37;
+    font-size:24px;
+    margin-bottom:20px;
+
+}
+
+.raid-card p{
+
+    color:#d8dde5;
+    line-height:1.8;
+    margin-bottom:18px;
+
+}
+
+.raid-card p:last-child{
+
+    margin-bottom:0;
+
+}
+
+.raid-card ul{
+
+    list-style:none;
+    padding:0;
+
+}
+
+.raid-card li{
+
+    position:relative;
+    padding-left:24px;
+    margin-bottom:14px;
+    line-height:1.7;
+    color:#d8dde5;
+
+}
+
+.raid-card li::before{
+
+    content:"✦";
+    position:absolute;
+    left:0;
+    color:#d4af37;
+
+}
+
+@media (max-width:900px){
+
+    .raid-info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
