@@ -1905,16 +1905,6 @@ body {
 
 }
 
-.mythic-hof h2 {
-
-    color: #d4af37;
-
-    font-size: 34px;
-
-    margin-bottom: 30px;
-
-}
-
 .hof-panel {
 
     display: flex;
@@ -2169,16 +2159,6 @@ body {
 
 }
 
-.activity h2 {
-
-    color: #d4af37;
-
-    font-size: 34px;
-
-    margin-bottom: 30px;
-
-}
-
 .activity-panel {
 
     display: flex;
@@ -2270,16 +2250,6 @@ body {
 .class-distribution {
 
     margin-bottom: 70px;
-
-}
-
-.class-distribution h2 {
-
-    color: #d4af37;
-
-    font-size: 34px;
-
-    margin-bottom: 30px;
 
 }
 
@@ -2438,12 +2408,6 @@ body {
 
 .raid-roster {
     margin-bottom: 70px;
-}
-
-.raid-roster h2 {
-    color: #d4af37;
-    font-size: 34px;
-    margin-bottom: 30px;
 }
 
 .raid-roster-panel {

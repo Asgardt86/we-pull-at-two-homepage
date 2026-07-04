@@ -189,6 +189,13 @@ export default async function handler(req, res) {
 
                     realm: player.realm,
 
+                    realmSlug,
+
+                    characterSlug:
+                        encodeURIComponent(
+                            player.name.toLowerCase()
+                        ),
+
                     class: player.class,
 
                     role: player.role,

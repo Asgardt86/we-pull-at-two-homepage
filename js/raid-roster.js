@@ -39,7 +39,17 @@ function createRaidFrame(player) {
 
     return `
 
-        <div class="raid-frame">
+        <a
+
+    class="raid-frame"
+
+    href="https://worldofwarcraft.blizzard.com/de-de/character/eu/${player.realmSlug}/${player.characterSlug}"
+
+    target="_blank"
+
+    rel="noopener noreferrer"
+
+>
 
             <div class="raid-frame-header">
 
@@ -104,7 +114,7 @@ function createRaidFrame(player) {
 
             </div>
 
-        </div>
+        </a>
 
     `;
 
