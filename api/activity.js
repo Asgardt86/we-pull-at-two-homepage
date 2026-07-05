@@ -1,4 +1,5 @@
 import { Buffer } from "buffer";
+import { mergeHistory } from "../lib/history.js";
 import {
 
     getCache,
@@ -53,22 +54,51 @@ export default async function handler(req, res) {
     try {
 
         /* ===================================================
-   Redis Cache
+   Cache
 =================================================== */
 
-        const cached = await getCache("activity");
+        let cached = await getCache("activity");
+
+        /* ===================================================
+   Cache vorhanden
+=================================================== */
 
         if (cached) {
-
-            console.log("Activity aus Redis Cache");
 
             return res.status(200).json(cached.data);
 
         }
 
-        console.log("Activity von Blizzard API");
         /* ===================================================
-Redis Cache ENDE
+           Historie initialisieren
+        =================================================== */
+
+        cached = {
+
+            data: {
+
+                activities: []
+
+            }
+
+        };
+        /* =================================================== */
+
+        if (!cached) {
+
+            cached = {
+
+                data: {
+
+                    activities: []
+
+                }
+
+            };
+
+        }
+        /* ===================================================
+Cache ENDE
 =================================================== */
 
         /* ===================================================
@@ -269,9 +299,33 @@ Aktivitäten filtern
 
             .slice(0, 10);
 
+        const mergedActivities = mergeHistory(
+
+            cached.data.activities,
+
+            activities,
+
+            entry =>
+
+                `${entry.type}-${entry.player}-${entry.achievement ?? ""}-${entry.level ?? ""}`,
+
+            20
+
+        );
+
+        console.log(
+
+            "Historie:",
+
+            mergedActivities.length,
+
+            "Einträge"
+
+        );
+
         const result = {
 
-            activities
+            activities: mergedActivities
 
         };
 
@@ -281,7 +335,7 @@ Aktivitäten filtern
 
             result,
 
-            60 * 60
+            60 * 60 * 24
 
         );
 
