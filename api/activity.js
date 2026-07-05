@@ -1,4 +1,5 @@
 import { Buffer } from "buffer";
+import { getRedis } from "../lib/redis.js";
 
 let cache = {
     data: null,
@@ -49,6 +50,36 @@ function timeAgo(timestamp) {
 export default async function handler(req, res) {
 
     try {
+
+        /* ===================================================
+           REDIS CACHE TEST
+        =================================================== */
+        const redis = await getRedis();
+
+        await redis.set(
+
+            "redis-test",
+
+            "Hallo Åsgard"
+
+        );
+
+        const test = await redis.get(
+
+            "redis-test"
+
+        );
+
+        console.log(
+
+            "Redis Test:",
+
+            test
+
+        );
+        /* ===================================================
+           REDIS CACHE TEST
+        =================================================== */
 
         if (
 
