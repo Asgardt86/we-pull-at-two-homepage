@@ -1,12 +1,13 @@
 import { Buffer } from "buffer";
-import { getRedis } from "../lib/redis.js";
+import {
 
-let cache = {
-    data: null,
-    timestamp: 0
-};
+    getCache,
 
-const CACHE_TIME = 5 * 60 * 1000;
+    setCache
+
+}
+
+    from "../lib/cache.js";
 
 const CLASS_COLORS = {
 
@@ -52,45 +53,23 @@ export default async function handler(req, res) {
     try {
 
         /* ===================================================
-           REDIS CACHE TEST
-        =================================================== */
-        const redis = await getRedis();
+   Redis Cache
+=================================================== */
 
-        await redis.set(
+        const cached = await getCache("activity");
 
-            "redis-test",
+        if (cached) {
 
-            "Hallo Åsgard"
+            console.log("Activity aus Redis Cache");
 
-        );
-
-        const test = await redis.get(
-
-            "redis-test"
-
-        );
-
-        console.log(
-
-            "Redis Test:",
-
-            test
-
-        );
-        /* ===================================================
-           REDIS CACHE TEST
-        =================================================== */
-
-        if (
-
-            cache.data &&
-            Date.now() - cache.timestamp < CACHE_TIME
-
-        ) {
-
-            return res.status(200).json(cache.data);
+            return res.status(200).json(cached.data);
 
         }
+
+        console.log("Activity von Blizzard API");
+        /* ===================================================
+Redis Cache ENDE
+=================================================== */
 
         /* ===================================================
            Blizzard OAuth
@@ -296,13 +275,15 @@ Aktivitäten filtern
 
         };
 
-        cache = {
+        await setCache(
 
-            data: result,
+            "activity",
 
-            timestamp: Date.now()
+            result,
 
-        };
+            60 * 60
+
+        );
 
         return res.status(200).json(result);
 
