@@ -1,5 +1,15 @@
-import { Buffer } from "buffer";
-import { mergeHistory } from "../lib/history.js";
+import {
+
+    loadHistory,
+
+    saveHistory,
+
+    mergeHistory
+
+}
+
+    from "../lib/history.js";
+import { getAccessToken } from "../lib/blizzard.js";
 import {
 
     getCache,
@@ -57,7 +67,7 @@ export default async function handler(req, res) {
    Cache
 =================================================== */
 
-        let cached = await getCache("activity");
+        const cached = await getCache("cache:activity");
 
         /* ===================================================
    Cache vorhanden
@@ -70,81 +80,23 @@ export default async function handler(req, res) {
         }
 
         /* ===================================================
-           Historie initialisieren
+           Historie laden
         =================================================== */
 
-        cached = {
+        const history =
 
-            data: {
+            await loadHistory(
 
-                activities: []
+                "activity"
 
-            }
-
-        };
-        /* =================================================== */
-
-        if (!cached) {
-
-            cached = {
-
-                data: {
-
-                    activities: []
-
-                }
-
-            };
-
-        }
+            );
         /* ===================================================
 Cache ENDE
 =================================================== */
 
-        /* ===================================================
-           Blizzard OAuth
-        =================================================== */
-
-        const clientId =
-            process.env.BLIZZARD_CLIENT_ID;
-
-        const clientSecret =
-            process.env.BLIZZARD_CLIENT_SECRET;
-
-        const credentials = Buffer
-
-            .from(`${clientId}:${clientSecret}`)
-
-            .toString("base64");
-
-        const tokenResponse = await fetch(
-
-            "https://oauth.battle.net/token",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    Authorization: `Basic ${credentials}`,
-
-                    "Content-Type":
-                        "application/x-www-form-urlencoded"
-
-                },
-
-                body: "grant_type=client_credentials"
-
-            }
-
-        );
-
-        const tokenData =
-            await tokenResponse.json();
-
         const accessToken =
-            tokenData.access_token;
+
+            await getAccessToken();
 
         /* ===================================================
            Gilden-Roster
@@ -301,7 +253,7 @@ Aktivitäten filtern
 
         const mergedActivities = mergeHistory(
 
-            cached.data.activities,
+            history,
 
             activities,
 
@@ -313,13 +265,15 @@ Aktivitäten filtern
 
         );
 
-        console.log(
+        /* ===================================================
+   Historie speichern
+=================================================== */
 
-            "Historie:",
+        await saveHistory(
 
-            mergedActivities.length,
+            "activity",
 
-            "Einträge"
+            mergedActivities
 
         );
 
@@ -331,7 +285,7 @@ Aktivitäten filtern
 
         await setCache(
 
-            "activity",
+            "cache:activity",
 
             result,
 
