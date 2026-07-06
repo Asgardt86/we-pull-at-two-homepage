@@ -52,14 +52,6 @@ export default async function handler(req, res) {
 
             await getWarcraftLogsToken();
 
-        console.log(
-
-            "Token:",
-
-            accessToken
-
-        );
-
         /* ===================================================
            Letzte Reports laden
         =================================================== */
@@ -110,24 +102,6 @@ export default async function handler(req, res) {
             }
 
         );
-
-        console.log(
-
-            reportsResponse.status,
-
-            reportsResponse.headers.get("content-type")
-
-        );
-
-        if (!reportsResponse.ok) {
-
-            console.log(
-
-                await reportsResponse.text()
-
-            );
-
-        }
 
         const reportsData =
             await reportsResponse.json();
@@ -621,7 +595,9 @@ Boss Pulls
 
     catch (error) {
 
-        res.status(500).json({
+        console.error(error);
+
+        return res.status(500).json({
 
             error: error.message
 

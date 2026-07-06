@@ -1,0 +1,25 @@
+/* ===================================================
+   COLORS
+=================================================== */
+
+:root {
+
+    --gold: #d4af37;
+
+    --gold-dark: #8c6b2d;
+
+    --background: #111418;
+
+    --background-light: #1a1f26;
+
+    --panel: #1b1f24;
+
+    --panel-light: #20252c;
+
+    --text: #f5f5f5;
+
+    --text-secondary: #9ea7b3;
+
+    --border: rgba(255,255,255,.08);
+
+}

@@ -8,6 +8,10 @@
 
 }
 
+/* -----------------------------------------------
+   H1
+------------------------------------------------ */
+
 .page-header h1 {
 
     color: #d4af37;
@@ -22,6 +26,28 @@
 
 }
 
+/* -----------------------------------------------
+   H2
+------------------------------------------------ */
+
+.page-header h2 {
+
+    color: #d4af37;
+
+    font-size: 38px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+
+    letter-spacing: .5px;
+
+}
+
+/* -----------------------------------------------
+   Beschreibung
+------------------------------------------------ */
+
 .page-header p {
 
     color: #9ea7b3;
@@ -34,11 +60,53 @@
 
 }
 
+/* ===================================================
+   PAGE SECTIONS
+=================================================== */
+
+.page-section {
+
+    margin-top: 48px;
+
+}
+
+.page-section h3 {
+
+    color: #d4af37;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
 @media (max-width: 768px) {
 
     .page-header h1 {
 
         font-size: 34px;
+
+    }
+
+    .page-header h2 {
+
+        font-size: 32px;
+
+    }
+
+    .page-section h3 {
+
+        font-size: 24px;
 
     }
 
