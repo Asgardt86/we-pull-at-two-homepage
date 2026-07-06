@@ -1100,6 +1100,16 @@ body {
 
 }
 
+.raid-overview-note {
+
+    margin: 6px 0 18px;
+
+    font-size: 1.1rem;
+
+    color: #9b9b9b;
+
+}
+
 .raid-timeline h2 {
 
     color: #d4af37;

@@ -1,9 +1,12 @@
-let cache = {
-    data: null,
-    timestamp: 0
-};
+import {
 
-const CACHE_TIME = 30 * 60 * 1000;
+    getCache,
+
+    setCache
+
+}
+
+    from "../lib/cache.js";
 
 /* ===================================================
    Mythic+ Affixe
@@ -13,14 +16,23 @@ export default async function handler(req, res) {
 
     try {
 
-        if (
+        /* ===================================================
+           Cache
+        =================================================== */
 
-            cache.data &&
-            Date.now() - cache.timestamp < CACHE_TIME
+        const cached = await getCache(
 
-        ) {
+            "cache:affixes"
 
-            return res.status(200).json(cache.data);
+        );
+
+        if (cached) {
+
+            return res.status(200).json(
+
+                cached.data
+
+            );
 
         }
 
@@ -53,13 +65,15 @@ export default async function handler(req, res) {
 
             };
 
-            cache = {
+            await setCache(
 
-                data: result,
+                "cache:affixes",
 
-                timestamp: Date.now()
+                result,
 
-            };
+                60 * 60 * 24
+
+            );
 
             return res.status(200).json(result);
 
@@ -91,15 +105,17 @@ export default async function handler(req, res) {
 
         };
 
-        cache = {
+        await setCache(
 
-            data: result,
+            "cache:affixes",
 
-            timestamp: Date.now()
+            result,
 
-        };
+            60 * 60 * 24
 
-        res.status(200).json(result);
+        );
+
+        return res.status(200).json(result);
 
     }
 

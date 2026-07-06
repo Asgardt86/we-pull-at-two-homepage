@@ -14,7 +14,11 @@ import {
 
     getCache,
 
-    setCache
+    setCache,
+
+    clearCache,
+
+    deleteCache
 
 }
 
@@ -90,6 +94,14 @@ export default async function handler(req, res) {
                 "activity"
 
             );
+
+        console.log(
+
+            "History:",
+
+            history
+
+        );
         /* ===================================================
 Cache ENDE
 =================================================== */
@@ -203,8 +215,8 @@ Aktivitäten filtern
                         achievement:
                             entry.character_achievement.achievement.name,
 
-                        time:
-                            timeAgo(entry.timestamp)
+                        timestamp:
+                            entry.timestamp
 
                     };
 
@@ -236,8 +248,8 @@ Aktivitäten filtern
                         level:
                             entry.player_level_up.level,
 
-                        time:
-                            timeAgo(entry.timestamp)
+                        timestamp:
+                            entry.timestamp
 
                     };
 

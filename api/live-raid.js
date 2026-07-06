@@ -1,11 +1,20 @@
-import { Buffer } from "buffer";
+import {
 
-let cache = {
-    data: null,
-    timestamp: 0
-};
+    getCache,
 
-const CACHE_TIME = 30 * 1000;
+    setCache
+
+}
+
+    from "../lib/cache.js";
+
+import {
+
+    getWarcraftLogsToken
+
+}
+
+    from "../lib/warcraftlogs.js";
 
 /* ===================================================
    Live Raid Tracker
@@ -19,60 +28,37 @@ export default async function handler(req, res) {
            Cache
         =================================================== */
 
-        if (
+        const cached = await getCache(
 
-            cache.data &&
-            Date.now() - cache.timestamp < CACHE_TIME
+            "cache:live-raid"
 
-        ) {
+        );
 
-            return res.status(200).json(cache.data);
+        if (cached) {
+
+            return res.status(200).json(
+
+                cached.data
+
+            );
 
         }
 
         /* ===================================================
-           Warcraft Logs Token
+           Warcraft Logs Access Token
         =================================================== */
 
-        const clientId =
-            process.env.WCL_CLIENT_ID;
+        const accessToken =
 
-        const clientSecret =
-            process.env.WCL_CLIENT_SECRET;
+            await getWarcraftLogsToken();
 
-        const credentials = Buffer
+        console.log(
 
-            .from(`${clientId}:${clientSecret}`)
+            "Token:",
 
-            .toString("base64");
-
-        const tokenResponse = await fetch(
-
-            "https://www.warcraftlogs.com/oauth/token",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    Authorization: `Basic ${credentials}`,
-
-                    "Content-Type": "application/x-www-form-urlencoded"
-
-                },
-
-                body: "grant_type=client_credentials"
-
-            }
+            accessToken
 
         );
-
-        const tokenData =
-            await tokenResponse.json();
-
-        const accessToken =
-            tokenData.access_token;
 
         /* ===================================================
            Letzte Reports laden
@@ -125,6 +111,24 @@ export default async function handler(req, res) {
 
         );
 
+        console.log(
+
+            reportsResponse.status,
+
+            reportsResponse.headers.get("content-type")
+
+        );
+
+        if (!reportsResponse.ok) {
+
+            console.log(
+
+                await reportsResponse.text()
+
+            );
+
+        }
+
         const reportsData =
             await reportsResponse.json();
 
@@ -142,13 +146,15 @@ export default async function handler(req, res) {
 
             };
 
-            cache = {
+            await setCache(
 
-                data: result,
+                "cache:live-raid",
 
-                timestamp: Date.now()
+                result,
 
-            };
+                60
+
+            );
 
             return res.status(200).json(result);
 
@@ -298,13 +304,15 @@ export default async function handler(req, res) {
 
             };
 
-            cache = {
+            await setCache(
 
-                data: result,
+                "cache:live-raid",
 
-                timestamp: Date.now()
+                result,
 
-            };
+                60
+
+            );
 
             return res.status(200).json(result);
 
@@ -535,13 +543,15 @@ Boss Pulls
 
             };
 
-            cache = {
+            await setCache(
 
-                data: result,
+                "cache:live-raid",
 
-                timestamp: Date.now()
+                result,
 
-            };
+                60
+
+            );
 
             return res.status(200).json(result);
 
@@ -571,13 +581,15 @@ Boss Pulls
 
             };
 
-            cache = {
+            await setCache(
 
-                data: result,
+                "cache:live-raid",
 
-                timestamp: Date.now()
+                result,
 
-            };
+                60
+
+            );
 
             return res.status(200).json(result);
 
@@ -593,13 +605,15 @@ Boss Pulls
 
         };
 
-        cache = {
+        await setCache(
 
-            data: result,
+            "cache:live-raid",
 
-            timestamp: Date.now()
+            result,
 
-        };
+            60
+
+        );
 
         return res.status(200).json(result);
 

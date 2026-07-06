@@ -1,11 +1,30 @@
-import { Buffer } from "buffer";
+import {
 
-let cache = {
-    data: null,
-    timestamp: 0
-};
+    getCache,
 
-const CACHE_TIME = 30 * 60 * 1000;
+    setCache
+
+}
+
+    from "../lib/cache.js";
+
+import {
+
+    loadHistory,
+
+    saveHistory
+
+}
+
+    from "../lib/history.js";
+
+import {
+
+    getAccessToken
+
+}
+
+    from "../lib/blizzard.js";
 
 /* ===================================================
    Mythic+ Hall of Fame
@@ -19,62 +38,41 @@ export default async function handler(req, res) {
            Cache
         =================================================== */
 
-        if (
+        const cached = await getCache(
 
-            cache.data &&
-            cache.data.players &&
-            cache.data.players.length > 0 &&
-            Date.now() - cache.timestamp < CACHE_TIME
+            "cache:mythic-hof"
 
-        ) {
+        );
 
-            return res.status(200).json(cache.data);
+        if (cached) {
+
+            return res.status(200).json(
+
+                cached.data
+
+            );
 
         }
 
         /* ===================================================
-           Blizzard OAuth
+   Hall of Fame Historie
+=================================================== */
+
+        const history =
+
+            await loadHistory(
+
+                "mythic-hof"
+
+            );
+
+        /* ===================================================
+           Blizzard Access Token
         =================================================== */
 
-        const clientId =
-            process.env.BLIZZARD_CLIENT_ID;
-
-        const clientSecret =
-            process.env.BLIZZARD_CLIENT_SECRET;
-
-        const credentials = Buffer
-
-            .from(`${clientId}:${clientSecret}`)
-
-            .toString("base64");
-
-        const tokenResponse = await fetch(
-
-            "https://oauth.battle.net/token",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    Authorization: `Basic ${credentials}`,
-
-                    "Content-Type": "application/x-www-form-urlencoded"
-
-                },
-
-                body: "grant_type=client_credentials"
-
-            }
-
-        );
-
-        const tokenData =
-            await tokenResponse.json();
-
         const accessToken =
-            tokenData.access_token;
+
+            await getAccessToken();
 
         /* ===================================================
            Gilden-Roster
@@ -195,11 +193,28 @@ export default async function handler(req, res) {
 
         if (players.length === 0) {
 
+            if (
+
+                history.players &&
+                history.players.length > 0
+
+            ) {
+
+                return res.status(200).json({
+
+                    status: "inactive",
+
+                    players: history.players
+
+                });
+
+            }
+
             return res.status(200).json({
 
-                players: [],
+                status: "inactive",
 
-                status: "inactive"
+                players: []
 
             });
 
@@ -264,16 +279,30 @@ export default async function handler(req, res) {
         };
 
         /* ===================================================
+   Hall of Fame Historie speichern
+=================================================== */
+
+        await saveHistory(
+
+            "mythic-hof",
+
+            result
+
+        );
+
+        /* ===================================================
            Cache
         =================================================== */
 
-        cache = {
+        await setCache(
 
-            data: result,
+            "cache:mythic-hof",
 
-            timestamp: Date.now()
+            result,
 
-        };
+            60 * 60 * 24
+
+        );
 
         return res.status(200).json(result);
 

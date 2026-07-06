@@ -1,11 +1,20 @@
-import { Buffer } from "buffer";
+import {
 
-let cache = {
-    data: null,
-    timestamp: 0
-};
+    getCache,
 
-const CACHE_TIME = 30 * 60 * 1000;
+    setCache
+
+}
+
+    from "../lib/cache.js";
+
+import {
+
+    getAccessToken
+
+}
+
+    from "../lib/blizzard.js";
 
 const CLASS_MAP = {
 
@@ -33,57 +42,37 @@ export default async function handler(req, res) {
 
     try {
 
-        if (
+        /* ===================================================
+           Cache
+        =================================================== */
 
-            cache.data &&
-            Date.now() - cache.timestamp < CACHE_TIME
+        const cached = await getCache(
 
-        ) {
-
-            return res.status(200).json(cache.data);
-
-        }
-
-        const clientId =
-            process.env.BLIZZARD_CLIENT_ID;
-
-        const clientSecret =
-            process.env.BLIZZARD_CLIENT_SECRET;
-
-        const credentials = Buffer
-
-            .from(`${clientId}:${clientSecret}`)
-
-            .toString("base64");
-
-        const tokenResponse = await fetch(
-
-            "https://oauth.battle.net/token",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    Authorization: `Basic ${credentials}`,
-
-                    "Content-Type":
-                        "application/x-www-form-urlencoded"
-
-                },
-
-                body: "grant_type=client_credentials"
-
-            }
+            "cache:classes"
 
         );
 
-        const tokenData =
-            await tokenResponse.json();
+        if (cached) {
+
+            return res.status(200).json(
+
+                cached.data
+
+            );
+
+        }
+
+        /* ===================================================
+           Blizzard Access Token
+        =================================================== */
 
         const accessToken =
-            tokenData.access_token;
+
+            await getAccessToken();
+
+        /* ===================================================
+Gilden-Roster
+=================================================== */
 
         const rosterResponse = await fetch(
 
@@ -94,6 +83,7 @@ export default async function handler(req, res) {
                 headers: {
 
                     Authorization:
+
                         `Bearer ${accessToken}`
 
                 }
@@ -103,6 +93,7 @@ export default async function handler(req, res) {
         );
 
         const rosterData =
+
             await rosterResponse.json();
 
         const classCount = {};
@@ -198,13 +189,15 @@ export default async function handler(req, res) {
 
         };
 
-        cache = {
+        await setCache(
 
-            data: result,
+            "cache:classes",
 
-            timestamp: Date.now()
+            result,
 
-        };
+            60 * 60 * 24
+
+        );
 
         return res.status(200).json(result);
 

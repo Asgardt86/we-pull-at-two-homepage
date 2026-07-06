@@ -1,4 +1,36 @@
 /* ===================================================
+   Zeit berechnen
+=================================================== */
+
+function timeAgo(timestamp) {
+
+    const now = Date.now();
+
+    const diff = now - timestamp;
+
+    const minutes = Math.floor(diff / 60000);
+
+    const hours = Math.floor(diff / 3600000);
+
+    const days = Math.floor(diff / 86400000);
+
+    if (minutes < 60) {
+
+        return `vor ${minutes} Minuten`;
+
+    }
+
+    if (hours < 24) {
+
+        return `vor ${hours} Stunden`;
+
+    }
+
+    return `vor ${days} Tagen`;
+
+}
+
+/* ===================================================
    Gildenaktivität
 =================================================== */
 
@@ -98,11 +130,11 @@ async function loadActivity() {
 
                 </div>
 
-                <div class="activity-time">
+<div class="activity-time">
 
-                    ${entry.time}
+    ${timeAgo(entry.timestamp)}
 
-                </div>
+</div>
 
             </div>
 

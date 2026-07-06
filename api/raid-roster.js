@@ -1,11 +1,20 @@
-import { Buffer } from "buffer";
+import {
 
-let cache = {
-    data: null,
-    timestamp: 0
-};
+    getCache,
 
-const CACHE_TIME = 24 * 60 * 60 * 1000;
+    setCache
+
+}
+
+    from "../lib/cache.js";
+
+import {
+
+    getAccessToken
+
+}
+
+    from "../lib/blizzard.js";
 
 function realmToSlug(realm) {
 
@@ -23,40 +32,33 @@ export default async function handler(req, res) {
 
     try {
 
-        if (
-            cache.data &&
-            Date.now() - cache.timestamp < CACHE_TIME
-        ) {
+        /* ==========================================
+           Cache
+        ========================================== */
 
-            return res.status(200).json(cache.data);
+        const cached = await getCache(
+
+            "cache:raid-roster"
+
+        );
+
+        if (cached) {
+
+            return res.status(200).json(
+
+                cached.data
+
+            );
 
         }
 
         /* ==========================================
-           Blizzard OAuth
+           Blizzard Access Token
         ========================================== */
 
-        const credentials = Buffer
-            .from(
-                `${process.env.BLIZZARD_CLIENT_ID}:${process.env.BLIZZARD_CLIENT_SECRET}`
-            )
-            .toString("base64");
+        const accessToken =
 
-        const tokenResponse = await fetch(
-            "https://oauth.battle.net/token",
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Basic ${credentials}`,
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "grant_type=client_credentials"
-            }
-        );
-
-        const tokenData = await tokenResponse.json();
-
-        const accessToken = tokenData.access_token;
+            await getAccessToken();
 
         /* ==========================================
    WoWAudit
@@ -111,13 +113,6 @@ export default async function handler(req, res) {
                    Character Profile
                 ------------------------------ */
 
-                console.log(realmSlug);
-                console.log(characterName);
-
-                console.log(
-                    `https://eu.api.blizzard.com/profile/wow/character/${realmSlug}/${characterName}?namespace=profile-eu&locale=de_DE`
-                );
-
                 const profileResponse = await fetch(
 
                     `https://eu.api.blizzard.com/profile/wow/character/${realmSlug}/${characterName}?namespace=profile-eu&locale=de_DE`,
@@ -132,11 +127,7 @@ export default async function handler(req, res) {
 
                 if (!profileResponse.ok) {
 
-                    console.log(await profileResponse.text());
-
-                    console.log(profileResponse.status);
-
-                    console.log(
+                    console.error(
                         `Profil konnte nicht geladen werden: ${player.name}`
                     );
 
@@ -164,7 +155,7 @@ export default async function handler(req, res) {
 
                 if (!mediaResponse.ok) {
 
-                    console.log(
+                    console.error(
                         `Media konnte nicht geladen werden: ${player.name}`
                     );
 
@@ -241,7 +232,7 @@ export default async function handler(req, res) {
 
             catch (error) {
 
-                console.log(
+                console.error(
 
                     `Fehler bei ${player.name}:`,
 
@@ -288,13 +279,15 @@ export default async function handler(req, res) {
 
         };
 
-        cache = {
+        await setCache(
 
-            data: result,
+            "cache:raid-roster",
 
-            timestamp: Date.now()
+            result,
 
-        };
+            60 * 60 * 24
+
+        );
 
         return res.status(200).json(result);
 
