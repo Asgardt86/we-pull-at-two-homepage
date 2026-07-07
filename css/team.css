@@ -65,3 +65,67 @@
     font-size: 17px;
 
 }
+
+/* ===================================================
+   TEAM CONTENT
+=================================================== */
+
+.team-title {
+
+    color: var(--gold);
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+
+}
+
+.team-description {
+
+    color: var(--text);
+
+    line-height: 1.8;
+
+    margin-bottom: 24px;
+
+}
+
+/* ===================================================
+   TEAM TASKS
+=================================================== */
+
+.team-tasks {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+
+    gap: 12px 24px;
+
+    margin-top: 8px;
+
+}
+
+.team-task {
+
+    color: var(--text-secondary);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.team-task::before {
+
+    content: "✓";
+
+    color: var(--gold);
+
+    font-weight: 700;
+
+}
