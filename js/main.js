@@ -140,3 +140,25 @@ function capitalize(text) {
 =================================================== */
 
 loadNextRaid();
+
+/* ===================================================
+   Gildenleitung Accordion
+=================================================== */
+
+const teamSection = document.querySelector(".team-section");
+
+if (teamSection) {
+
+    const summary = document.getElementById("team-summary");
+
+    teamSection.addEventListener("toggle", () => {
+
+        summary.textContent = teamSection.open
+
+            ? "Gildenleitung ausblenden"
+
+            : "Gildenleitung anzeigen";
+
+    });
+
+}

@@ -129,3 +129,51 @@
     font-weight: 700;
 
 }
+
+/* ===================================================
+   TEAM SECTION
+=================================================== */
+
+.team-section {
+
+    margin-top: 24px;
+
+}
+
+.team-section summary {
+
+    cursor: pointer;
+
+    color: var(--gold);
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    user-select: none;
+
+    list-style: none;
+
+    margin-bottom: 24px;
+
+}
+
+.team-section summary::-webkit-details-marker {
+
+    display: none;
+
+}
+
+.team-section summary::before {
+
+    content: "▶ ";
+
+    transition: .2s;
+
+}
+
+.team-section[open] summary::before {
+
+    content: "▼ ";
+
+}
