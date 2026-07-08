@@ -117,3 +117,72 @@
     }
 
 }
+
+/* ===================================================
+   PAGE HEADER ICON
+=================================================== */
+
+.page-header-grid {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 60px;
+
+}
+
+.page-header-content {
+
+    flex: 1;
+
+}
+
+.page-header-icon {
+
+    flex-shrink: 0;
+
+    margin-right: 300px;
+
+}
+
+.page-header-icon img {
+
+    width: 280px;
+    height: 280px;
+
+    object-fit: contain;
+
+    animation: iconGlow 3s ease-in-out infinite;
+
+}
+
+@keyframes iconGlow {
+
+    0% {
+
+        filter:
+            drop-shadow(0 0 8px rgba(212,175,55,.25))
+            drop-shadow(0 0 16px rgba(212,175,55,.15));
+
+    }
+
+    50% {
+
+        filter:
+            drop-shadow(0 0 18px rgba(212,175,55,.7))
+            drop-shadow(0 0 36px rgba(212,175,55,.35));
+
+    }
+
+    100% {
+
+        filter:
+            drop-shadow(0 0 8px rgba(212,175,55,.25))
+            drop-shadow(0 0 16px rgba(212,175,55,.15));
+
+    }
+
+}

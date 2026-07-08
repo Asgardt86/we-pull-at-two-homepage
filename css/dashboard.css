@@ -472,7 +472,7 @@
 
     font-size: 20px;
 
-    line-height: 1.5;
+    line-height: 1.8;
 
 }
 
@@ -529,6 +529,136 @@
     text-transform: uppercase;
 
     margin-bottom: 8px;
+
+}
+
+/* ===================================================
+   NEXT RAID TITLE
+=================================================== */
+
+.next-raid-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+}
+
+.next-raid-name {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+    line-height: 1.1;
+
+}
+
+/* ===================================================
+   NEXT RAID SIGNUP BAR
+=================================================== */
+
+.next-raid-progress {
+
+    width: 180px;
+
+    height: 8px;
+
+    margin-top: 14px;
+
+    background: rgba(255,255,255,.12);
+
+    border-radius: 999px;
+
+    overflow: hidden;
+
+}
+
+.next-raid-progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #37d66b;
+
+    border-radius: inherit;
+
+    transition: width .5s ease, background .3s ease;
+
+}
+
+/* ===================================================
+   NEXT RAID STATUS
+=================================================== */
+
+.raid-green {
+
+    animation: raidGlowGreen 2.8s ease-in-out infinite;
+
+}
+
+.raid-orange {
+
+    animation: raidGlowOrange 2.8s ease-in-out infinite;
+
+}
+
+.raid-red {
+
+    animation: raidGlowRed 2.8s ease-in-out infinite;
+
+}
+
+@keyframes raidGlowGreen {
+
+    0%,100% {
+
+        filter: drop-shadow(0 0 4px rgba(55,214,107,.25));
+
+    }
+
+    50% {
+
+        filter: drop-shadow(0 0 12px rgba(55,214,107,.8));
+
+    }
+
+}
+
+@keyframes raidGlowOrange {
+
+    0%,100% {
+
+        filter: drop-shadow(0 0 4px rgba(255,152,56,.25));
+
+    }
+
+    50% {
+
+        filter: drop-shadow(0 0 12px rgba(255,152,56,.8));
+
+    }
+
+}
+
+@keyframes raidGlowRed {
+
+    0%,100% {
+
+        filter: drop-shadow(0 0 4px rgba(255,75,75,.25));
+
+    }
+
+    50% {
+
+        filter: drop-shadow(0 0 12px rgba(255,75,75,.8));
+
+    }
 
 }
 

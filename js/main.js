@@ -28,6 +28,10 @@ async function loadNextRaid() {
         const difficultyIcon =
             document.getElementById("next-raid-icon");
 
+        document.getElementById(
+            "next-raid-name"
+        ).textContent = data.raid;
+
         difficulty.textContent = data.difficulty;
 
         difficulty.classList.remove(
@@ -67,17 +71,37 @@ async function loadNextRaid() {
 
         }
 
+        const formattedDate = new Date(data.date).toLocaleDateString(
+
+            "de-DE",
+
+            {
+
+                day: "2-digit",
+
+                month: "2-digit",
+
+                year: "numeric"
+
+            }
+
+        );
+
         document.getElementById(
             "next-raid-date"
         ).innerHTML = `
 
-            ${capitalize(data.weekday)}
+    ${capitalize(data.weekday)}
 
-            <br>
+    <br>
 
-            ${data.startTime} – ${data.endTime} Uhr
+    ${formattedDate}
 
-        `;
+    <br>
+
+    ${data.startTime} – ${data.endTime} Uhr
+
+`;
 
         document.getElementById(
             "next-raid-countdown"
@@ -90,6 +114,58 @@ async function loadNextRaid() {
         ).textContent =
 
             `${data.presentSize} / ${data.totalSize} Spieler angemeldet`;
+
+        const percent = (data.presentSize / data.totalSize) * 100;
+
+        const progressBar = document.getElementById(
+            "next-raid-progress-bar"
+        );
+
+        progressBar.style.width = `${percent}%`;
+
+        if (data.presentSize >= 20) {
+
+            progressBar.style.background = "#37d66b";
+
+        }
+
+        else if (data.presentSize >= 15) {
+
+            progressBar.style.background = "#ff9838";
+
+        }
+
+        else {
+
+            progressBar.style.background = "#ff4b4b";
+
+        }
+
+        panel.classList.remove(
+
+            "raid-green",
+            "raid-orange",
+            "raid-red"
+
+        );
+
+        if (data.presentSize >= 20) {
+
+            panel.classList.add("raid-green");
+
+        }
+
+        else if (data.presentSize >= 15) {
+
+            panel.classList.add("raid-orange");
+
+        }
+
+        else {
+
+            panel.classList.add("raid-red");
+
+        }
 
         const panel =
             document.querySelector(".next-raid-panel");

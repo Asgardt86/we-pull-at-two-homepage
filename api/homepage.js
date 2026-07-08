@@ -32,11 +32,37 @@ export default async function handler(req, res) {
 
         if (cached) {
 
-            return res.status(200).json(
+            const result = cached.data;
 
-                cached.data
+            try {
 
-            );
+                const discordResponse = await fetch(
+
+                    "https://discord.com/api/guilds/1338690270019059722/widget.json"
+
+                );
+
+                const discordData = await discordResponse.json();
+
+                result.discord = {
+
+                    name: discordData.name,
+
+                    online: discordData.presence_count,
+
+                    invite: discordData.instant_invite
+
+                };
+
+            }
+
+            catch {
+
+                result.discord = null;
+
+            }
+
+            return res.status(200).json(result);
 
         }
 
@@ -148,40 +174,6 @@ export default async function handler(req, res) {
 
         const progress = `${mythicCompleted} / ${totalBosses}`;
 
-        /* ===================================================
-         Discord Widget
-      =================================================== */
-
-        let discord = null;
-
-        try {
-
-            const discordResponse = await fetch(
-
-                "https://discord.com/api/guilds/1338690270019059722/widget.json"
-
-            );
-
-            const discordData = await discordResponse.json();
-
-            discord = {
-
-                name: discordData.name,
-
-                online: discordData.presence_count,
-
-                invite: discordData.instant_invite
-
-            };
-
-        }
-
-        catch {
-
-            discord = null;
-
-        }
-
         const result = {
 
             guild: guildData.name,
@@ -196,8 +188,6 @@ export default async function handler(req, res) {
 
             progress,
 
-            discord
-
         };
 
         await setCache(
@@ -209,6 +199,44 @@ export default async function handler(req, res) {
             60 * 60 * 24
 
         );
+
+        /* ===================================================
+   Discord Widget (Live)
+=================================================== */
+
+        try {
+
+            const discordResponse = await fetch(
+
+                "https://discord.com/api/guilds/1338690270019059722/widget.json"
+
+            );
+
+            if (!discordResponse.ok) {
+
+                throw new Error("Discord Widget nicht erreichbar");
+
+            }
+
+            const discordData = await discordResponse.json();
+
+            result.discord = {
+
+                name: discordData.name,
+
+                online: discordData.presence_count,
+
+                invite: discordData.instant_invite
+
+            };
+
+        }
+
+        catch {
+
+            result.discord = null;
+
+        }
 
         return res.status(200).json(
 
