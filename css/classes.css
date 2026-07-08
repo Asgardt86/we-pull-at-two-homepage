@@ -1,0 +1,47 @@
+/* ===================================================
+   RECRUIT CLASS LIST
+=================================================== */
+
+.recruit-class-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin: 20px 0;
+
+}
+
+.recruit-class-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+}
+
+.recruit-class-item img {
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 4px;
+
+    flex-shrink: 0;
+
+    display: block;
+
+}
+
+.recruit-class-item span {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}

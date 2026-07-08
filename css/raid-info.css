@@ -1,20 +1,6 @@
 /* =================================================== RAID INFO
 =================================================== */
 
-.raid-info{
-
-    margin-bottom:70px;
-
-}
-
-.raid-info h2{
-
-    color:#d4af37;
-    font-size:34px;
-    margin-bottom:30px;
-
-}
-
 .raid-info-grid{
 
     display:grid;
@@ -37,14 +23,6 @@
         0 0 18px rgba(212,175,55,.08);
 
     margin-bottom:30px;
-
-}
-
-.raid-card h3{
-
-    color:#d4af37;
-    font-size:24px;
-    margin-bottom:20px;
 
 }
 

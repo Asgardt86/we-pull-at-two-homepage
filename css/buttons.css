@@ -1,0 +1,33 @@
+/* ===================================================
+   BUTTON
+=================================================== */
+
+.button-primary {
+
+    display: inline-block;
+
+    padding: 12px 26px;
+
+    background: var(--gold);
+
+    color: #111;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    border-radius: 8px;
+
+    transition: .25s ease;
+
+}
+
+.button-primary:hover {
+
+    background: #e8c252;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(212, 175, 55, .25);
+
+}

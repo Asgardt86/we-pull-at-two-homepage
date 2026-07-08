@@ -1,0 +1,75 @@
+/* ===================================================
+   API Info Bar
+=================================================== */
+
+.stats-bar {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 30px;
+
+    margin: 25px 0 30px;
+
+    padding: 12px 10px;
+
+    text-align: center;
+}
+
+.stat-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.stat-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+
+    color: #9aa3ad;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+.stat-header img {
+
+    width: 42px;
+
+    height: 42px;
+
+    object-fit: contain;
+}
+
+.stat-value {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    color: #d4af37;
+}
+
+.stat-label {
+
+    font-size: 13px;
+
+    color: #9aa3ad;
+
+    letter-spacing: .3px;
+}

@@ -181,13 +181,242 @@
 
             <div class="hero-divider"></div>
 
-            <section class="page-header">
+            <section class="page-section">
 
-                <h2>FAQ</h2>
+                <div class="faq-accordion">
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Ist euer Ziel Cutting Edge?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <p>
+
+                                Ja – unser gemeinsames Ziel ist es, uns langfristig bis Cutting Edge weiterzuentwickeln.
+
+                            </p>
+
+                            <p>
+
+                                Dieses Ziel entsteht bei uns jedoch nicht durch Druck oder kurzfristigen Aktionismus,
+                                sondern durch gute Zusammenarbeit, Vorbereitung, Lernbereitschaft und einen stabilen
+                                Raidkader.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Welche Rolle spielt Mythic-Raiden bei euch?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <p>
+
+                                Mythic ist fester Bestandteil unseres Raids.
+
+                            </p>
+
+                            <p>
+
+                                Wir sehen Mythic als langfristiges Projekt zur Weiterentwicklung des Teams.
+                                Unser Anspruch ist es, an jedem Raidabend Fortschritt zu erzielen – nicht nur
+                                durch Bosskills, sondern auch durch sauber gespielte Mechaniken und eine
+                                stetig bessere Gesamtperformance.
+
+                            </p>
+
+                            <p>
+
+                                <strong>Erfolg wird nicht eingefordert – er wird gemeinsam erarbeitet.</strong>
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Hört ihr irgendwann mit Mythic auf?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <p>
+
+                                Mythic bleibt grundsätzlich Teil unseres Konzepts.
+
+                            </p>
+
+                            <p>
+
+                                Sollten Anpassungen notwendig werden – beispielsweise bei Strategie,
+                                Setup, Tempo oder Organisation – analysieren wir diese gemeinsam und
+                                setzen sie entsprechend um.
+
+                            </p>
+
+                            <p>
+
+                                Unser Fokus liegt auf sinnvoller Weiterentwicklung,
+                                nicht auf blindem Durchziehen oder vorschnellem Abbruch.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Was passiert außerhalb des aktuellen Progresses?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <ul class="feature-list">
+
+                                <li>Mindestens ein fester Gildenabend pro Woche</li>
+
+                                <li>Heroic-Runs & Reclears</li>
+
+                                <li>Erfolgsruns</li>
+
+                                <li>Alt-Raids</li>
+
+                                <li>Strukturierte Mythic+-Abende</li>
+
+                                <li>Community-Events</li>
+
+                            </ul>
+
+                        </div>
+
+                    </details>
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Wie geht ihr mit Fehlern um?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <p>
+
+                                Niemand wird im Raid bloßgestellt.
+
+                            </p>
+
+                            <p>
+
+                                Fehler werden angesprochen und bei Bedarf in einem Einzelgespräch vertieft.
+                                Unterstützung bei der Verbesserung gehört für uns selbstverständlich dazu.
+
+                            </p>
+
+                            <p>
+
+                                Raidabende werden regelmäßig mithilfe von Logs und anderen Tools ausgewertet,
+                                um Entwicklungen sichtbar zu machen und gezielt zu fördern.
+
+                            </p>
+
+                            <p>
+
+                                Wiederholte Fehler ohne erkennbare Lernbereitschaft werden offen angesprochen
+                                und können entsprechende Konsequenzen für den Raid nach sich ziehen.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Was erwartet ihr von mir als Raider?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <ul class="feature-list">
+
+                                <li>Vorbereitung und ein gepflegter Charakter</li>
+
+                                <li>Zuverlässige Teilnahme und Kommunikation</li>
+
+                                <li>Eigenständige Auseinandersetzung mit der eigenen Performance (z. B. Logs)</li>
+
+                                <li>Lernbereitschaft und langfristige Entwicklung als Teil des Teams</li>
+
+                            </ul>
+
+                            <p>
+
+                                <strong>Nicht jeder muss Mythic lieben – aber jeder muss den gemeinsamen Weg
+                                    respektieren.</strong>
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                    <details class="accordion">
+
+                        <summary>
+
+                            Was, wenn ich merke, dass das nicht zu mir passt?
+
+                        </summary>
+
+                        <div class="accordion-content">
+
+                            <p>
+
+                                Dann sprich es frühzeitig an.
+
+                            </p>
+
+                            <p>
+
+                                Ein unterschiedliches Erwartungsbild ist kein Drama,
+                                sondern eine ehrliche Feststellung.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                </div>
 
             </section>
-
-
 
             <!-- Footer -->
 
@@ -227,6 +456,36 @@
 
     <script src="../js/main.js"></script>
     <script src="../js/api.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const items = document.querySelectorAll(".faq-accordion details");
+
+            items.forEach(item => {
+
+                item.addEventListener("toggle", () => {
+
+                    if (!item.open) return;
+
+                    items.forEach(other => {
+
+                        if (other !== item) {
+
+                            other.open = false;
+
+                        }
+
+                    });
+
+                });
+
+            });
+
+        });
+
+    </script>
 
 </body>
 

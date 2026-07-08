@@ -1,0 +1,27 @@
+/* ===================================================
+   Feature List
+=================================================== */
+
+.feature-list {
+    list-style: none;
+}
+
+.feature-list li {
+    position: relative;
+
+    padding-left: 26px;
+    margin-bottom: 18px;
+
+    line-height: 1.6;
+    color: #cfcfcf;
+}
+
+.feature-list li::before {
+    content: "✦";
+
+    position: absolute;
+    left: 0;
+
+    color: #d4af37;
+    font-size: 14px;
+}

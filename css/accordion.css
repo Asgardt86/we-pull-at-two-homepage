@@ -53,3 +53,144 @@
     line-height: 1.8;
 
 }
+
+/* ===================================================
+   ACCORDION FAQ
+=================================================== */
+
+.faq-accordion summary {
+
+    font-size: 25px;
+    font-weight: 700;
+
+}
+
+.faq-accordion .accordion-content {
+
+    font-size: 20px;
+    line-height: 1.8;
+
+}
+
+.faq-accordion .accordion-content p {
+
+    margin-bottom: 18px;
+
+}
+
+.faq-accordion .accordion-content p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.faq-accordion .accordion-content li {
+
+    font-size: 20px;
+    line-height: 1.8;
+
+}
+
+/* ===================================================
+   FAQ ACCORDION
+=================================================== */
+
+.faq-accordion details {
+
+    background: #1b1f24;
+
+    border: 1px solid rgba(212,175,55,.15);
+
+    border-radius: 12px;
+
+    margin-bottom: 18px;
+
+    overflow: hidden;
+
+    transition: .25s ease;
+
+}
+
+.faq-accordion details:hover {
+
+    border-color: rgba(212,175,55,.45);
+
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+
+}
+
+.faq-accordion details[open] {
+
+    border-color: rgba(212,175,55,.45);
+
+}
+
+.faq-accordion summary {
+
+    padding: 22px 26px;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+    cursor: pointer;
+
+    list-style: none;
+
+}
+
+.faq-accordion summary::-webkit-details-marker {
+
+    display: none;
+
+}
+
+.faq-accordion summary::after {
+
+    content: "▾";
+
+    float: right;
+
+    font-size: 24px;
+
+    transition: .25s;
+
+}
+
+.faq-accordion details[open] summary::after {
+
+    transform: rotate(180deg);
+
+}
+
+.faq-accordion .accordion-content {
+
+    padding: 0 26px 24px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #d8dde5;
+
+}
+
+.faq-accordion .accordion-content p {
+
+    margin-bottom: 18px;
+
+}
+
+.faq-accordion .accordion-content p:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.faq-accordion .accordion-content ul {
+
+    margin: 0;
+
+}

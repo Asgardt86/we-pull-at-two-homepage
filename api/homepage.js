@@ -1,35 +1,52 @@
-import { Buffer } from "buffer";
+import {
+
+    getCache,
+
+    setCache
+
+}
+
+    from "../lib/cache.js";
+
+import {
+
+    getAccessToken
+
+}
+
+    from "../lib/blizzard.js";
 
 export default async function handler(req, res) {
 
     try {
 
-        const clientId = process.env.BLIZZARD_CLIENT_ID;
-        const clientSecret = process.env.BLIZZARD_CLIENT_SECRET;
+        /* ===================================================
+           Cache
+        =================================================== */
 
-        const credentials = Buffer
-            .from(`${clientId}:${clientSecret}`)
-            .toString("base64");
+        const cached = await getCache(
 
-        const tokenResponse = await fetch(
-            "https://oauth.battle.net/token",
-            {
-                method: "POST",
-                headers: {
-                    Authorization: `Basic ${credentials}`,
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "grant_type=client_credentials"
-            }
+            "cache:homepage"
+
         );
 
-        const tokenText = await tokenResponse.text();
+        if (cached) {
 
-        console.log("TOKEN:", tokenText);
+            return res.status(200).json(
 
-        const tokenData = JSON.parse(tokenText);
+                cached.data
 
-        const accessToken = tokenData.access_token;
+            );
+
+        }
+
+        /* ===================================================
+           Blizzard Access Token
+        =================================================== */
+
+        const accessToken =
+
+            await getAccessToken();
 
         const guildResponse = await fetch(
             "https://eu.api.blizzard.com/data/wow/guild/blackrock/we-pull-at-two?namespace=profile-eu&locale=de_DE",
@@ -42,9 +59,9 @@ export default async function handler(req, res) {
 
         const guildData = await guildResponse.json();
 
-        // =========================
-        // WoWAudit Team
-        // =========================
+        /* ===================================================
+           WoWAudit Team
+        =================================================== */
 
         const apiKey = process.env.WOWAUDIT_API_KEY;
 
@@ -93,9 +110,9 @@ export default async function handler(req, res) {
             })
             .join(" & ");
 
-        // =========================
-        // Raider.IO Progress
-        // =========================
+        /* ===================================================
+           Raider.io Progression
+        =================================================== */
 
         const raidResponse = await fetch(
             "https://raider.io/api/v1/guilds/profile?region=eu&realm=blackrock&name=We%20Pull%20at%20Two&fields=raid_progression"
@@ -131,7 +148,41 @@ export default async function handler(req, res) {
 
         const progress = `${mythicCompleted} / ${totalBosses}`;
 
-        res.status(200).json({
+        /* ===================================================
+         Discord Widget
+      =================================================== */
+
+        let discord = null;
+
+        try {
+
+            const discordResponse = await fetch(
+
+                "https://discord.com/api/guilds/1338690270019059722/widget.json"
+
+            );
+
+            const discordData = await discordResponse.json();
+
+            discord = {
+
+                name: discordData.name,
+
+                online: discordData.presence_count,
+
+                invite: discordData.instant_invite
+
+            };
+
+        }
+
+        catch {
+
+            discord = null;
+
+        }
+
+        const result = {
 
             guild: guildData.name,
 
@@ -143,14 +194,36 @@ export default async function handler(req, res) {
 
             raidDays,
 
-            progress
+            progress,
 
-        });
+            discord
 
-    } catch (error) {
+        };
 
-        res.status(500).json({
+        await setCache(
+
+            "cache:homepage",
+
+            result,
+
+            60 * 60 * 24
+
+        );
+
+        return res.status(200).json(
+
+            result
+
+        );
+
+    }
+
+    catch (error) {
+
+        return res.status(500).json({
+
             error: error.message
+
         });
 
     }
