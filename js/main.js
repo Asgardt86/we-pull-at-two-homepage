@@ -40,6 +40,75 @@ async function loadNextRaid() {
             "difficulty-normal"
         );
 
+        if (!data.raid) {
+
+            document.getElementById(
+                "next-raid-name"
+            ).textContent = "Custom";
+
+            difficulty.textContent = "Custom";
+
+            difficulty.classList.remove(
+                "difficulty-mythic",
+                "difficulty-heroic",
+                "difficulty-normal"
+            );
+
+            difficulty.classList.add("difficulty-custom");
+
+            difficultyIcon.src =
+                "../images/icons/custom-mode-icon.png";
+
+        }
+
+        else {
+
+            document.getElementById(
+                "next-raid-name"
+            ).textContent = data.raid;
+
+            difficulty.textContent = data.difficulty;
+
+            difficulty.classList.remove(
+                "difficulty-mythic",
+                "difficulty-heroic",
+                "difficulty-normal",
+                "difficulty-custom"
+            );
+
+            switch (data.difficulty.toLowerCase()) {
+
+                case "mythic":
+
+                    difficulty.classList.add("difficulty-mythic");
+
+                    difficultyIcon.src =
+                        "../images/icons/mythic-mode-icon.png";
+
+                    break;
+
+                case "heroic":
+
+                case "heroisch":
+
+                    difficulty.classList.add("difficulty-heroic");
+
+                    difficultyIcon.src =
+                        "../images/icons/heroic-mode-icon.png";
+
+                    break;
+
+                default:
+
+                    difficulty.classList.add("difficulty-normal");
+
+                    difficultyIcon.src =
+                        "../images/icons/normal-mode-icon.png";
+
+            }
+
+        }
+
         switch (data.difficulty.toLowerCase()) {
 
             case "mythic":
@@ -141,6 +210,9 @@ async function loadNextRaid() {
 
         }
 
+        const panel =
+            document.querySelector(".next-raid-panel");
+
         panel.classList.remove(
 
             "raid-green",
@@ -166,9 +238,6 @@ async function loadNextRaid() {
             panel.classList.add("raid-red");
 
         }
-
-        const panel =
-            document.querySelector(".next-raid-panel");
 
         panel.style.cursor = "pointer";
 

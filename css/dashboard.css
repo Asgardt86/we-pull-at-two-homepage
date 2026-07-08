@@ -438,6 +438,15 @@
 
 }
 
+.difficulty-custom {
+
+    color: #9ca3af;
+
+    text-shadow:
+        0 0 8px rgba(156,163,175,.25);
+
+}
+
 .next-raid-info {
 
     display: flex;
@@ -462,10 +471,6 @@
 
 }
 
-.next-raid-date,
-
-.next-raid-countdown,
-
 .next-raid-signups {
 
     color: #f5f5f5;
@@ -476,43 +481,9 @@
 
 }
 
-.next-raid-countdown strong {
-
-    display: block;
-
-    font-size: 24px;
-
-    color: #d4af37;
-
-}
-
 .next-raid-signups {
 
     font-size: 18px;
-
-}
-
-.countdown-label {
-
-    display: block;
-
-    color: #9ea7b3;
-
-    font-size: 15px;
-
-    margin-bottom: 6px;
-
-    letter-spacing: 0.5px;
-
-}
-
-.next-raid-countdown strong {
-
-    display: block;
-
-    font-size: 28px;
-
-    color: #d4af37;
 
 }
 
@@ -529,6 +500,68 @@
     text-transform: uppercase;
 
     margin-bottom: 8px;
+
+}
+
+/* ===================================================
+   COUNTDOWN
+=================================================== */
+
+.next-raid-countdown {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+#next-raid-countdown {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+    line-height: 1;
+
+    animation: countdownPulse 3s ease-in-out infinite;
+
+}
+
+@keyframes countdownPulse {
+
+    0%,100% {
+
+        transform: scale(1);
+
+        text-shadow: 0 0 6px rgba(212,175,55,.25);
+
+    }
+
+    50% {
+
+        transform: scale(1.06);
+
+        text-shadow: 0 0 18px rgba(212,175,55,.7);
+
+    }
+
+}
+
+.countdown-hourglass {
+
+    width: 24px;
+
+    height: 24px;
+
+    object-fit: contain;
+
+    animation: hourglassPulse 3s ease-in-out infinite;
 
 }
 
@@ -657,6 +690,26 @@
     50% {
 
         filter: drop-shadow(0 0 12px rgba(255,75,75,.8));
+
+    }
+
+}
+
+@keyframes hourglassPulse {
+
+    0%,100% {
+
+        transform: rotate(0deg) scale(1);
+
+        filter: drop-shadow(0 0 3px rgba(212,175,55,.25));
+
+    }
+
+    50% {
+
+        transform: rotate(180deg) scale(1.08);
+
+        filter: drop-shadow(0 0 8px rgba(212,175,55,.7));
 
     }
 
