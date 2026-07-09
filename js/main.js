@@ -28,18 +28,6 @@ async function loadNextRaid() {
         const difficultyIcon =
             document.getElementById("next-raid-icon");
 
-        document.getElementById(
-            "next-raid-name"
-        ).textContent = data.raid;
-
-        difficulty.textContent = data.difficulty;
-
-        difficulty.classList.remove(
-            "difficulty-mythic",
-            "difficulty-heroic",
-            "difficulty-normal"
-        );
-
         if (!data.raid) {
 
             document.getElementById(
@@ -51,7 +39,8 @@ async function loadNextRaid() {
             difficulty.classList.remove(
                 "difficulty-mythic",
                 "difficulty-heroic",
-                "difficulty-normal"
+                "difficulty-normal",
+                "difficulty-custom"
             );
 
             difficulty.classList.add("difficulty-custom");
@@ -117,9 +106,9 @@ async function loadNextRaid() {
 
             {
 
-                day: "2-digit",
+                day: "numeric",
 
-                month: "2-digit",
+                month: "long",
 
                 year: "numeric"
 
