@@ -1908,25 +1908,69 @@
 
 .activity-entry {
 
-    margin-bottom: 14px;
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    margin-bottom: 18px;
 
 }
 
 .activity-text {
 
+    flex: 1;
+
     color: #f3f4f6;
 
-    line-height: 1.5;
+    line-height: 1.6;
 
 }
 
 .activity-time {
 
-    margin-top: 4px;
+    flex-shrink: 0;
 
     color: #9ea7b3;
 
     font-size: 13px;
+
+    white-space: nowrap;
+
+}
+
+/* ===================================================
+   Gildenerfolge
+=================================================== */
+
+.guild-name {
+
+    color: #d4af37;
+
+    font-weight: 700;
+
+}
+
+.activity-achievement-description {
+
+    margin-top: 6px;
+
+    color: #9ea7b3;
+
+    font-size: 14px;
+
+    line-height: 1.45;
+
+}
+
+.activity-text strong {
+
+    color: #b8ac5c;
+
+    font-weight: 700;
 
 }
 

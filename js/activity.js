@@ -4,15 +4,20 @@
 
 function timeAgo(timestamp) {
 
-    const now = Date.now();
+    const now =
+        Date.now();
 
-    const diff = now - timestamp;
+    const diff =
+        now - timestamp;
 
-    const minutes = Math.floor(diff / 60000);
+    const minutes =
+        Math.floor(diff / 60000);
 
-    const hours = Math.floor(diff / 3600000);
+    const hours =
+        Math.floor(diff / 3600000);
 
-    const days = Math.floor(diff / 86400000);
+    const days =
+        Math.floor(diff / 86400000);
 
     if (minutes < 60) {
 
@@ -31,7 +36,7 @@ function timeAgo(timestamp) {
 }
 
 /* ===================================================
-   Gildenaktivität
+   Gildenaktivität laden
 =================================================== */
 
 async function loadActivity() {
@@ -40,6 +45,10 @@ async function loadActivity() {
         document.getElementById("activity");
 
     try {
+
+        /* ===================================================
+           API-Daten laden
+        =================================================== */
 
         const [
 
@@ -60,6 +69,10 @@ async function loadActivity() {
 
         const achievementData =
             await achievementResponse.json();
+
+        /* ===================================================
+           HTML-Container
+        =================================================== */
 
         let html = `
 
@@ -94,28 +107,54 @@ async function loadActivity() {
 
                 let text = "";
 
+                /* ===================================================
+                   Charakter-Erfolge
+                =================================================== */
+
                 if (entry.type === "achievement") {
 
                     text = `
-                🎯 <span style="color:${entry.color}; font-weight:700;">
+
+                🎯
+
+                <span style="color:${entry.color}; font-weight:700;">
+
                     ${entry.player}
+
                 </span>
+
                 hat den Erfolg
+
                 "<strong>${entry.achievement}</strong>"
+
                 erhalten
+
             `;
 
                 }
 
+                /* ===================================================
+                   Levelaufstiege
+                =================================================== */
+
                 else if (entry.type === "level") {
 
                     text = `
-                ⭐ <span style="color:${entry.color}; font-weight:700;">
+
+                ⭐
+
+                <span style="color:${entry.color}; font-weight:700;">
+
                     ${entry.player}
+
                 </span>
+
                 hat Level
+
                 <strong>${entry.level}</strong>
+
                 erreicht
+
             `;
 
                 }
@@ -130,11 +169,11 @@ async function loadActivity() {
 
                 </div>
 
-<div class="activity-time">
+                <div class="activity-time">
 
-    ${timeAgo(entry.timestamp)}
+                    ${timeAgo(entry.timestamp)}
 
-</div>
+                </div>
 
             </div>
 
@@ -177,15 +216,15 @@ async function loadActivity() {
 
             html += `
 
-                <div class="activity-section">
+        <div class="activity-section">
 
-                    <div class="activity-title">
+            <div class="activity-title">
 
-                        Letzte Gildenerfolge
+                Letzte Gildenerfolge
 
-                    </div>
+            </div>
 
-            `;
+    `;
 
             achievementData.achievements.forEach(entry => {
 
@@ -197,33 +236,55 @@ async function loadActivity() {
 
                 html += `
 
-                    <div class="activity-entry">
+            <div class="activity-entry">
 
-                        <div class="activity-text">
+                <div class="activity-text">
 
-                            🏆 ${entry.name}
+                    🏆
 
-                        </div>
+                    <span class="guild-name">
 
-                        <div class="activity-time">
+                        We Pull at Two
 
-                            ${date}
+                    </span>
 
-                        </div>
+                    hat den Erfolg
+
+                    "<strong>${entry.name}</strong>"
+
+                    erhalten
+
+                    <div class="activity-achievement-description">
+
+                        ${entry.description}
 
                     </div>
 
-                `;
+                </div>
+
+                <div class="activity-time">
+
+                    ${date}
+
+                </div>
+
+            </div>
+
+        `;
 
             });
 
             html += `
 
-                </div>
+        </div>
 
-            `;
+    `;
 
         }
+
+        /* ===================================================
+           Keine Aktivitäten
+        =================================================== */
 
         if (
 
@@ -234,25 +295,33 @@ async function loadActivity() {
 
             html += `
 
-                <div class="activity-empty">
+        <div class="activity-empty">
 
-                    Keine aktuellen Aktivitäten vorhanden.
+            Keine aktuellen Aktivitäten vorhanden.
 
-                </div>
+        </div>
 
-            `;
+    `;
 
         }
 
+        /* ===================================================
+           HTML ausgeben
+        =================================================== */
+
         html += `
 
-            </div>
+    </div>
 
-        `;
+`;
 
         container.innerHTML = html;
 
     }
+
+    /* ===================================================
+       Fehler beim Laden
+    =================================================== */
 
     catch (error) {
 
@@ -260,17 +329,17 @@ async function loadActivity() {
 
         container.innerHTML = `
 
-            <div class="activity-panel">
+        <div class="activity-panel">
 
-                <div class="activity-empty">
+            <div class="activity-empty">
 
-                    Gildenaktivitäten konnten nicht geladen werden.
-
-                </div>
+                Gildenaktivitäten konnten nicht geladen werden.
 
             </div>
 
-        `;
+        </div>
+
+    `;
 
     }
 

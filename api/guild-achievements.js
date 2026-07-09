@@ -37,6 +37,13 @@ export default async function handler(req, res) {
     try {
 
         /* ===================================================
+           Einstellungen
+        =================================================== */
+
+        const DEBUG = false;
+        const useCache = !DEBUG;
+
+        /* ===================================================
            Cache
         =================================================== */
 
@@ -46,11 +53,7 @@ export default async function handler(req, res) {
 
         );
 
-        /* ===================================================
-           Cache vorhanden
-        =================================================== */
-
-        if (cached) {
+        if (useCache && cached) {
 
             return res.status(200).json(
 
@@ -61,14 +64,16 @@ export default async function handler(req, res) {
         }
 
         /* ===================================================
-           Historie laden
-        =================================================== */
+   Historie laden
+=================================================== */
 
         const history = await loadHistory(
 
             "guild-achievements"
 
         );
+
+
 
         /* ===================================================
     Blizzard Access Token
@@ -127,47 +132,18 @@ export default async function handler(req, res) {
             await activityResponse.json();
 
         const achievements = [];
+
         /* ===================================================
-   Letzter Heroic/Mythic Bosskill
+Debug
 =================================================== */
 
-        const latestEncounter = activityData.activities?.find(entry => {
+        if (DEBUG) {
 
-            if (entry.activity?.type !== "ENCOUNTER") {
+            return res.status(200).json({
 
-                return false;
+                guildData,
 
-            }
-
-            if (!entry.encounter_completed) {
-
-                return false;
-
-            }
-
-            const mode = entry.encounter_completed.mode?.name;
-
-            return (
-
-                mode === "Mythisch" ||
-
-                mode === "Heroisch"
-
-            );
-
-        });
-
-        if (latestEncounter) {
-
-            achievements.push({
-
-                type: "boss",
-
-                name: latestEncounter.encounter_completed.encounter.name,
-
-                difficulty: latestEncounter.encounter_completed.mode.name,
-
-                timestamp: latestEncounter.timestamp
+                activityData
 
             });
 
@@ -193,19 +169,93 @@ export default async function handler(req, res) {
 
                 .slice(0, 10) || [];
 
+        /* ===================================================
+Achievement-Details laden
+=================================================== */
+
         for (const achievement of latestAchievements) {
+
+            const achievementId =
+                achievement.achievement.id;
+
+            const detailResponse = await fetch(
+
+                `https://eu.api.blizzard.com/data/wow/achievement/${achievementId}?namespace=static-eu&locale=de_DE`,
+
+                {
+
+                    headers: {
+
+                        Authorization:
+                            `Bearer ${accessToken}`
+
+                    }
+
+                }
+
+            );
+
+            const detail =
+                await detailResponse.json();
+
+            let icon = null;
+
+            if (detail.media?.key?.href) {
+
+                const mediaResponse = await fetch(
+
+                    `${detail.media.key.href}&locale=de_DE`,
+
+                    {
+
+                        headers: {
+
+                            Authorization:
+                                `Bearer ${accessToken}`
+
+                        }
+
+                    }
+
+                );
+
+                const mediaData =
+                    await mediaResponse.json();
+
+                icon = mediaData.assets?.find(
+
+                    asset => asset.key === "icon"
+
+                )?.value ?? null;
+
+            }
 
             achievements.push({
 
                 type: "achievement",
 
-                name: achievement.achievement.name,
+                id: achievementId,
 
-                timestamp: achievement.completed_timestamp
+                name: detail.name,
+
+                description: detail.description,
+
+                points: detail.points,
+
+                icon,
+
+                category: detail.category?.name,
+
+                timestamp:
+                    achievement.completed_timestamp
 
             });
 
         }
+
+        /* ===================================================
+   Erfolge sortieren
+=================================================== */
 
         achievements.sort(
 
