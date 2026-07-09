@@ -1666,6 +1666,14 @@
 
 }
 
+.hof-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
 .hof-rank {
 
     width: 46px;
@@ -1764,7 +1772,9 @@
 
     gap: 12px;
 
-    min-width: 180px;
+    min-width: 0;
+
+    flex-shrink: 0;
 
 }
 
@@ -1782,7 +1792,9 @@
 
 .hof-bar {
 
-    width: 340px;
+    width: 100%;
+
+    max-width: 340px;
 
     height: 8px;
 
@@ -1790,7 +1802,7 @@
 
     overflow: hidden;
 
-    background: rgba(255, 255, 255, .08);
+    background: rgba(255,255,255,.08);
 
 }
 
@@ -1843,6 +1855,16 @@
     color: #f4d66d;
 
     transform: translateX(4px);
+
+}
+
+@media (max-width: 1450px) {
+
+    .dashboard-row {
+
+        grid-template-columns: 1fr;
+
+    }
 
 }
 
@@ -2287,48 +2309,102 @@
 
 .dashboard-row {
 
-    display: grid;
+    display: flex;
 
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex-direction: column;
 
-    gap: 30px;
+    gap: 35px;
 
     margin-bottom: 40px;
-
-    align-items: stretch;
 
 }
 
 .dashboard-row > section {
 
+    width: 100%;
+
+}
+
+/* ===================================================
+   Dashboard Accordion
+=================================================== */
+
+.dashboard-accordion {
+
+    border: none;
+
+}
+
+.dashboard-summary {
+
     display: flex;
 
-    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    cursor: pointer;
+
+    list-style: none;
+
+    color: #d4af37;
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 16px;
+
+    user-select: none;
 
 }
 
-.dashboard-row > section > h2 {
+.dashboard-summary::before {
 
-    margin-bottom: 20px;
+    content: "▶";
 
-}
+    font-size: 18px;
 
-.dashboard-row > section > div {
+    color: #d4af37;
 
-    flex: 1;
+    transition: transform .25s ease;
 
-    display: flex;
-
-    flex-direction: column;
+    flex-shrink: 0;
 
 }
 
-@media (max-width: 1100px) {
+.dashboard-accordion[open] .dashboard-summary::before {
 
-    .dashboard-row {
+    transform: rotate(90deg);
 
-        grid-template-columns: 1fr;
+}
 
-    }
+.dashboard-accordion p {
+
+    margin-bottom: 24px;
+
+}
+
+.dashboard-summary h3 {
+
+    margin: 0;
+
+    color: inherit;
+
+    font-size: inherit;
+
+}
+
+.dashboard-summary p {
+
+    margin: 8px 0 0 0;
+
+    color: #f3f4f691;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    line-height: 1.5;
 
 }
