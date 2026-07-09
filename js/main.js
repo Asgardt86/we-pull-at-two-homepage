@@ -59,6 +59,8 @@ async function loadNextRaid() {
             difficultyIcon.src =
                 "../images/icons/custom-mode-icon.png";
 
+            console.log(difficultyIcon.src);
+
         }
 
         else {
@@ -106,37 +108,6 @@ async function loadNextRaid() {
                         "../images/icons/normal-mode-icon.png";
 
             }
-
-        }
-
-        switch (data.difficulty.toLowerCase()) {
-
-            case "mythic":
-
-                difficulty.classList.add("difficulty-mythic");
-
-                difficultyIcon.src =
-                    "../images/icons/mythic-mode-icon.png";
-
-                break;
-
-            case "heroic":
-
-            case "heroisch":
-
-                difficulty.classList.add("difficulty-heroic");
-
-                difficultyIcon.src =
-                    "../images/icons/heroic-mode-icon.png";
-
-                break;
-
-            default:
-
-                difficulty.classList.add("difficulty-normal");
-
-                difficultyIcon.src =
-                    "../images/icons/normal-mode-icon.png";
 
         }
 

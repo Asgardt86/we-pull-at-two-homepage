@@ -515,13 +515,13 @@
 
     align-items: center;
 
-    gap: 10px;
+    gap: 2px;
 
 }
 
 #next-raid-countdown {
 
-    font-size: 28px;
+    font-size: 20px;
 
     font-weight: 700;
 

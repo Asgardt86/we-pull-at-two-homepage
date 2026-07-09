@@ -157,8 +157,6 @@ export default async function handler(req, res) {
         }
 
         const nextRaid = upcoming[0];
-        
-        console.log(nextRaid);
 
         /* ===================================================
            Countdown
