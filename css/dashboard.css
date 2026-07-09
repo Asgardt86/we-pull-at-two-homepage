@@ -475,15 +475,9 @@
 
     color: #f5f5f5;
 
-    font-size: 20px;
+    font-size: 18px;
 
     line-height: 1.8;
-
-}
-
-.next-raid-signups {
-
-    font-size: 18px;
 
 }
 
@@ -619,15 +613,7 @@
 
     width: 180px;
 
-    height: 8px;
-
     margin-top: 14px;
-
-    background: rgba(255,255,255,.12);
-
-    border-radius: 999px;
-
-    overflow: hidden;
 
 }
 
@@ -642,6 +628,62 @@
     border-radius: inherit;
 
     transition: width .5s ease, background .3s ease;
+
+}
+
+.next-raid-progress-track {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 8px;
+
+    background: rgba(255,255,255,.12);
+
+    border-radius: 999px;
+
+}
+
+.progress-marker {
+
+    position: absolute;
+
+    top: 8px;
+
+    width: 3px;
+
+    height: 14px;
+
+    background: #d4af37;
+
+}
+
+.progress-labels {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 16px;
+
+    margin-top: 20px;
+
+}
+
+.label-15,
+.label-20,
+.label-25 {
+
+    position: absolute;
+
+    transform: translateX(-50%);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #d4af37;
 
 }
 
@@ -1630,7 +1672,7 @@
 
     text-align: center;
 
-    font-size: 22px;
+    font-size: 35px;
 
     font-weight: 700;
 

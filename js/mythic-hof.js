@@ -76,7 +76,7 @@ async function loadMythicHOF() {
 
             if (index === 0) {
 
-                rank = "🥇";
+                rank = "👑";
 
                 extraClass = "hof-first";
 

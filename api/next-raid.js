@@ -197,6 +197,8 @@ export default async function handler(req, res) {
 
             raid: nextRaid.instance,
 
+            isCustom: nextRaid.instance === null,
+
             difficulty: nextRaid.difficulty,
 
             weekday,

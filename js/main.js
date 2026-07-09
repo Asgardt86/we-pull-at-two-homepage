@@ -25,10 +25,17 @@ async function loadNextRaid() {
         const difficulty =
             document.getElementById("next-raid-difficulty");
 
+        difficulty.classList.remove(
+            "difficulty-mythic",
+            "difficulty-heroic",
+            "difficulty-normal",
+            "difficulty-custom"
+        );
+
         const difficultyIcon =
             document.getElementById("next-raid-icon");
 
-        if (!data.raid) {
+        if (data.isCustom) {
 
             document.getElementById(
                 "next-raid-name"
@@ -36,19 +43,10 @@ async function loadNextRaid() {
 
             difficulty.textContent = "Custom";
 
-            difficulty.classList.remove(
-                "difficulty-mythic",
-                "difficulty-heroic",
-                "difficulty-normal",
-                "difficulty-custom"
-            );
-
             difficulty.classList.add("difficulty-custom");
 
             difficultyIcon.src =
                 "../images/icons/custom-mode-icon.png";
-
-            console.log(difficultyIcon.src);
 
         }
 
@@ -59,13 +57,6 @@ async function loadNextRaid() {
             ).textContent = data.raid;
 
             difficulty.textContent = data.difficulty;
-
-            difficulty.classList.remove(
-                "difficulty-mythic",
-                "difficulty-heroic",
-                "difficulty-normal",
-                "difficulty-custom"
-            );
 
             switch (data.difficulty.toLowerCase()) {
 
@@ -151,6 +142,26 @@ async function loadNextRaid() {
         );
 
         progressBar.style.width = `${percent}%`;
+
+        const marker15 = document.querySelector(".marker-15");
+        const marker20 = document.querySelector(".marker-20");
+        const marker25 = document.querySelector(".marker-25");
+
+        const label15 = document.querySelector(".label-15");
+        const label20 = document.querySelector(".label-20");
+        const label25 = document.querySelector(".label-25");
+
+        const marker15Percent = (15 / data.totalSize) * 100;
+        const marker20Percent = (20 / data.totalSize) * 100;
+        const marker25Percent = (25 / data.totalSize) * 100;
+
+        marker15.style.left = `${marker15Percent}%`;
+        marker20.style.left = `${marker20Percent}%`;
+        marker25.style.left = `${marker25Percent}%`;
+
+        label15.style.left = `${marker15Percent}%`;
+        label20.style.left = `${marker20Percent}%`;
+        label25.style.left = `${marker25Percent}%`;
 
         if (data.presentSize >= 20) {
 
