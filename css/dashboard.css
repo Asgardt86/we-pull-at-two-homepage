@@ -1706,19 +1706,87 @@
 
 }
 
+/* ===================================================
+   Hall of Fame Hover Effekt
+=================================================== */
+
+.hof-first {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.hof-first::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -40%;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    background:
+
+        radial-gradient(circle at 18% 82%, rgba(255,230,120,.9) 0 3px, transparent 3px),
+
+        radial-gradient(circle at 34% 66%, rgba(255,220,90,.8) 0 2.5px, transparent 2.5px),
+
+        radial-gradient(circle at 52% 88%, rgba(255,240,170,.9) 0 3px, transparent 3px),
+
+        radial-gradient(circle at 70% 72%, rgba(255,220,90,.8) 0 2.5px, transparent 2.5px),
+
+        radial-gradient(circle at 88% 84%, rgba(255,235,130,.9) 0 3px, transparent 3px);
+
+}
+
+.hof-first:hover::after {
+
+    opacity: 1;
+
+    animation: hofSparkles 2.8s linear infinite;
+
+}
+
+@keyframes hofSparkles {
+
+    from {
+
+        transform:
+            translateY(25px);
+
+    }
+
+    to {
+
+        transform:
+            translateY(-140px);
+
+    }
+
+}
+
+/* ===================================================
+   Hall of Fame Top 3
+=================================================== */
+
 .hof-first {
 
     border-color: #d4af37;
 
-    box-shadow: 0 0 34px rgba(212, 175, 55, .18);
+    animation: hofGlowGold 3s ease-in-out infinite;
 
 }
 
 .hof-second {
 
-    border-color: #b8bcc6;
+    border-color: #c7ced8;
 
-    box-shadow: 0 0 18px rgba(184, 188, 198, .12);
+    animation: hofGlowSilver 3.4s ease-in-out infinite;
 
 }
 
@@ -1726,7 +1794,67 @@
 
     border-color: #c9823a;
 
-    box-shadow: 0 0 18px rgba(201, 130, 58, .12);
+    animation: hofGlowBronze 3.8s ease-in-out infinite;
+
+}
+
+@keyframes hofGlowGold {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 35px rgba(212,175,55,.18),
+            0 0 12px rgba(212,175,55,.10);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 34px rgba(212,175,55,.35),
+            0 0 14px rgba(255,223,90,.22);
+
+    }
+
+}
+
+@keyframes hofGlowSilver {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 18px rgba(199,206,216,.15),
+            0 0 5px rgba(255,255,255,.08);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 28px rgba(199,206,216,.28),
+            0 0 10px rgba(255,255,255,.15);
+
+    }
+
+}
+
+@keyframes hofGlowBronze {
+
+    0%,100% {
+
+        box-shadow:
+            0 0 18px rgba(201,130,58,.15),
+            0 0 5px rgba(201,130,58,.08);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 28px rgba(201,130,58,.28),
+            0 0 10px rgba(201,130,58,.15);
+
+    }
 
 }
 
