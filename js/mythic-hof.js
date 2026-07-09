@@ -127,15 +127,6 @@ async function loadMythicHOF() {
 
             </div>
 
-            <div class="hof-bar">
-
-                <div
-                    class="hof-bar-fill ${extraClass}"
-                    style="width:${(player.score / data.players[0].score) * 100}%"
-                ></div>
-
-            </div>
-
         </div>
 
     </div>

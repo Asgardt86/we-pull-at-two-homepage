@@ -3,8 +3,8 @@
 =================================================== */
 
 .raid-overview {
-    margin-top: 45px;
-    margin-bottom: 60px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .raid-overview h2 {
@@ -323,7 +323,7 @@
 
 .next-raid {
 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
 }
 
@@ -783,7 +783,7 @@
 
 .raid-timeline {
 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
 }
 
@@ -879,7 +879,7 @@
 
 .timeline-raid {
 
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
 }
 
@@ -897,7 +897,7 @@
 
     font-weight: 700;
 
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 
     padding-bottom: 10px;
 
@@ -919,7 +919,7 @@
 
     margin-left: 40px;
 
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 
 }
 
@@ -959,7 +959,7 @@
 
     font-weight: 700;
 
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 
 }
 
@@ -1009,9 +1009,9 @@
 
 .raid-ranking {
 
-    margin-top: 70px;
+    margin-top: 30px;
 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
 }
 
@@ -1165,7 +1165,7 @@
 
 .ranking-panel {
 
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
 }
 
@@ -1207,7 +1207,7 @@
 
 .live-raid {
 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
 }
 
@@ -1431,7 +1431,7 @@
 
 .affixes {
 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
 }
 
@@ -1912,57 +1912,9 @@
 
     font-size: 15px;
 
-    margin-top: 6px;
+    margin-top: 8px;
 
-    margin-bottom: 14px;
-
-}
-
-.hof-bar {
-
-    width: 100%;
-
-    max-width: 340px;
-
-    height: 8px;
-
-    border-radius: 999px;
-
-    overflow: hidden;
-
-    background: rgba(255,255,255,.08);
-
-}
-
-.hof-bar-fill {
-
-    height: 100%;
-
-    border-radius: inherit;
-
-}
-
-.hof-bar-fill.hof-first {
-
-    background: linear-gradient(90deg, #ffd54a, #d4af37);
-
-}
-
-.hof-bar-fill.hof-second {
-
-    background: linear-gradient(90deg, #d7dce3, #aeb6c2);
-
-}
-
-.hof-bar-fill.hof-third {
-
-    background: linear-gradient(90deg, #d89b63, #b86d2f);
-
-}
-
-.hof-bar-fill {
-
-    background: linear-gradient(90deg, #8b5cf6, #6d28d9);
+    margin-bottom: 8px;
 
 }
 
@@ -2140,7 +2092,7 @@
 
 .class-distribution {
 
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 
 }
 
@@ -2299,7 +2251,7 @@
 =================================================== */
 
 .raid-roster {
-    margin-bottom: 70px;
+    margin-bottom: 30px;
 }
 
 .raid-roster-panel {
