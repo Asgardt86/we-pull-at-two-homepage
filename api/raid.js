@@ -72,7 +72,7 @@ export default async function handler(req, res) {
         const data = await response.json();
 
         /* ===================================================
-           Raid-Historie laden
+        Raid-Historie laden
         =================================================== */
 
         const raidHistory = await loadHistory(
@@ -172,47 +172,6 @@ export default async function handler(req, res) {
             await loadRaidStatus();
 
         /* ===================================================
-            Vorbereitung automatische Archivierung
-        =================================================== */
-        // 1. Aktive Raid-Tiers
-
-        const progressionSlugs =
-
-            Object.keys(
-
-                progression
-
-            );
-
-        // Aktive Seasons
-
-        const activeSeasons =
-
-            progressionSlugs
-
-                .filter(
-
-                    slug => RAID_TIERS[slug]
-
-                )
-
-                .map(
-
-                    slug => ({
-
-                        expansion:
-
-                            RAID_TIERS[slug].expansion,
-
-                        season:
-
-                            RAID_TIERS[slug].season
-
-                    })
-
-                );
-
-        /* ===================================================
 Aktuelle Season ermitteln
 =================================================== */
 
@@ -247,6 +206,16 @@ Aktuelle Season ermitteln
                         b.season - a.season
 
                 )[0];
+
+        if (!currentTier) {
+
+            throw new Error(
+
+                "Keine aktive Raid-Season gefunden."
+
+            );
+
+        }
 
         /* ===================================================
            Raider.IO Raid-Progress
@@ -499,8 +468,8 @@ Aktuelle Season ermitteln
             );
 
         /* ===================================================
-Season archivieren
-=================================================== */
+            Season archivieren
+        =================================================== */
 
         const shouldArchive =
 
@@ -512,11 +481,15 @@ Season archivieren
 
             currentSeason.archivedAt =
 
-                Date.now();
+                new Date().toISOString();
 
             raidHistory.push(
 
-                currentSeason
+                structuredClone(
+
+                    currentSeason
+
+                )
 
             );
 
@@ -531,7 +504,7 @@ Season archivieren
         }
 
         /* ===================================================
-        Archivierungsstatus prüfen
+        API-Antwort
         =================================================== */
 
         const result = {
