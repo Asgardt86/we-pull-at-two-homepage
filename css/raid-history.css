@@ -1,0 +1,103 @@
+/* ===================================================
+   Vergangene Tiers
+=================================================== */
+
+.raid-history {
+
+    margin-top: 40px;
+
+}
+
+/* ===================================================
+   Kartenlayout
+=================================================== */
+
+.raid-history-panel {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+    gap: 22px;
+
+}
+
+.raid-history-entry {
+
+    background: linear-gradient(180deg, #0f1318, #1b2027);
+
+    border: 1px solid rgba(212,175,55,.30);
+
+    border-radius: 16px;
+
+    padding: 24px;
+
+    box-shadow:
+
+        0 8px 24px rgba(0,0,0,.35),
+
+        0 0 12px rgba(212,175,55,.05);
+
+    transition: .25s;
+
+}
+
+.raid-history-entry:hover {
+
+    transform: translateY(-4px);
+
+    border-color: rgba(212,175,55,.55);
+
+    box-shadow:
+
+        0 12px 28px rgba(0,0,0,.45),
+
+        0 0 18px rgba(212,175,55,.12);
+
+}
+
+.raid-history-entry:last-child {
+
+    border-bottom: none;
+
+}
+
+.raid-history-season {
+
+    color: #d4af37;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+.raid-history-raid {
+
+    color: #7fe9f7;
+
+    font-size: 17px;
+
+    margin-bottom: 6px;
+
+}
+
+.raid-history-info {
+
+    color: #9ea7b3;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}
+
+.raid-history-ce {
+
+    color: #d4af37;
+
+    font-weight: 700;
+
+}

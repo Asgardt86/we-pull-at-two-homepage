@@ -11,6 +11,12 @@ async function loadRaidProgress() {
         const data =
             await response.json();
 
+        renderRaidHistory(
+
+            data.raidHistory || []
+
+        );
+
         const raid = data.raids.find(
             r => r.slug === data.defaultRaid
         );
@@ -318,6 +324,120 @@ async function loadTimeline(mode) {
         console.error(error);
 
     }
+
+}
+
+/* ===================================================
+   Vergangene Tiers
+=================================================== */
+
+function renderRaidHistory(history) {
+
+    const container =
+
+        document.getElementById(
+
+            "raid-history"
+
+        );
+
+    if (!container) return;
+
+    if (history.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="raid-history-panel">
+
+                <div class="hof-empty">
+
+                    Noch keine vergangenen Tiers vorhanden.
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+    let html = `
+
+        <div class="raid-history-panel">
+
+    `;
+
+    history.forEach(entry => {
+
+        html += `
+
+            <div class="raid-history-entry">
+
+                <div class="raid-history-season">
+
+                    🏆 ${entry.expansion} – Season ${entry.season}
+
+                </div>
+
+        `;
+
+        entry.raids.forEach(raid => {
+
+            html += `
+
+                <div class="raid-history-raid">
+
+                    ${raid.name}
+
+                </div>
+
+                <div class="raid-history-info">
+
+                    ${raid.mythic.completed === raid.mythic.total
+
+                    ? `<div class="raid-history-ce">
+
+                               ★ Cutting Edge erreicht
+
+                           </div>`
+
+                    : `Mythic ${raid.mythic.completed}/${raid.mythic.total}`}
+
+                </div>
+
+            `;
+
+        });
+
+        html += `
+
+                <div class="raid-history-info">
+
+                    <br>
+
+                    Realm Rank <strong>#${entry.realmRank}</strong>
+
+                    <br>
+
+                    World Rank <strong>#${entry.worldRank}</strong>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+    html += `
+
+        </div>
+
+    `;
+
+    container.innerHTML = html;
 
 }
 
