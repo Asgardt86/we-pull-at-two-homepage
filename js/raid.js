@@ -72,6 +72,11 @@ const timelineTitle =
 const timelineContent =
     document.getElementById("timeline-content");
 
+const timelineSection =
+    document.querySelector(".raid-timeline");
+
+timelineSection.hidden = true;
+
 let bossData = null;
 
 let currentMode = "mythic";
@@ -84,9 +89,37 @@ cards.forEach(card => {
             c.classList.remove("active")
         );
 
+        document.addEventListener("click", event => {
+
+            const clickedCard =
+                event.target.closest(".difficulty-card");
+
+            const clickedTimeline =
+                event.target.closest(".raid-timeline");
+
+            if (
+
+                !clickedCard &&
+
+                !clickedTimeline
+
+            ) {
+
+                timelineSection.hidden = true;
+
+                cards.forEach(card =>
+                    card.classList.remove("active")
+                );
+
+            }
+
+        });
+
         card.classList.add("active");
 
         currentMode = card.dataset.mode;
+
+        timelineSection.hidden = false;
 
         timelineTitle.textContent =
             card.querySelector("h3").textContent;

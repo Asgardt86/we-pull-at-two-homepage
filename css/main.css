@@ -18,14 +18,3 @@
 @import "dashboard.css";
 @import "lists.css";
 @import "classes.css"
-
-/* ===================================================
-   We Pull at Two Homepage
-   Main Stylesheet
-=================================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
