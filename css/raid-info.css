@@ -75,3 +75,44 @@
     }
 
 }
+
+.raidpause-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.raidpause-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(15, 19, 24, 0.5),
+            rgba(15, 19, 24, 0.5)
+        ),
+        url("../images/backgrounds/raidpause.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+    opacity: 0.5;
+
+    z-index: 0;
+
+}
+
+.raidpause-card > * {
+
+    position: relative;
+
+    z-index: 1;
+
+}
