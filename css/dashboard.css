@@ -988,6 +988,40 @@
 
 }
 
+/* -----------------------------------------------
+   Rahmenfarbe je Difficulty
+----------------------------------------------- */
+
+#timeline-title.mythic ~ #timeline-content .timeline-killed {
+
+    border-color: rgba(139, 92, 246, .55);
+
+}
+
+#timeline-title.heroic ~ #timeline-content .timeline-killed {
+
+    border-color: rgba(251, 146, 60, .55);
+
+}
+
+#timeline-title.normal ~ #timeline-content .timeline-killed {
+
+    border-color: rgba(34, 197, 94, .55);
+
+}
+
+/* -----------------------------------------------
+   Bossname immer grün lassen
+----------------------------------------------- */
+
+#timeline-title.mythic ~ #timeline-content .timeline-killed .timeline-boss-title,
+#timeline-title.heroic ~ #timeline-content .timeline-killed .timeline-boss-title,
+#timeline-title.normal ~ #timeline-content .timeline-killed .timeline-boss-title {
+
+    color: #22c55e;
+
+}
+
 .timeline-open {
 
     border-color: rgba(255, 255, 255, .08);
