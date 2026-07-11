@@ -39,7 +39,7 @@ async function loadNextRaid() {
 
             document.getElementById(
                 "next-raid-name"
-            ).textContent = "Custom";
+            ).textContent = data.title;
 
             difficulty.textContent = "Custom";
 
@@ -54,7 +54,7 @@ async function loadNextRaid() {
 
             document.getElementById(
                 "next-raid-name"
-            ).textContent = data.raid;
+            ).textContent = data.title;
 
             difficulty.textContent = data.difficulty;
 
@@ -90,6 +90,28 @@ async function loadNextRaid() {
             }
 
         }
+
+        const instances =
+            document.getElementById("next-raid-instances");
+
+        if (data.instances && data.instances.length > 0) {
+
+            instances.textContent =
+                data.instances.join(" • ");
+
+        }
+
+        else {
+
+            instances.textContent = "";
+
+        }
+
+        const optional =
+            document.getElementById("next-raid-optional");
+
+        optional.textContent =
+            data.optional ? "⭐ Optional" : "";
 
         const formattedDate = new Date(data.date).toLocaleDateString(
 

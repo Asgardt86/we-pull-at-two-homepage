@@ -447,6 +447,30 @@
 
 }
 
+.next-raid-instances {
+
+    margin-top: 8px;
+
+    color: #9aa3ad;
+
+    font-size: 15px;
+
+    line-height: 1.4;
+
+}
+
+.next-raid-optional {
+
+    margin-top: 6px;
+
+    color: #d4af37;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+}
+
 .next-raid-info {
 
     display: flex;

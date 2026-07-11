@@ -1,76 +1,76 @@
 /* =================================================== RAID INFO
 =================================================== */
 
-.raid-info-grid{
+.raid-info-grid {
 
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-    margin-bottom:30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
 
 }
 
-.raid-card{
+.raid-card {
 
-    background:linear-gradient(180deg,#0f1318,#1b2027);
-    border:1px solid rgba(212,175,55,.35);
-    border-radius:18px;
+    background: linear-gradient(180deg, #0f1318, #1b2027);
+    border: 1px solid rgba(212, 175, 55, .35);
+    border-radius: 18px;
 
-    padding:30px;
+    padding: 30px;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.45),
-        0 0 18px rgba(212,175,55,.08);
+        0 12px 35px rgba(0, 0, 0, .45),
+        0 0 18px rgba(212, 175, 55, .08);
 
-    margin-bottom:30px;
-
-}
-
-.raid-card p{
-
-    color:#d8dde5;
-    line-height:1.8;
-    margin-bottom:18px;
+    margin-bottom: 30px;
 
 }
 
-.raid-card p:last-child{
+.raid-card p {
 
-    margin-bottom:0;
-
-}
-
-.raid-card ul{
-
-    list-style:none;
-    padding:0;
+    color: #d8dde5;
+    line-height: 1.8;
+    margin-bottom: 18px;
 
 }
 
-.raid-card li{
+.raid-card p:last-child {
 
-    position:relative;
-    padding-left:24px;
-    margin-bottom:14px;
-    line-height:1.7;
-    color:#d8dde5;
+    margin-bottom: 0;
 
 }
 
-.raid-card li::before{
+.raid-card ul {
 
-    content:"✦";
-    position:absolute;
-    left:0;
-    color:#d4af37;
+    list-style: none;
+    padding: 0;
 
 }
 
-@media (max-width:900px){
+.raid-card li {
 
-    .raid-info-grid{
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 14px;
+    line-height: 1.7;
+    color: #d8dde5;
 
-        grid-template-columns:1fr;
+}
+
+.raid-card li::before {
+
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: #d4af37;
+
+}
+
+@media (max-width:900px) {
+
+    .raid-info-grid {
+
+        grid-template-columns: 1fr;
 
     }
 
@@ -93,23 +93,21 @@
     inset: 0;
 
     background:
-        linear-gradient(
-            rgba(15, 19, 24, 0.5),
-            rgba(15, 19, 24, 0.5)
-        ),
+        linear-gradient(rgba(10, 12, 16, .75),
+            rgba(10, 12, 16, .45)),
         url("../images/backgrounds/raidpause.png");
 
     background-size: cover;
 
-    background-position: center;
+    background-position: center 70%;
 
-    opacity: 0.5;
+    opacity: 0.65;
 
     z-index: 0;
 
 }
 
-.raidpause-card > * {
+.raidpause-card>* {
 
     position: relative;
 

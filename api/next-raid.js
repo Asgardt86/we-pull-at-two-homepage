@@ -195,7 +195,13 @@ export default async function handler(req, res) {
 
         const result = {
 
+            title: nextRaid.title,
+
             raid: nextRaid.instance,
+
+            instances: nextRaid.instances,
+
+            optional: nextRaid.optional,
 
             isCustom: nextRaid.instance === null,
 
