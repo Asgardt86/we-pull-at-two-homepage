@@ -16,6 +16,24 @@ const CLASS_ICONS = {
 
 };
 
+const CLASS_COLORS = {
+
+    "Warrior": "#C79C6E",
+    "Paladin": "#F58CBA",
+    "Hunter": "#ABD473",
+    "Rogue": "#FFF569",
+    "Priest": "#FFFFFF",
+    "Death Knight": "#C41F3B",
+    "Shaman": "#0070DD",
+    "Mage": "#69CCF0",
+    "Warlock": "#9482C9",
+    "Monk": "#00FF96",
+    "Druid": "#FF7D0A",
+    "Demon Hunter": "#A330C9",
+    "Evoker": "#33937F"
+
+};
+
 async function loadRecruitment() {
 
     try {
@@ -48,11 +66,11 @@ async function loadRecruitment() {
 
         [
 
-            [2, "🔥 High Priority"],
+            [2, "HIGH PRIORITY"],
 
-            [1, "⭐ Medium Priority"],
+            [1, "MEDIUM PRIORITY"],
 
-            [0, "🐾 Low Priority"]
+            [0, "LOW PRIORITY"]
 
         ].forEach(([priority, title]) => {
 
@@ -66,19 +84,22 @@ async function loadRecruitment() {
 
                 <div class="recruitment-group">
 
-                    <div class="recruitment-group-title">
+<div
+    class="recruitment-group-title
+    priority-${priority}"
+>
 
-                        ${title}
+    ${title}
 
-                    </div>
+</div>
 
             `;
 
             groups[priority].forEach(entry => {
 
-    const icon = CLASS_ICONS[entry.class];
+                const icon = CLASS_ICONS[entry.class];
 
-    html += `
+                html += `
 
         <div class="recruitment-entry">
 
@@ -90,17 +111,20 @@ async function loadRecruitment() {
 
             <div class="recruitment-info">
 
-                <div class="recruitment-class">
+<div
+    class="recruitment-class"
+    style="color:${CLASS_COLORS[entry.class]}"
+>
 
-                    ${entry.class}
+    ${entry.class}
 
-                </div>
+    <span class="recruitment-specs-inline">
 
-                <div class="recruitment-specs">
+        ${entry.specs.join(" • ")}
 
-                    ${entry.specs.join(" • ")}
+    </span>
 
-                </div>
+</div>
 
             </div>
 
@@ -108,7 +132,7 @@ async function loadRecruitment() {
 
     `;
 
-});
+            });
 
             html += `
 

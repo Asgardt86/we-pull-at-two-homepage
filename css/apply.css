@@ -4,7 +4,7 @@
 
 .recruitment-group {
 
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 
 }
 
@@ -16,17 +16,45 @@
 
 .recruitment-group-title {
 
-    color: #d4af37;
-
-    font-size: 22px;
+    font-size: 18px;
 
     font-weight: 700;
 
-    margin-bottom: 18px;
+    text-transform: uppercase;
 
-    padding-bottom: 10px;
+    padding-left: 14px;
 
-    border-bottom: 1px solid rgba(212,175,55,.25);
+    margin-bottom: 10px;
+
+    border-left: 5px solid;
+
+    border-bottom: 1px solid rgba(212,175,55,.20);
+
+    padding-bottom: 8px;
+
+}
+
+.priority-2 {
+
+    color: #ff5555;
+
+    border-left-color: #ff5555;
+
+}
+
+.priority-1 {
+
+    color: #ffb347;
+
+    border-left-color: #ffb347;
+
+}
+
+.priority-0 {
+
+    color: #b5b5b5;
+
+    border-left-color: #888;
 
 }
 
@@ -36,11 +64,11 @@
 
     align-items: center;
 
-    gap: 18px;
+    gap: 10px;
 
-    padding: 14px 18px;
+    padding: 8px 14px;
 
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 
     background: linear-gradient(180deg,#222831,#181d24);
 
@@ -62,9 +90,9 @@
 
 .recruitment-icon {
 
-    width: 42px;
+    width: 30px;
 
-    height: 42px;
+    height: 30px;
 
     border-radius: 8px;
 
@@ -74,7 +102,7 @@
 
 .recruitment-info {
 
-    display: flex;
+    display: flex 1;
 
     flex-direction: column;
 
@@ -82,7 +110,7 @@
 
 .recruitment-class {
 
-    font-size: 19px;
+    font-size: 15px;
 
     font-weight: 700;
 
@@ -92,9 +120,13 @@
 
 }
 
-.recruitment-specs {
+.recruitment-specs-inline {
 
-    font-size: 15px;
+    margin-left: 14px;
+
+    font-size: 14px;
+
+    font-weight: 400;
 
     color: #9aa3ad;
 
