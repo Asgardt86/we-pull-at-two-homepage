@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:homepage"
+            "cache:homepage-v2"
 
         );
 
@@ -174,6 +174,127 @@ export default async function handler(req, res) {
 
         const progress = `${mythicCompleted} / ${totalBosses}`;
 
+        /* ===================================================
+   Raider.io Recruitment
+=================================================== */
+
+        const recruitmentResponse = await fetch(
+
+            "https://raider.io/api/recruitment/target-profiles?entity_type=guild&target_id=2136590"
+
+        );
+
+        const recruitmentData =
+
+            await recruitmentResponse.json();
+
+        const profile = recruitmentData.profiles[0];
+
+        const CLASS_NAMES = {
+
+            1: "Warrior",
+            2: "Paladin",
+            3: "Hunter",
+            4: "Rogue",
+            5: "Priest",
+            6: "Death Knight",
+            7: "Shaman",
+            8: "Mage",
+            9: "Warlock",
+            10: "Monk",
+            11: "Druid",
+            12: "Demon Hunter",
+            13: "Evoker"
+
+        };
+
+        const SPEC_NAMES = {
+
+            62: "Arcane",
+            63: "Fire",
+            64: "Frost",
+
+            65: "Holy",
+            66: "Protection",
+            70: "Retribution",
+
+            71: "Arms",
+            72: "Fury",
+            73: "Protection",
+
+            102: "Balance",
+            103: "Feral",
+            104: "Guardian",
+            105: "Restoration",
+
+            1467: "Devastation",
+            1468: "Preservation",
+            1473: "Augmentation",
+
+            250: "Blood",
+            251: "Frost",
+            252: "Unholy",
+
+            253: "Beast Mastery",
+            254: "Marksmanship",
+            255: "Survival",
+
+            256: "Discipline",
+            257: "Holy",
+            258: "Shadow",
+
+            259: "Assassination",
+            260: "Outlaw",
+            261: "Subtlety",
+
+            262: "Elemental",
+            263: "Enhancement",
+            264: "Restoration",
+
+            265: "Affliction",
+            266: "Demonology",
+            267: "Destruction",
+
+            268: "Brewmaster",
+            269: "Windwalker",
+            270: "Mistweaver",
+
+            577: "Havoc",
+            581: "Vengeance"
+
+        };
+
+        const recruitment = [];
+
+        profile.slots.forEach(slot => {
+
+            slot.entries.forEach(entry => {
+
+                recruitment.push({
+
+                    priority: slot.priority,
+
+                    class: CLASS_NAMES[entry.class_id],
+
+                    specs: [
+
+                        entry.mainspec_0_id,
+                        entry.mainspec_1_id,
+                        entry.mainspec_2_id,
+                        entry.mainspec_3_id
+
+                    ]
+
+                        .filter(id => id !== null)
+
+                        .map(id => SPEC_NAMES[id])
+
+                });
+
+            });
+
+        });
+
         const result = {
 
             guild: guildData.name,
@@ -188,11 +309,13 @@ export default async function handler(req, res) {
 
             progress,
 
+            recruitment
+
         };
 
         await setCache(
 
-            "cache:homepage",
+            "cache:homepage-v2",
 
             result,
 

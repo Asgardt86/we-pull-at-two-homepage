@@ -1,0 +1,101 @@
+/* ===================================================
+   Recruitment
+=================================================== */
+
+.recruitment-group {
+
+    margin-bottom: 35px;
+
+}
+
+.recruitment-group:last-child {
+
+    margin-bottom: 0;
+
+}
+
+.recruitment-group-title {
+
+    color: #d4af37;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    margin-bottom: 18px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid rgba(212,175,55,.25);
+
+}
+
+.recruitment-entry {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 12px;
+
+    background: linear-gradient(180deg,#222831,#181d24);
+
+    border: 1px solid rgba(212,175,55,.15);
+
+    border-radius: 12px;
+
+    transition: .2s ease;
+
+}
+
+.recruitment-entry:hover {
+
+    transform: translateY(-2px);
+
+    border-color: rgba(212,175,55,.45);
+
+}
+
+.recruitment-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 8px;
+
+    flex-shrink: 0;
+
+}
+
+.recruitment-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+.recruitment-class {
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    color: #f5f5f5;
+
+    margin-bottom: 4px;
+
+}
+
+.recruitment-specs {
+
+    font-size: 15px;
+
+    color: #9aa3ad;
+
+}
