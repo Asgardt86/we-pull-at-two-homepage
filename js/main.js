@@ -300,3 +300,36 @@ if (teamSection) {
     });
 
 }
+
+/* ===================================================
+   Mobile Navigation
+=================================================== */
+
+const mobileMenuButton =
+    document.getElementById("mobile-menu-button");
+
+const mobileOverlay =
+    document.getElementById("mobile-overlay");
+
+const sidebar =
+    document.querySelector(".sidebar");
+
+if (mobileMenuButton && mobileOverlay && sidebar) {
+
+    mobileMenuButton.addEventListener("click", () => {
+
+        sidebar.classList.add("open");
+
+        mobileOverlay.classList.add("show");
+
+    });
+
+    mobileOverlay.addEventListener("click", () => {
+
+        sidebar.classList.remove("open");
+
+        mobileOverlay.classList.remove("show");
+
+    });
+
+}

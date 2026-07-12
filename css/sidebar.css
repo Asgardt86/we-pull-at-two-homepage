@@ -103,3 +103,9 @@
     filter: drop-shadow(0 0 8px rgba(212, 175, 55, .6));
 
 }
+
+.sidebar {
+
+    box-sizing: border-box;
+
+}
