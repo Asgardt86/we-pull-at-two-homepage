@@ -44,9 +44,333 @@
 
         width: 100%;
 
-        padding: 18px;
+        padding: 80px 18px 18px;
 
     }
+
+    /* ===================================================
+   Hero Banner
+=================================================== */
+
+.hero-banner {
+
+    height: 260px;
+
+    background-position: center;
+
+}
+
+.banner-icons {
+
+    top: 14px;
+
+    gap: 12px;
+
+}
+
+.banner-icons img {
+
+    width: 48px;
+
+    height: 48px;
+
+}
+
+.hero-divider {
+
+    margin: 20px 0 24px;
+
+}
+
+/* ===================================================
+   API Info Bar
+=================================================== */
+
+.stats-bar {
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+
+    padding: 0;
+
+}
+
+.stat-item {
+
+    padding: 14px 8px;
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid rgba(212,175,55,.18);
+
+    border-radius: 12px;
+
+}
+
+.stat-header {
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+}
+
+.stat-header img {
+
+    width: 28px;
+
+    height: 28px;
+
+}
+
+.stat-value {
+
+    font-size: 22px;
+
+}
+
+/* ===================================================
+   Page Header
+=================================================== */
+
+.page-header-grid {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 24px;
+
+    text-align: center;
+
+}
+
+.page-header {
+
+    margin-bottom: 30px;
+
+}
+
+/* ===================================================
+   Raid Übersicht
+=================================================== */
+
+.raid-panel {
+
+    padding: 20px;
+
+}
+
+.difficulty-grid {
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 14px;
+
+}
+
+.difficulty-card:last-child {
+
+    grid-column: 1 / -1;
+
+}
+
+.difficulty-card {
+
+    padding: 14px;
+
+}
+
+.difficulty-card img {
+
+    width: 56px;
+
+    height: 56px;
+
+}
+
+.difficulty-card h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+
+}
+
+.difficulty-value {
+
+    font-size: 26px;
+
+}
+
+.difficulty-bar {
+
+    width: 100%;
+
+}
+
+/* ===================================================
+   Hall of Fame
+=================================================== */
+
+.hof-panel {
+
+    padding: 18px;
+
+}
+
+.hof-player {
+
+    gap: 14px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 12px;
+
+}
+
+.hof-left {
+
+    gap: 12px;
+
+}
+
+.hof-rank {
+
+    width: 34px;
+
+    font-size: 24px;
+
+}
+
+.hof-name {
+
+    font-size: 18px;
+
+}
+
+.hof-score {
+
+    font-size: 20px;
+
+    gap: 8px;
+
+}
+
+.hof-score img {
+
+    width: 28px;
+
+    height: 28px;
+
+}
+
+.hof-right {
+
+    gap: 6px;
+
+}
+
+.hof-dungeon {
+
+    font-size: 14px;
+
+    margin: 4px 0;
+
+}
+
+.hof-link {
+
+    font-size: 14px;
+
+}
+
+/* ===================================================
+   Gildenleitung
+=================================================== */
+
+.team-card {
+
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    padding: 18px;
+
+    text-align: center;
+
+}
+
+.team-image img {
+
+    width: 170px;
+
+    max-width: 100%;
+
+}
+
+.team-title {
+
+    font-size: 26px;
+
+    margin-bottom: 12px;
+
+}
+
+.team-description {
+
+    margin-bottom: 18px;
+
+}
+
+.team-tasks {
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+}
+
+.team-task {
+
+    justify-content: flex-start;
+
+    text-align: left;
+
+}
+
+.page-header-content {
+
+    order: 2;
+
+}
+
+.page-header-icon {
+
+    order: 1;
+
+    margin-right: 0;
+
+}
+
+.page-header-icon img {
+
+    width: 120px;
+
+    height: 120px;
+
+}
+
+.page-header p {
+
+    max-width: 100%;
+
+}
 
     /* ===================================================
        Sidebar
@@ -63,6 +387,8 @@
         transform: translateX(-100%);
 
         height: 100vh;
+
+        width: 220px;
 
         display: block;
 
@@ -160,6 +486,42 @@
         visibility: visible;
 
     }
+
+    /* ===================================================
+   Grids
+=================================================== */
+
+.ranking-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+
+}
+
+.next-raid-content {
+
+    grid-template-columns: 1fr;
+
+}
+
+.dashboard-grid {
+
+    grid-template-columns: 1fr;
+
+}
+
+.stats-grid {
+
+    grid-template-columns: 1fr;
+
+}
+
+.features-grid {
+
+    grid-template-columns: 1fr;
+
+}
 
 }
 

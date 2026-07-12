@@ -316,19 +316,43 @@ const sidebar =
 
 if (mobileMenuButton && mobileOverlay && sidebar) {
 
-    mobileMenuButton.addEventListener("click", () => {
-
-        sidebar.classList.add("open");
-
-        mobileOverlay.classList.add("show");
-
-    });
-
-    mobileOverlay.addEventListener("click", () => {
+    function closeMenu() {
 
         sidebar.classList.remove("open");
 
         mobileOverlay.classList.remove("show");
+
+        mobileMenuButton.innerHTML = "☰";
+
+    }
+
+    mobileMenuButton.addEventListener("click", () => {
+
+        const isOpen = sidebar.classList.contains("open");
+
+        if (isOpen) {
+
+            closeMenu();
+
+        }
+
+        else {
+
+            sidebar.classList.add("open");
+
+            mobileOverlay.classList.add("show");
+
+            mobileMenuButton.innerHTML = "✕";
+
+        }
+
+    });
+
+    mobileOverlay.addEventListener("click", closeMenu);
+
+    document.querySelectorAll(".sidebar-nav a").forEach(link => {
+
+        link.addEventListener("click", closeMenu);
 
     });
 
