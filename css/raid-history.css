@@ -32,13 +32,53 @@
 
     padding: 24px;
 
+    position: relative;
+
+    overflow: hidden;
+
     box-shadow:
 
-        0 8px 24px rgba(0,0,0,.35),
+    0 8px 24px rgba(0,0,0,.35),
 
-        0 0 12px rgba(212,175,55,.05);
+    0 0 12px rgba(212,175,55,.05);
 
     transition: .25s;
+
+}
+
+.tier33 {
+
+    background:
+        linear-gradient(rgba(15,19,24,.78), rgba(27,32,39,.88)),
+        url("../images/expansions/nerub-ar-palace-small.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+.tier34 {
+
+    background:
+        linear-gradient(rgba(15,19,24,.78), rgba(27,32,39,.88)),
+        url("../images/expansions/liberation-of-undermine-small.png");
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+.tier35 {
+
+    background:
+        linear-gradient(rgba(15,19,24,.78), rgba(27,32,39,.88)),
+        url("../images/expansions/manaforge-omega-small.png");
+
+    background-size: cover;
+
+    background-position: center;
 
 }
 

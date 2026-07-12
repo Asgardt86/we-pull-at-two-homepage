@@ -402,11 +402,11 @@ function renderRaidHistory(history) {
 
     `;
 
-    history.forEach(entry => {
+    history.forEach((entry, index) => {
 
         html += `
 
-            <div class="raid-history-entry">
+            <div class="raid-history-entry expansion-card tier${33 + index}">
 
                 <div class="raid-history-season">
 
