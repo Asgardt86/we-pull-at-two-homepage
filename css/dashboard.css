@@ -3,8 +3,8 @@
 =================================================== */
 
 .raid-overview {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .raid-overview h2 {
@@ -1072,9 +1072,9 @@
 
 .raid-ranking {
 
-    margin-top: 30px;
+    margin-top: 15px;
 
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
 }
 
@@ -1082,9 +1082,9 @@
 
     color: #d4af37;
 
-    font-size: 34px;
+    font-size: 20px;
 
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 
 }
 
@@ -1096,7 +1096,7 @@
 
     border-radius: 18px;
 
-    padding: 35px;
+    padding: 5px 24px 24px 24px;
 
 }
 
@@ -1106,7 +1106,7 @@
 
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 30px;
+    gap: 15px;
 
 }
 
@@ -1116,7 +1116,7 @@
 
     border-radius: 16px;
 
-    padding: 28px;
+    padding: 18px;
 
     border: 1px solid rgba(255, 255, 255, .08);
 
@@ -1156,11 +1156,11 @@
 
 .ranking-title {
 
-    font-size: 30px;
+    font-size: 24px;
 
     font-weight: 700;
 
-    margin-bottom: 28px;
+    margin-bottom: 15px;
 
 }
 
@@ -1190,7 +1190,13 @@
 
     align-items: center;
 
-    margin-bottom: 24px;
+    margin-bottom: 10px;
+
+}
+
+.ranking-row:last-child {
+
+    margin-bottom: 0;
 
 }
 
@@ -1200,9 +1206,9 @@
 
     align-items: center;
 
-    gap: 14px;
+    gap: 10px;
 
-    font-size: 18px;
+    font-size: 16px;
 
     color: #d8dde5;
 
@@ -1210,15 +1216,15 @@
 
 .ranking-label img {
 
-    width: 42px;
+    width: 30px;
 
-    height: 42px;
+    height: 30px;
 
 }
 
 .ranking-value {
 
-    font-size: 26px;
+    font-size: 22px;
 
     font-weight: 700;
 
@@ -1228,19 +1234,19 @@
 
 .ranking-panel {
 
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 
 }
 
 .ranking-panel:last-child {
 
-    margin-bottom: 0;
+    margin-bottom: 10;
 
 }
 
 .ranking-raid-name {
 
-    color: #d4af37;
+    color: #40d6f8;
 
     font-size: 22px;
 
@@ -1248,15 +1254,17 @@
 
     font-family: "Trebuchet MS", sans-serif;
 
-    letter-spacing: 2px;
+    letter-spacing: 4px;
 
     text-transform: none;
 
     border-left: 4px solid #d4af37;
 
-    padding-left: 14px;
+    padding-left: 10px;
 
-    margin-bottom: 28px;
+    margin: 10px;
+
+    margin-bottom: 10px;
 
     text-shadow:
 

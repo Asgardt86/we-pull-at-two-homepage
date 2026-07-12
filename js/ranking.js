@@ -38,11 +38,11 @@ async function loadRanking() {
 
         <div class="ranking-panel">
 
-            <h3 class="ranking-raid-name">
+            <h4 class="ranking-raid-name">
 
                 ${raidName}
 
-            </h3>
+            </h4>
 
             <div class="ranking-grid">
 
