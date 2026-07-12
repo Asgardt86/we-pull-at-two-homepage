@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:homepage-v2"
+            "cache:homepage"
 
         );
 
@@ -315,7 +315,7 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:homepage-v2",
+            "cache:homepage",
 
             result,
 
