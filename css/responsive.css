@@ -11,81 +11,7 @@
 
 
 /* ===================================================
-   Smartphone Layout
-=================================================== */
-
-@media (max-width: 768px) {
-
-    .layout {
-
-        display: block;
-
-    }
-
-    .sidebar {
-
-        display: none;
-
-    }
-
-    .content {
-
-        margin-left: 0;
-
-        width: 100%;
-
-        padding: 18px;
-
-    }
-
-.sidebar {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    transform: translateX(-100%);
-
-    height: 100vh;
-
-    display: block;
-
-    z-index: 2001;
-
-    transition: transform .25s ease;
-
-}
-
-.sidebar.open {
-
-    transform: translateX(0);
-
-}
-
-.mobile-overlay.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-}
-
-/* ===================================================
-   Kleine Smartphones (480px und kleiner)
-=================================================== */
-
-@media (max-width: 480px) {
-
-
-
-}
-
-/* ===================================================
-   Mobile Navigation
+   Smartphone (768px und kleiner)
 =================================================== */
 
 .mobile-menu-button {
@@ -101,6 +27,60 @@
 }
 
 @media (max-width: 768px) {
+
+    /* ===================================================
+       Layout
+    =================================================== */
+
+    .layout {
+
+        display: block;
+
+    }
+
+    .content {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 18px;
+
+    }
+
+    /* ===================================================
+       Sidebar
+    =================================================== */
+
+    .sidebar {
+
+        position: fixed;
+
+        top: 0;
+
+        left: 0;
+
+        transform: translateX(-100%);
+
+        height: 100vh;
+
+        display: block;
+
+        z-index: 2001;
+
+        transition: transform .25s ease;
+
+    }
+
+    .sidebar.open {
+
+        transform: translateX(0);
+
+    }
+
+    /* ===================================================
+       Mobile Button
+    =================================================== */
 
     .mobile-menu-button {
 
@@ -132,9 +112,14 @@
 
         cursor: pointer;
 
-        z-index: 2000;
+        z-index: 2002;
 
         box-shadow: 0 8px 20px rgba(0,0,0,.4);
+
+        transition:
+            background .25s,
+            border-color .25s,
+            transform .25s;
 
     }
 
@@ -143,6 +128,10 @@
         border-color: #d4af37;
 
     }
+
+    /* ===================================================
+       Overlay
+    =================================================== */
 
     .mobile-overlay {
 
@@ -160,8 +149,28 @@
 
         transition: .25s;
 
-        z-index: 1500;
+        z-index: 2000;
 
     }
+
+    .mobile-overlay.show {
+
+        opacity: 1;
+
+        visibility: visible;
+
+    }
+
+}
+
+
+
+/* ===================================================
+   Kleine Smartphones (480px und kleiner)
+=================================================== */
+
+@media (max-width: 480px) {
+
+
 
 }

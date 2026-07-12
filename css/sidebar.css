@@ -9,8 +9,10 @@
     top: 0;
     left: 0;
 
-    width: 250px;
+    width: 215px;
     height: 100vh;
+
+    box-sizing: border-box;
 
     background: #1a1f26;
 
@@ -101,11 +103,5 @@
 .sidebar-nav a.active img {
 
     filter: drop-shadow(0 0 8px rgba(212, 175, 55, .6));
-
-}
-
-.sidebar {
-
-    box-sizing: border-box;
 
 }
