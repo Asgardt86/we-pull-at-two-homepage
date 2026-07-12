@@ -114,3 +114,120 @@
     z-index: 1;
 
 }
+
+.raidfokus-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.raidfokus-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(rgba(10, 12, 16, .75),
+            rgba(10, 12, 16, .45)),
+        url("../images/backgrounds/raidfokus.png");
+
+    background-size: cover;
+
+    background-position: center 10%;
+
+    opacity: 0.65;
+
+    z-index: 0;
+
+}
+
+.raidfokus-card>* {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.raidzeiten-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.raidzeiten-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(rgba(10, 12, 16, .75),
+            rgba(10, 12, 16, .45)),
+        url("../images/backgrounds/raidzeiten.png");
+
+    background-size: cover;
+
+    background-position: center 10%;
+
+    opacity: 0.65;
+
+    z-index: 0;
+
+}
+
+.raidzeiten-card>* {
+
+    position: relative;
+
+    z-index: 1;
+
+}
+
+.raidphilosopie-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.raidphilosopie-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(rgba(10, 12, 16, .75),
+            rgba(10, 12, 16, .45)),
+        url("../images/backgrounds/raidphilosopie.png");
+
+    background-size: cover;
+
+    background-position: center 10%;
+
+    opacity: 0.65;
+
+    z-index: 0;
+
+}
+
+.raidphilosophie-card>* {
+
+    position: relative;
+
+    z-index: 1;
+
+}
