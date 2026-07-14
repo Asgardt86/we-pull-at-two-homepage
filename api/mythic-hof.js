@@ -38,7 +38,7 @@ export default async function handler(req, res) {
            Cache
         =================================================== */
 
-        const cached = await getCache("cache:mythic-hof");
+        /*const cached = await getCache("cache:mythic-hof");
 
         if (cached) {
 
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
 
             });
 
-        }
+        }*/
 
         /* ===================================================
    Hall of Fame Historie
