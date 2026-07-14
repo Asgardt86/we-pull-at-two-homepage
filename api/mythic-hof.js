@@ -38,17 +38,15 @@ export default async function handler(req, res) {
            Cache
         =================================================== */
 
-        const cached = await getCache(
-
-            "cache:mythic-hof"
-
-        );
+        const cached = await getCache("cache:mythic-hof");
 
         if (cached) {
 
             return res.status(200).json({
 
                 source: "CACHE",
+
+                updated: cached.updated,
 
                 ...cached.data
 
