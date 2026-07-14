@@ -37,23 +37,25 @@ export default async function handler(req, res) {
         /* ===================================================
            Cache
         =================================================== */
-        
-                const cached = await getCache(
-        
-                    "cache:mythic-hof"
-        
-                );
-        
-                if (cached) {
-        
-                    return res.status(200).json(
-        
-                        cached.data
-        
-                    );
-        
-                }
-        
+
+        const cached = await getCache(
+
+            "cache:mythic-hof-test"
+
+        );
+
+        if (cached) {
+
+            return res.status(200).json({
+
+                source: "CACHE",
+
+                ...cached.data
+
+            });
+
+        }
+
         /* ===================================================
    Hall of Fame Historie
 =================================================== */
@@ -362,18 +364,24 @@ export default async function handler(req, res) {
         /* ===================================================
            Cache
         =================================================== */
-        
-                await setCache(
-        
-                    "cache:mythic-hof",
-        
-                    result,
-        
-                    10
-        
-                );
-        
-        return res.status(200).json(result);
+
+        await setCache(
+
+            "cache:mythic-hof-test",
+
+            result,
+
+            10
+
+        );
+
+        return res.status(200).json({
+
+            source: "LIVE",
+
+            ...result
+
+        });
 
     }
 
