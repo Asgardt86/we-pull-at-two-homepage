@@ -346,6 +346,7 @@ export default async function handler(req, res) {
             players: topPlayers
 
         };
+        return res.status(200).json(result);
 
         /* ===================================================
    Hall of Fame Historie speichern
