@@ -29,7 +29,6 @@ import {
 /* ===================================================
    Mythic+ Hall of Fame
 =================================================== */
-
 export default async function handler(req, res) {
 
     try {
