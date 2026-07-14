@@ -40,7 +40,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:mythic-hof-test"
+            "cache:mythic-hof"
 
         );
 
@@ -367,7 +367,7 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:mythic-hof-test",
+            "cache:mythic-hof",
 
             result,
 
