@@ -100,30 +100,51 @@ async function loadMythicHOF() {
 
             html += `
 
-                <div class="hof-player ${extraClass}">
+    <div class="hof-player ${extraClass}">
 
-    <div class="hof-left">
+        <div class="hof-left">
 
-        <div class="hof-rank">
+            <div class="hof-rank">
 
-            ${rank}
-
-        </div>
-
-        <div>
-
-            <div
-                class="hof-name"
-                style="color:${color};"
-            >
-
-                ${player.name}
+                ${rank}
 
             </div>
 
-            <div class="hof-dungeon">
+            <div>
 
-                +${player.bestKey} ${player.bestDungeon}
+                <div
+                    class="hof-name"
+                    style="color:${color};"
+                >
+
+                    ${player.name}
+
+                </div>
+
+                <div class="hof-more-details">
+
+                ▼ More Details
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hof-right">
+
+            <div
+                class="hof-score"
+                data-player="${player.name}"
+                data-score="${player.score}"
+            >
+
+                <img
+                    src="../images/icons/m+key-icon.png"
+                    alt="Mythic+"
+                >
+
+                ${player.score}
 
             </div>
 
@@ -131,45 +152,179 @@ async function loadMythicHOF() {
 
     </div>
 
-    <div class="hof-right">
+<div class="hof-details">
 
-        <div
-            class="hof-score"
+    <div
+        class="hof-details-content"
 
-            data-player="${player.name}"
+        style="background-image:
+        linear-gradient(rgba(15,19,24,.65), rgba(15,19,24,.65)),
+        url('${player.bestDungeonBackground}');
+        background-size: cover;
+        background-position: center;"
+    >
 
-            data-score="${player.score}"
-
-        >
+        <div class="hof-character">
 
             <img
-                src="../images/icons/m+key-icon.png"
-                alt="Mythic+"
+
+                src="${player.thumbnailUrl}"
+
+                class="hof-character-image"
+
+                alt="${player.name}"
+
             >
 
-            ${player.score}
+            <div class="hof-character-info">
+
+                <div class="hof-character-name">
+
+                    ${player.name}
+
+                </div>
+
+                <div class="hof-character-spec">
+
+    ${player.activeSpec}
+
+    (${player.activeRole})
+
+</div>
+
+<div class="hof-character-race">
+
+    ${player.race}
+
+    •
+
+    ${player.gender}
+
+    •
+
+    ${player.faction}
+
+</div>
+
+            </div>
 
         </div>
 
-        <a
+        <div class="hof-detail-section">
 
-            class="hof-link"
+    <div class="hof-detail-title">
 
-            href="${player.raiderIo}"
+        🏆 Beste Dungeons
 
-            target="_blank"
+    </div>
+
+    
+
+${(player.bestDungeons || []).map(run => `
+
+<div class="hof-detail-run">
+
+    <div class="hof-run-left">
+
+        <img
+
+            src="${run.icon || ""}"
+
+            class="hof-dungeon-small"
 
         >
 
-            ↗ Raider.IO Profil
+        <span>
 
-        </a>
+            +${run.key}
+
+            ${run.dungeon}
+
+        </span>
+
+    </div>
+
+    <strong>
+
+        ${(run.score || 0).toFixed(1)}
+
+    </strong>
+
+</div>
+
+`).join("")}
+
+</div>
+
+<div class="hof-detail-section">
+
+    <div class="hof-detail-title">
+
+        📅 Last Run
+
+    </div>
+
+    ${player.recentRun ? `
+
+        <div class="hof-detail-run">
+
+            <div class="hof-run-left">
+
+                <img
+                    src="${player.recentRun.icon || ""}"
+                    class="hof-dungeon-small"
+                >
+
+                <div>
+
+                    <div>
+
+                        +${player.recentRun.key}
+                        ${player.recentRun.dungeon}
+
+                    </div>
+
+                    <div class="hof-last-run-date">
+
+                        ${player.recentRun.completed}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    ` : `
+
+        <div class="hof-last-run-date">
+
+            Keine Daten vorhanden.
+
+        </div>
+
+    `}
+
+</div>
+
+        <div class="hof-detail-row">
+
+            <a
+                class="hof-detail-link"
+                href="${player.raiderIo}"
+                target="_blank"
+            >
+                ↗ Raider.IO Profil öffnen
+            </a>
+
+        </div>
 
     </div>
 
 </div>
 
-            `;
+`;
 
         });
 
@@ -182,6 +337,8 @@ async function loadMythicHOF() {
         container.innerHTML = html;
 
         animateScoreChanges();
+
+        initHallOfFameDetails();
 
     }
 
@@ -255,6 +412,55 @@ function animateScoreChanges() {
             newScore
 
         );
+
+    });
+
+}
+
+/* ===================================================
+  Hall of Fame Details
+=================================================== */
+
+function initHallOfFameDetails() {
+
+    const players = document.querySelectorAll(".hof-player");
+
+    const details = document.querySelectorAll(".hof-details");
+
+    players.forEach((player, index) => {
+
+        player.addEventListener("click", () => {
+
+            const isOpen = details[index].classList.contains("open");
+
+            details.forEach(detail => {
+
+                detail.classList.remove("open");
+
+            });
+
+            if (!isOpen) {
+
+                details[index].classList.add("open");
+
+            }
+
+        });
+
+    });
+
+    document.addEventListener("click", (event) => {
+
+        if (!event.target.closest(".hof-player") &&
+            !event.target.closest(".hof-details")) {
+
+            details.forEach(detail => {
+
+                detail.classList.remove("open");
+
+            });
+
+        }
 
     });
 

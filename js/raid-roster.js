@@ -22,10 +22,15 @@ const ROSTER_CLASS_COLORS = {
 
 const RANK_COLORS = {
 
-    Offi: "#3b82f6",
-    Raider: "#22c55e",
-    Trial: "#f59e0b",
-    Member: "#eab308"
+    Officer: "rgb(52, 152, 219)",
+
+    Raider: "rgb(46, 204, 113)",
+
+    "Member | Springer": "rgb(26, 116, 63)",
+
+    "Alt | Reroll": "rgb(132, 86, 156)",
+
+    Trial: "rgb(241, 196, 15)"
 
 };
 

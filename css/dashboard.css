@@ -1778,6 +1778,221 @@
 }
 
 /* ===================================================
+   Hall of Fame Details
+=================================================== */
+
+.hof-details {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+        max-height .3s ease,
+        opacity .25s ease,
+        margin .25s ease;
+
+    margin: -10px 0 12px;
+
+    padding: 0 20px;
+
+}
+
+.hof-details.open {
+
+    max-height: 500px;
+
+    opacity: 1;
+
+    margin: 0 0 18px;
+
+}
+
+.hof-details-content {
+
+    background: linear-gradient(180deg, #141922, #10151d);
+
+    border: 1px solid rgba(212,175,55,.20);
+
+    border-radius: 12px;
+
+    padding: 18px;
+
+}
+
+.hof-detail-section {
+
+    margin: 14px 0;
+
+}
+
+.hof-run-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    flex: 1;
+
+}
+
+.hof-detail-title {
+
+    color: #d4af37;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+.hof-detail-run {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 8px 0;
+
+    color: #d8dde5;
+
+    gap: 20px;
+
+}
+
+.hof-detail-run strong {
+
+    color: #ffffff;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    min-width: 70px;
+
+    text-align: right;
+
+}
+
+.hof-dungeon-small {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 6px;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+
+}
+
+.hof-dungeon-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 6px;
+
+    object-fit: cover;
+
+    flex-shrink: 0;
+
+}
+
+.hof-last-run-date {
+
+    color: #9ea7b3;
+
+    font-size: 15px;
+
+    margin-top: 4px;
+
+}
+
+/* ===================================================
+   Character Header
+=================================================== */
+
+.hof-character {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+}
+
+.hof-character-image {
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 12px;
+
+    border: 2px solid #d4af37;
+
+    flex-shrink: 0;
+
+}
+
+.hof-character-name {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #d4af37;
+
+}
+
+.hof-character-spec {
+
+    margin-top: 6px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+}
+
+.hof-character-race {
+
+    margin-top: 4px;
+
+    color: #aab4c2;
+
+    font-size: 15px;
+
+}
+
+.hof-more-details {
+
+    margin-top: 10px;
+
+    color: #d4af37;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: .5px;
+
+}
+
+/* ===================================================
    Hall of Fame Hover Effekt
 =================================================== */
 

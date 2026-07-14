@@ -37,23 +37,23 @@ export default async function handler(req, res) {
         /* ===================================================
            Cache
         =================================================== */
-
-        const cached = await getCache(
-
-            "cache:mythic-hof"
-
-        );
-
-        if (cached) {
-
-            return res.status(200).json(
-
-                cached.data
-
-            );
-
-        }
-
+        
+                const cached = await getCache(
+        
+                    "cache:mythic-hof"
+        
+                );
+        
+                if (cached) {
+        
+                    return res.status(200).json(
+        
+                        cached.data
+        
+                    );
+        
+                }
+        
         /* ===================================================
    Hall of Fame Historie
 =================================================== */
@@ -236,7 +236,7 @@ export default async function handler(req, res) {
 
                 const response = await fetch(
 
-                    `https://raider.io/api/v1/characters/profile?region=eu&realm=${player.realm}&name=${encodeURIComponent(player.name)}&fields=mythic_plus_best_runs`
+                    `https://raider.io/api/v1/characters/profile?region=eu&realm=${player.realm}&name=${encodeURIComponent(player.name)}&fields=mythic_plus_best_runs,mythic_plus_recent_runs`
 
                 );
 
@@ -248,15 +248,76 @@ export default async function handler(req, res) {
 
                 const profile = await response.json();
 
-                const bestRun = profile.mythic_plus_best_runs?.[0];
+                player.thumbnailUrl = profile.thumbnail_url || "";
+
+                player.race = profile.race || "";
+
+                player.faction = profile.faction || "";
+
+                player.gender = profile.gender || "";
+
+                player.activeSpec = profile.active_spec_name || "";
+
+                player.activeRole = profile.active_spec_role || "";
+
+                /* ===================================================
+                   Bester Run
+                =================================================== */
+
+                const bestRuns = profile.mythic_plus_best_runs || [];
+
+                const bestRun = bestRuns[0];
 
                 player.bestKey =
-
                     bestRun?.mythic_level || "-";
 
                 player.bestDungeon =
-
                     bestRun?.dungeon || "-";
+
+                player.bestScore =
+                    Number(bestRun?.score || 0);
+
+                player.bestDungeonBackground =
+                    bestRun?.background_image_url || "";
+
+                player.bestDungeons = bestRuns
+                    .slice(0, 3)
+                    .map(run => ({
+
+                        key: run.mythic_level,
+
+                        dungeon: run.dungeon,
+
+                        score: Number(run.score || 0),
+
+                        icon: run.icon_url
+
+                    }));
+
+                /* ===================================================
+                   Letzter Run
+                =================================================== */
+
+                const recentRun =
+                    profile.mythic_plus_recent_runs?.[0];
+
+                player.recentRun = recentRun
+                    ? {
+
+                        key: recentRun.mythic_level,
+
+                        dungeon: recentRun.dungeon,
+
+                        score: recentRun.score,
+
+                        icon: recentRun.icon_url,
+
+                        completed: new Date(
+                            recentRun.completed_at
+                        ).toLocaleDateString("de-DE")
+
+                    }
+                    : null;
 
             }
 
@@ -265,6 +326,14 @@ export default async function handler(req, res) {
                 player.bestKey = "-";
 
                 player.bestDungeon = "-";
+
+                player.bestScore = 0;
+
+                player.bestDungeonBackground = "";
+
+                player.bestDungeons = [];
+
+                player.recentRun = null;
 
             }
 
@@ -293,17 +362,17 @@ export default async function handler(req, res) {
         /* ===================================================
            Cache
         =================================================== */
-
-        await setCache(
-
-            "cache:mythic-hof",
-
-            result,
-
-            60 * 60 * 24
-
-        );
-
+        
+                await setCache(
+        
+                    "cache:mythic-hof",
+        
+                    result,
+        
+                    60
+        
+                );
+        
         return res.status(200).json(result);
 
     }
