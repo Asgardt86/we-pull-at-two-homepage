@@ -38,19 +38,19 @@ export default async function handler(req, res) {
            Cache
         =================================================== */
 
-        const cached = await getCache("cache:mythic-hof");
+        const cached = await getCache(
+
+            "cache:mythic-hof"
+
+        );
 
         if (cached) {
 
-            return res.status(200).json({
+            return res.status(200).json(
 
-                source: "CACHE",
+                cached.data
 
-                updated: cached.updated,
-
-                ...cached.data
-
-            });
+            );
 
         }
 
@@ -346,7 +346,6 @@ export default async function handler(req, res) {
             players: topPlayers
 
         };
-        return res.status(200).json(result);
 
         /* ===================================================
    Hall of Fame Historie speichern
@@ -370,17 +369,15 @@ export default async function handler(req, res) {
 
             result,
 
-            10
+            60 * 60
 
         );
 
-        return res.status(200).json({
+        return res.status(200).json(
 
-            source: "LIVE",
+            result
 
-            ...result
-
-        });
+        );
 
     }
 
