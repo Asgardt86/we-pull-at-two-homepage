@@ -161,7 +161,6 @@ export default async function handler(req, res) {
         /* ===================================================
            Countdown
         =================================================== */
-
         const diffMs = nextRaid.dateTime - now;
 
         const days =

@@ -149,7 +149,7 @@ async function loadNextRaid() {
             "next-raid-countdown"
         ).textContent =
 
-            `${data.countdown.days} Tage ${data.countdown.hours} Stunden`;
+            `${data.countdown.days} Tage ${data.countdown.hours} Stunden ${data.countdown.minutes} Minuten`;
 
         document.getElementById(
             "next-raid-signups"
