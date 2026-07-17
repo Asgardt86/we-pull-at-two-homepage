@@ -15,63 +15,101 @@
 
 <body>
 
+    <div id="login-screen">
+
+        <div class="login-box">
+
+            <h2>Administrator</h2>
+
+            <p>
+
+                Bitte Passwort eingeben
+
+            </p>
+
+            <input id="login-password" type="password" placeholder="Passwort">
+
+            <button id="login-button">
+
+                Anmelden
+
+            </button>
+
+            <div id="login-error"></div>
+
+        </div>
+
+    </div>
+
     <div class="container">
 
         <header>
 
-            <h1>Administrator</h1>
+            <div class="header-top">
 
-            <p>
-                We Pull at Two – Systemübersicht
-            </p>
+                <div>
+
+                    <h1>Administrator</h1>
+
+                    <p>
+
+                        We Pull at Two – Systemübersicht
+
+                    </p>
+
+                </div>
+
+                <button id="logout-button" onclick="logout()">
+
+                    Logout
+
+                </button>
+
+            </div>
 
         </header>
 
-        <main class="card-grid">
+        <!-- APIs -->
 
-            <!-- APIs -->
+        <section class="card">
 
-            <section class="card" id="card-apis">
+            <h2>APIs</h2>
 
-                <h2>APIs</h2>
+            <div id="apis-content">
 
-                <div id="apis-content">
+                Wird geladen...
 
-                    Wird geladen...
+            </div>
 
-                </div>
+        </section>
 
-            </section>
+        <!-- Cache -->
 
-            <!-- Cache -->
+        <section class="card">
 
-            <section class="card" id="card-cache">
+            <h2>Cache</h2>
 
-                <h2>Cache</h2>
+            <div id="cache-content">
 
-                <div id="cache-content">
+                Wird geladen...
 
-                    Wird geladen...
+            </div>
 
-                </div>
+        </section>
 
-            </section>
+        <!-- System -->
 
-            <!-- System -->
+        <section class="card">
 
-            <section class="card" id="card-system">
+            <h2>System</h2>
 
-                <h2>System</h2>
+            <div id="system-content">
 
-                <div id="system-content">
+                Wird geladen...
 
-                    Wird geladen...
+            </div>
 
-                </div>
-
-            </section>
-
-        </main>
+        </section>
 
     </div>
 

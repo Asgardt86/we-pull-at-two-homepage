@@ -26,6 +26,8 @@ import {
 
     from "../lib/blizzard.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 /* ===================================================
    Mythic+ Hall of Fame
 =================================================== */
@@ -40,7 +42,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:mythic-hof"
+            CACHE.mythicHallOfFame.cacheKey
 
         );
 
@@ -62,7 +64,7 @@ export default async function handler(req, res) {
 
             await loadHistory(
 
-                "mythic-hof"
+                CACHE.mythicHallOfFame.historyKey
 
             );
 
@@ -353,7 +355,7 @@ export default async function handler(req, res) {
 
         await saveHistory(
 
-            "mythic-hof",
+            CACHE.mythicHallOfFame.historyKey,
 
             result
 
@@ -365,11 +367,11 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:mythic-hof",
+            CACHE.mythicHallOfFame.cacheKey,
 
             result,
 
-            60 * 60
+            CACHE.mythicHallOfFame.ttl
 
         );
 

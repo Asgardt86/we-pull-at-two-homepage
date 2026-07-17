@@ -16,6 +16,8 @@ import {
 
     from "../lib/blizzard.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 const CLASS_MAP = {
 
     1: { name: "Krieger", icon: "warrior", color: "#C79C6E" },
@@ -48,7 +50,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:classes"
+            CACHE.classes.cacheKey
 
         );
 
@@ -191,11 +193,11 @@ Gilden-Roster
 
         await setCache(
 
-            "cache:classes",
+            CACHE.classes.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.classes.ttl
 
         );
 

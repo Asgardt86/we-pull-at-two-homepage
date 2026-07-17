@@ -4,7 +4,9 @@ import {
 
     getCache,
 
-    setCache
+    setCache,
+
+    deleteCache
 
 }
 
@@ -18,6 +20,8 @@ import {
 
     from "../lib/blizzard.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 export default async function handler(req, res) {
 
     try {
@@ -27,12 +31,61 @@ export default async function handler(req, res) {
         const adminPassword = req.query.password;
 
         /* ===================================================
+   Admin Aktionen
+=================================================== */
+
+        const action = req.query.action;
+        console.log("QUERY:", req.query);
+        console.log("ACTION:", action);
+        console.log("CACHE:", req.query.cache);
+
+        if (isAdmin && action === "clear-cache") {
+
+            if (adminPassword !== process.env.ADMIN_PASSWORD) {
+
+                return res.status(401).json({
+
+                    error: "Nicht autorisiert"
+
+                });
+
+            }
+
+            const cacheId = req.query.cache;
+
+            const api = Object.values(CACHE).find(
+
+                entry => entry.cacheKey === `cache:${cacheId}`
+
+            );
+
+            if (!api) {
+
+                return res.status(404).json({
+
+                    error: "Cache nicht gefunden"
+
+                });
+
+            }
+
+            await deleteCache(api.cacheKey);
+
+            return res.status(200).json({
+
+                success: true
+
+            });
+
+        }
+
+        /* ===================================================
            Cache
         =================================================== */
 
         const cached = await getCache(
 
-            "cache:homepage"
+            CACHE.homepage.cacheKey
 
         );
 
@@ -331,11 +384,11 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:homepage",
+            CACHE.homepage.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.homepage.ttl
 
         );
 

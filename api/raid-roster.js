@@ -16,6 +16,8 @@ import {
 
     from "../lib/blizzard.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 function realmToSlug(realm) {
 
     return realm
@@ -38,7 +40,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:raid-roster"
+            CACHE.raidRoster.cacheKey
 
         );
 
@@ -281,11 +283,11 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:raid-roster",
+            CACHE.raidRoster.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.raidRoster.ttl
 
         );
 

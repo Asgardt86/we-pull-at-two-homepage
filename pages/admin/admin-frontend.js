@@ -1,14 +1,77 @@
 /* ===================================================
-   Passwort
+   Login
 =================================================== */
 
-const password = prompt("Admin Passwort");
+let password =
+    sessionStorage.getItem("adminPassword");
 
-if (!password) {
+const loginScreen =
+    document.getElementById("login-screen");
 
-    document.body.innerHTML = "<h1>Kein Passwort eingegeben.</h1>";
+const container =
+    document.querySelector(".container");
 
-    throw new Error("Kein Passwort");
+const passwordInput =
+    document.getElementById("login-password");
+
+const loginButton =
+    document.getElementById("login-button");
+
+const loginError =
+    document.getElementById("login-error");
+
+if (password) {
+
+    showAdmin();
+
+}
+
+else {
+
+    loginScreen.style.display = "flex";
+
+    container.style.display = "none";
+
+    passwordInput.focus();
+
+}
+
+loginButton.addEventListener(
+
+    "click",
+
+    login
+
+);
+
+passwordInput.addEventListener(
+
+    "keydown",
+
+    event => {
+
+        if (event.key === "Enter") {
+
+            login();
+
+        }
+
+    }
+
+);
+
+async function login() {
+
+    password =
+        passwordInput.value.trim();
+
+    if (!password) {
+
+        return;
+
+    }
+
+    await loadAdmin();
 
 }
 
@@ -32,11 +95,35 @@ async function loadAdmin() {
 
         if (!data.admin?.authorized) {
 
-            document.body.innerHTML = "<h1>Zugriff verweigert</h1>";
+            loginError.textContent =
+
+                "Falsches Passwort.";
+
+            passwordInput.value = "";
+
+            passwordInput.focus();
+
+            sessionStorage.removeItem(
+
+                "adminPassword"
+
+            );
 
             return;
 
         }
+
+        sessionStorage.setItem(
+
+            "adminPassword",
+
+            password
+
+        );
+
+        loginError.textContent = "";
+
+        showAdmin();
 
         buildApis(data.admin.apis);
 
@@ -53,6 +140,14 @@ async function loadAdmin() {
         document.body.innerHTML = "<h1>Admin konnte nicht geladen werden.</h1>";
 
     }
+
+}
+
+function showAdmin() {
+
+    loginScreen.style.display = "none";
+
+    container.style.display = "block";
 
 }
 
@@ -104,57 +199,111 @@ function buildApis(apis) {
 
 function buildCache(cache) {
 
-    document.getElementById("cache-content").innerHTML = `
+    const html = cache.map(api => `
 
-        ${infoRow(
+        <div class="cache-card">
+
+            <h3>
+
+                ${api.name}
+
+            </h3>
+
+            ${infoRow(
 
         "Status",
 
-        cache.status === "HIT"
+        api.status === "HIT"
 
             ? "🟢 Cache aktiv"
 
-            : "🟡 Cache wird neu erstellt"
+            : "🟡 Wird erstellt"
 
     )}
 
-        ${infoRow(
+            ${infoRow(
 
         "Erstellt",
 
-        cache.updated
+        api.updated
 
-            ? formatDate(cache.updated)
+            ? formatDate(api.updated)
 
             : "-"
 
     )}
 
-        ${infoRow(
+            ${infoRow(
 
         "Alter",
 
-        formatDuration(cache.age)
+        formatDuration(api.age)
 
     )}
 
-        ${infoRow(
+            ${infoRow(
 
         "Läuft ab in",
 
-        formatDuration(cache.expiresIn)
+        formatDuration(api.expiresIn)
 
     )}
 
-        ${infoRow(
+            ${infoRow(
 
         "Cache-Time",
 
-        formatDuration(cache.cacheTime)
+        formatDuration(api.cacheTime)
 
     )}
 
-    `;
+            ${infoRow(
+
+        "History",
+
+        api.historyKey ?? "Keine"
+
+    )}
+
+<div class="cache-actions">
+
+    <button
+
+        class="cache-button"
+
+        ${api.status !== "HIT" ? "disabled" : ""}
+
+        onclick="clearCache('${api.cacheKey.replace("cache:", "")}')"
+
+    >
+
+        Cache leeren
+
+    </button>
+
+<button
+
+    class="cache-button"
+
+    onclick="rebuildCache('${api.cacheKey.replace("cache:", "")}','${api.endpoint}')"
+
+>
+
+    Neu aufbauen
+
+</button>
+
+</div>
+
+        </div>
+
+    `).join("");
+
+    document.getElementById(
+
+        "cache-content"
+
+    ).innerHTML = html;
 
 }
 
@@ -341,5 +490,125 @@ function formatMemory(bytes) {
         1024
 
     ).toFixed(1) + " MB";
+
+}
+
+/* ===================================================
+   Cache löschen
+=================================================== */
+
+async function clearCache(cache) {
+
+    if (
+
+        !confirm(
+
+            `Cache "${cache}" wirklich löschen?`
+
+        )
+
+    ) {
+
+        return;
+
+    }
+
+    try {
+
+        const response = await fetch(
+
+            `/api/homepage?admin=1&password=${encodeURIComponent(password)}&action=clear-cache&cache=${cache}`
+
+        );
+
+        const result = await response.json();
+
+        console.log(result);
+
+        if (!response.ok || !result.success) {
+
+            alert(JSON.stringify(result));
+
+            return;
+
+        }
+
+        await loadAdmin();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert(
+
+            "Fehler beim Löschen."
+
+        );
+
+    }
+
+}
+
+/* ===================================================
+   Cache neu aufbauen
+=================================================== */
+
+async function rebuildCache(cache, endpoint) {
+
+    try {
+
+        const clearResponse = await fetch(
+
+            `/api/homepage?admin=1&password=${encodeURIComponent(password)}&action=clear-cache&cache=${cache}`
+
+        );
+
+        const clearResult = await clearResponse.json();
+
+        if (!clearResponse.ok || !clearResult.success) {
+
+            alert(
+
+                clearResult.error ||
+
+                "Cache konnte nicht gelöscht werden."
+
+            );
+
+            return;
+
+        }
+
+        await fetch(endpoint);
+
+        await loadAdmin();
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        alert("Cache konnte nicht aufgebaut werden.");
+
+    }
+
+}
+
+/* ===================================================
+   Logout
+=================================================== */
+
+function logout() {
+
+    sessionStorage.removeItem(
+
+        "adminPassword"
+
+    );
+
+    location.reload();
 
 }

@@ -8,6 +8,8 @@ import {
 
     from "../lib/cache.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 /* ===================================================
    Nächster Raid
 =================================================== */
@@ -22,7 +24,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:next-raid"
+            CACHE.nextRaid.cacheKey
 
         );
 
@@ -235,11 +237,11 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:next-raid",
+            CACHE.nextRaid.cacheKey,
 
             result,
 
-            60 * 5
+            CACHE.nextRaid.ttl
 
         );
 

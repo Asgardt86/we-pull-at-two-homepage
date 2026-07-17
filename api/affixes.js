@@ -8,6 +8,8 @@ import {
 
     from "../lib/cache.js";
 
+
+import { CACHE } from "../lib/cache-times.js";
 /* ===================================================
    Mythic+ Affixe
 =================================================== */
@@ -22,7 +24,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:affixes"
+            CACHE.affixes.cacheKey
 
         );
 
@@ -67,11 +69,11 @@ export default async function handler(req, res) {
 
             await setCache(
 
-                "cache:affixes",
+                CACHE.affixes.cacheKey,
 
                 result,
 
-                60 * 60 * 24
+                CACHE.affixes.ttl
 
             );
 
@@ -107,11 +109,11 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:affixes",
+            CACHE.affixes.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.affixes.ttl
 
         );
 

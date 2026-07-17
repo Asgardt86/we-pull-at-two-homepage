@@ -16,6 +16,8 @@ import {
 
     from "../lib/warcraftlogs.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 /* ===================================================
    Live Raid Tracker
 =================================================== */
@@ -30,7 +32,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:live-raid"
+            CACHE.liveRaid.cacheKey
 
         );
 
@@ -122,11 +124,11 @@ export default async function handler(req, res) {
 
             await setCache(
 
-                "cache:live-raid",
+                CACHE.liveRaid.cacheKey,
 
                 result,
 
-                60
+                CACHE.liveRaid.ttl
 
             );
 
@@ -280,11 +282,11 @@ export default async function handler(req, res) {
 
             await setCache(
 
-                "cache:live-raid",
+                CACHE.liveRaid.cacheKey,
 
                 result,
 
-                60
+                CACHE.liveRaid.ttl
 
             );
 
@@ -336,11 +338,15 @@ export default async function handler(req, res) {
 
             60;
 
+        const SUMMARY_DURATION_MINUTES =
+
+            3 * 24 * 60;
+
         const summaryActive =
 
             !raidStillActive &&
 
-            reportAgeMinutes < 1200;
+            reportAgeMinutes < SUMMARY_DURATION_MINUTES;
 
         /* ===================================================
            Schwierigkeit
@@ -519,11 +525,11 @@ Boss Pulls
 
             await setCache(
 
-                "cache:live-raid",
+                CACHE.liveRaid.cacheKey,
 
                 result,
 
-                60
+                CACHE.liveRaid.ttl
 
             );
 

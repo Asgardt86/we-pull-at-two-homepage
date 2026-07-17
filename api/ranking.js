@@ -8,6 +8,8 @@ import {
 
     from "../lib/cache.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 /* ===================================================
    Raid Ranking
 =================================================== */
@@ -22,7 +24,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:raid-ranking"
+            CACHE.ranking.cacheKey
 
         );
 
@@ -118,11 +120,11 @@ export default async function handler(req, res) {
 
             await setCache(
 
-                "cache:raid-ranking",
+                CACHE.ranking.cacheKey,
 
                 result,
 
-                60 * 60 * 24
+                CACHE.ranking.ttl
 
             );
 
@@ -142,11 +144,11 @@ export default async function handler(req, res) {
 
         await setCache(
 
-            "cache:raid-ranking",
+            CACHE.ranking.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.ranking.ttl
 
         );
 

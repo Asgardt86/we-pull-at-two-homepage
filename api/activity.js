@@ -24,6 +24,8 @@ import {
 
     from "../lib/cache.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 const CLASS_COLORS = {
 
     1: "#C79C6E",
@@ -71,7 +73,11 @@ export default async function handler(req, res) {
    Cache
 =================================================== */
 
-        const cached = await getCache("cache:activity");
+        const cached = await getCache(
+
+            CACHE.activity.cacheKey
+
+        );
 
         /* ===================================================
    Cache vorhanden
@@ -91,7 +97,7 @@ export default async function handler(req, res) {
 
             await loadHistory(
 
-                "activity"
+                CACHE.activity.historyKey
 
             );
 
@@ -283,7 +289,7 @@ Aktivitäten filtern
 
         await saveHistory(
 
-            "activity",
+            CACHE.activity.historyKey,
 
             mergedActivities
 
@@ -297,11 +303,11 @@ Aktivitäten filtern
 
         await setCache(
 
-            "cache:activity",
+            CACHE.activity.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.activity.ttl
 
         );
 

@@ -28,6 +28,8 @@ import {
 
     from "../lib/blizzard.js";
 
+import { CACHE } from "../lib/cache-times.js";
+
 /* ===================================================
    Gilden-Erfolge
 =================================================== */
@@ -49,7 +51,7 @@ export default async function handler(req, res) {
 
         const cached = await getCache(
 
-            "cache:guild-achievements"
+            CACHE.guildAchievements.cacheKey
 
         );
 
@@ -69,11 +71,9 @@ export default async function handler(req, res) {
 
         const history = await loadHistory(
 
-            "guild-achievements"
+            CACHE.guildAchievements.historyKey
 
         );
-
-
 
         /* ===================================================
     Blizzard Access Token
@@ -283,7 +283,7 @@ Achievement-Details laden
 
         await saveHistory(
 
-            "guild-achievements",
+            CACHE.guildAchievements.historyKey,
 
             mergedAchievements
 
@@ -301,11 +301,11 @@ Achievement-Details laden
 
         await setCache(
 
-            "cache:guild-achievements",
+            CACHE.guildAchievements.cacheKey,
 
             result,
 
-            60 * 60 * 24
+            CACHE.guildAchievements.ttl
 
         );
 
