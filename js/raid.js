@@ -8,17 +8,17 @@ async function loadRaidProgress() {
 
         const response = await fetch("/api/raid");
 
-        const data =
+        raidData =
             await response.json();
 
         renderRaidHistory(
 
-            data.raidHistory || []
+            raidData.raidHistory || []
 
         );
 
-        const raid = data.raids.find(
-            r => r.slug === data.defaultRaid
+        const raid = raidData.raids.find(
+            r => r.slug === raidData.defaultRaid
         );
 
         updateDifficulty("mythic", raid.mythic);
@@ -76,6 +76,8 @@ const timelineSection =
     document.querySelector(".raid-timeline");
 
 timelineSection.hidden = true;
+
+let raidData = null;
 
 let bossData = null;
 
@@ -146,11 +148,9 @@ async function loadBossStatus() {
 
     try {
 
-        const response =
-            await fetch("/api/raid-bosses");
+        if (!raidData) return;
 
-        bossData =
-            await response.json();
+        bossData = raidData.bossStatus;
 
         renderBossList(
             "mythic",
@@ -478,5 +478,10 @@ function renderRaidHistory(history) {
    Initialisierung
 =================================================== */
 
-loadRaidProgress();
-loadBossStatus();
+(async () => {
+
+    await loadRaidProgress();
+
+    loadBossStatus();
+
+})();

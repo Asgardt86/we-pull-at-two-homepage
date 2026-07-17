@@ -529,7 +529,9 @@ Aktuelle Season ermitteln
 
             currentSeason,
 
-            raidHistory
+            raidHistory,
+
+            bossStatus
 
         };
 

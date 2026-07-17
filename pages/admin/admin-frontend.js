@@ -159,34 +159,22 @@ function buildApis(apis) {
 
     document.getElementById("apis-content").innerHTML = `
 
-        ${statusRow(
-
+        ${apiRow(
         "🌀 Blizzard",
-
         apis.blizzard.online,
-
-        apis.blizzard.responseTime + " ms"
-
+        apis.blizzard.responseTime
     )}
 
-        ${statusRow(
-
+        ${apiRow(
         "📊 WoWAudit",
-
         apis.wowaudit.online,
-
-        apis.wowaudit.responseTime + " ms"
-
+        apis.wowaudit.responseTime
     )}
 
-        ${statusRow(
-
+        ${apiRow(
         "⚔ Raider.IO",
-
         apis.raiderio.online,
-
-        apis.raiderio.responseTime + " ms"
-
+        apis.raiderio.responseTime
     )}
 
     `;
@@ -315,7 +303,7 @@ function buildSystem(system) {
 
     document.getElementById("system-content").innerHTML = `
 
-        ${infoRow(
+        ${systemRow(
 
         "Node.js Version",
 
@@ -323,7 +311,7 @@ function buildSystem(system) {
 
     )}
 
-        ${infoRow(
+        ${systemRow(
 
         "Speicherverbrauch",
 
@@ -331,7 +319,7 @@ function buildSystem(system) {
 
     )}
 
-        ${infoRow(
+        ${systemRow(
 
         "Serverzeit",
 
@@ -339,13 +327,75 @@ function buildSystem(system) {
 
     )}
 
-        ${infoRow(
+        ${systemRow(
 
         "Uptime",
 
         formatDuration(system.uptime)
 
     )}
+
+    `;
+
+}
+
+/* ===================================================
+   API Zeile
+=================================================== */
+
+function apiRow(name, online, responseTime) {
+
+    return `
+
+        <div class="api-row">
+
+            <span class="api-name">
+
+                ${name}
+
+            </span>
+
+            <span class="${online ? "online" : "offline"}">
+
+                ${online ? "🟢 Online" : "🔴 Offline"}
+
+            </span>
+
+            <span class="api-time">
+
+                ${responseTime} ms
+
+            </span>
+
+        </div>
+
+    `;
+
+}
+
+/* ===================================================
+   System Zeile
+=================================================== */
+
+function systemRow(label, value) {
+
+    return `
+
+        <div class="system-row">
+
+            <span class="system-label">
+
+                ${label}
+
+            </span>
+
+            <span class="system-value">
+
+                ${value}
+
+            </span>
+
+        </div>
 
     `;
 

@@ -176,13 +176,13 @@ header p {
    Inhalte
 =================================================== */
 
-.card div {
+.card > div {
 
-    display: flex;
+    display:flex;
 
-    flex-direction: column;
+    flex-direction:column;
 
-    gap: 8px;
+    gap:8px;
 
 }
 
@@ -225,6 +225,51 @@ header p {
     font-weight: 600;
 
     text-align: right;
+
+}
+
+/* ===================================================
+   API / System
+=================================================== */
+
+.api-row,
+.system-row{
+
+    display:grid;
+
+    align-items:center;
+
+    padding:8px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+
+.api-row{
+
+    grid-template-columns:240px 170px 100px;
+
+}
+
+.system-row{
+
+    grid-template-columns:220px 1fr;
+
+}
+
+.api-name,
+.system-label{
+
+    color:#b5bcc7;
+
+}
+
+.api-time,
+.system-value{
+
+    color:white;
+
+    font-weight:600;
 
 }
 
@@ -364,7 +409,7 @@ header p {
 
     font-weight:700;
 
-    font-size:.9rem
+    font-size:.9rem;
 
     padding:6px 12px;
 
