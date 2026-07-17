@@ -1,3 +1,5 @@
+import { buildAdminData } from "../lib/admin-lib.js";
+
 import {
 
     getCache,
@@ -19,6 +21,10 @@ import {
 export default async function handler(req, res) {
 
     try {
+
+        const isAdmin = req.query.admin === "1";
+
+        const adminPassword = req.query.password;
 
         /* ===================================================
            Cache
@@ -59,6 +65,16 @@ export default async function handler(req, res) {
             catch {
 
                 result.discord = null;
+
+            }
+
+            if (isAdmin) {
+
+                result.admin = await buildAdminData({
+
+                    password: adminPassword
+
+                });
 
             }
 
@@ -358,6 +374,16 @@ export default async function handler(req, res) {
         catch {
 
             result.discord = null;
+
+        }
+
+        if (isAdmin) {
+
+            result.admin = await buildAdminData({
+
+                password: adminPassword
+
+            });
 
         }
 
