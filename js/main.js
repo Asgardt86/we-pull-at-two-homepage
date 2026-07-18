@@ -292,10 +292,42 @@ if (teamSection) {
     teamSection.addEventListener("toggle", () => {
 
         summary.textContent = teamSection.open
-
             ? "Gildenleitung ausblenden"
-
             : "Gildenleitung anzeigen";
+
+    });
+
+    const leadershipAccordions = document.querySelectorAll(
+        ".team-section .accordion"
+    );
+
+    leadershipAccordions.forEach(current => {
+
+        current.addEventListener("toggle", () => {
+
+            if (!current.open) return;
+
+            leadershipAccordions.forEach(other => {
+
+                if (other !== current) {
+
+                    other.open = false;
+
+                }
+
+            });
+
+        });
+
+    });
+
+    document.addEventListener("click", (event) => {
+
+        if (!teamSection.open) return;
+
+        if (teamSection.contains(event.target)) return;
+
+        teamSection.open = false;
 
     });
 
