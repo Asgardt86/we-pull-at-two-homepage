@@ -8,10 +8,12 @@ import {
 
     from "../lib/history.js";
 
-let cache = {
-    data: null,
-    timestamp: 0
-};
+import {
+    getCache,
+    setCache
+} from "../lib/cache.js";
+
+import { CACHE } from "../lib/cache-times.js";
 
 import BOSSES from "../lib/raid-bosses.js";
 import RAID_TIERS from "../lib/raid-tiers.js";
@@ -23,10 +25,6 @@ import {
 }
 
     from "../lib/raid-status.js";
-
-const CACHE_TIME = 30 * 60 * 1000;
-
-
 
 /* ===================================================
    Bereits archiviert?
@@ -58,15 +56,18 @@ export default async function handler(req, res) {
 
     try {
 
-        if (
-            cache.data &&
-            Date.now() - cache.timestamp < CACHE_TIME
-        ) {
-            return res.status(200).json(cache.data);
+        const cached = await getCache(
+            CACHE.raid.cacheKey
+        );
+
+        if (cached) {
+            return res.status(200).json(
+                cached.data
+            );
         }
 
         const response = await fetch(
-            "https://raider.io/api/v1/guilds/profile?region=eu&realm=blackrock&name=We%20Pull%20at%20Two&fields=raid_progression"
+            "https://raider.io/api/v1/guilds/profile?region=eu&realm=blackrock&name=We%20Pull%20at%20Two&fields=raid_progression,raid_rankings"
         );
 
         const data = await response.json();
@@ -166,6 +167,60 @@ export default async function handler(req, res) {
         }
 
         const progression = data.raid_progression || {};
+        const rankings = data.raid_rankings || {};
+
+        /* ===================================================
+           Aktive Raids
+        =================================================== */
+
+        const rankingRaids = Object.entries(rankings)
+
+            .map(([slug, ranking]) => {
+
+                const progress =
+                    progression[slug] || {};
+
+                return {
+
+                    slug,
+
+                    name: slug,
+
+                    mythic:
+
+                        progress.mythic_bosses_killed > 0
+
+                            ? ranking.mythic
+
+                            : null,
+
+                    heroic:
+
+                        progress.heroic_bosses_killed > 0
+
+                            ? ranking.heroic
+
+                            : null,
+
+                    normal:
+
+                        progress.normal_bosses_killed > 0
+
+                            ? ranking.normal
+
+                            : null
+
+                };
+
+            })
+
+            .filter(raid =>
+
+                raid.mythic ||
+                raid.heroic ||
+                raid.normal
+
+            );
 
         const bossStatus =
 
@@ -531,17 +586,23 @@ Aktuelle Season ermitteln
 
             raidHistory,
 
-            bossStatus
+            bossStatus,
+
+            ranking: {
+
+                empty: rankingRaids.length === 0,
+
+                raids: rankingRaids
+
+            }
 
         };
 
-        cache = {
-
-            data: result,
-
-            timestamp: Date.now()
-
-        };
+        await setCache(
+            CACHE.raid.cacheKey,
+            result,
+            CACHE.raid.ttl
+        );
 
         res.status(200).json(result);
 

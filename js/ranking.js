@@ -7,12 +7,12 @@ async function loadRanking() {
     try {
 
         const response =
-            await fetch("/api/ranking");
+            await fetch("/api/raid");
 
         const data =
             await response.json();
 
-        if (data.empty) {
+        if (data.ranking.empty) {
 
             document.getElementById("ranking").innerHTML = `
 
@@ -30,7 +30,7 @@ async function loadRanking() {
 
         let html = "";
 
-        data.raids.forEach(raid => {
+        data.ranking.raids.forEach(raid => {
 
             const raidName = raid.slug;
 
