@@ -340,7 +340,7 @@ export default async function handler(req, res) {
 
         const SUMMARY_DURATION_MINUTES =
 
-            3 * 24 * 60;
+            2 * 24 * 60;
 
         const summaryActive =
 
