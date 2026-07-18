@@ -184,7 +184,15 @@ export default async function handler(req, res) {
 
                     slug,
 
-                    name: slug,
+                    name:
+
+                        slug === "tier-mn-1"
+
+                            ? RAID_TIERS[slug].seasonName
+
+                            : RAID_TIERS[slug]?.raids?.[0] ||
+
+                            slug,
 
                     mythic:
 
@@ -273,15 +281,23 @@ Aktuelle Season ermitteln
         }
 
         /* ===================================================
-           Raider.IO Raid-Progress
-        =================================================== */
+   Raider.IO Raid-Progress
+=================================================== */
 
         const raids = Object.entries(progression)
             .map(([slug, raidData]) => ({
 
                 slug,
 
-                name: slug,
+                name:
+
+                    slug === "tier-mn-1"
+
+                        ? RAID_TIERS[slug].seasonName
+
+                        : RAID_TIERS[slug]?.raids?.[0] ||
+
+                        slug,
 
                 mythic: {
 
@@ -487,8 +503,8 @@ Aktuelle Season ermitteln
         );
 
         /* ===================================================
-   Nachfolgende Season aktiv?
-=================================================== */
+    Nachfolgende Season aktiv?
+    =================================================== */
 
         const nextSeasonActive =
 

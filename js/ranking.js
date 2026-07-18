@@ -32,7 +32,7 @@ async function loadRanking() {
 
         data.ranking.raids.forEach(raid => {
 
-            const raidName = raid.slug;
+            const raidName = raid.name;
 
             html += `
 
