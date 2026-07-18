@@ -48,7 +48,7 @@ function createRaidFrame(player) {
 
     class="raid-frame"
 
-    href="https://worldofwarcraft.blizzard.com/de-de/character/eu/${player.realmSlug}/${player.characterSlug}"
+    href="https://raider.io/characters/eu/${player.realmSlug}/${player.characterSlug}"
 
     target="_blank"
 
@@ -151,7 +151,7 @@ function createRaidFrame(player) {
 
     <div class="tooltip-link">
 
-        ↗ Blizzard Charakterprofil öffnen
+        ↗ Raider.io Charakterprofil öffnen
 
     </div>
 
