@@ -18,21 +18,15 @@
 
 .banner-icons {
 
-    position: absolute;
-
-    top: 25px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
     display: flex;
+
+    justify-content: center;
 
     align-items: center;
 
     gap: 28px;
 
-    z-index: 10;
+    margin-bottom: 18px;
 
 }
 
