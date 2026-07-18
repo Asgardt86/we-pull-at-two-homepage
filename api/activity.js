@@ -222,7 +222,10 @@ Aktivitäten filtern
                             entry.character_achievement.achievement.name,
 
                         timestamp:
-                            entry.timestamp
+                            entry.timestamp,
+
+                        archivedAt:
+                            new Date().toISOString()
 
                     };
 
@@ -255,7 +258,10 @@ Aktivitäten filtern
                             entry.player_level_up.level,
 
                         timestamp:
-                            entry.timestamp
+                            entry.timestamp,
+
+                        archivedAt:
+                            new Date().toISOString()
 
                     };
 

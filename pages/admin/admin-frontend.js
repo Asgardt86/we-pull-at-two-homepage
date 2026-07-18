@@ -245,11 +245,23 @@ function buildCache(cache) {
 
     )}
 
-            ${infoRow(
+${infoRow(
 
         "History",
 
         api.historyKey ?? "Keine"
+
+    )}
+
+${infoRow(
+
+        "Archiviert",
+
+        api.lastArchived
+
+            ? formatDate(api.lastArchived)
+
+            : "-"
 
     )}
 

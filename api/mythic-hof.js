@@ -345,7 +345,10 @@ export default async function handler(req, res) {
 
             status: "active",
 
-            players: topPlayers
+            players: topPlayers,
+
+            archivedAt:
+                new Date().toISOString()
 
         };
 

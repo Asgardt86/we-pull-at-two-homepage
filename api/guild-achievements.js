@@ -131,6 +131,10 @@ export default async function handler(req, res) {
         const activityData =
             await activityResponse.json();
 
+        const archivedAt =
+
+            new Date().toISOString();
+
         const achievements = [];
 
         /* ===================================================
@@ -247,7 +251,9 @@ Achievement-Details laden
                 category: detail.category?.name,
 
                 timestamp:
-                    achievement.completed_timestamp
+                    achievement.completed_timestamp,
+
+                archivedAt
 
             });
 
