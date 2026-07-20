@@ -1,0 +1,291 @@
+.raid-composition-page {
+
+    max-width: 1600px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+
+}
+
+.back-button {
+
+    display: inline-block;
+
+    margin-bottom: 30px;
+
+    color: #f1c40f;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: .2s;
+
+}
+
+.back-button:hover {
+
+    color: white;
+
+}
+
+.boss-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    margin-bottom: 35px;
+
+    padding: 20px 30px;
+
+    background: #1b1b1b;
+
+    border: 1px solid #444;
+
+    border-radius: 12px;
+
+}
+
+.boss-info h1 {
+
+    margin: 0;
+
+    font-size: 36px;
+
+    color: #f1c40f;
+
+}
+
+.boss-info p {
+
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+}
+
+#boss-difficulty.mythic {
+
+    color: #a335ee;
+
+}
+
+#boss-difficulty.heroic {
+
+    color: #ff8000;
+
+}
+
+#boss-difficulty.normal {
+
+    color: #1eff00;
+
+}
+
+.boss-stats {
+
+    margin-top: 28px;
+
+    display: grid;
+
+    gap: 10px;
+
+    max-width: 340px;
+
+}
+
+.boss-stats div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid #333;
+
+}
+
+.boss-stats span {
+
+    color: #bfbfbf;
+
+    width: 140px;
+
+    flex-shrink: 0;
+
+}
+
+.boss-stats strong {
+
+    color: white;
+
+    font-weight: 700;
+
+}
+
+#boss-image {
+
+    width: 220px;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    border: 2px solid #555;
+
+}
+
+section {
+
+    margin-bottom: 60px;
+
+}
+
+section h2 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    color: #f1c40f;
+
+    font-size: 24px;
+
+}
+
+.role-icon {
+
+    width: 30px;
+
+    height: 30px;
+
+    object-fit: contain;
+
+}
+
+.player-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+    gap: 18px;
+
+}
+
+.player-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 18px;
+
+    background: #1f1f1f;
+
+    border: 1px solid #444;
+
+    border-radius: 12px;
+
+    transition: .2s;
+
+}
+
+.player-card:hover {
+
+    border-color: #f1c40f;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 0 20px rgba(241,196,15,.18);
+
+}
+
+.player-avatar {
+
+    width: 84px;
+
+    height: 84px;
+
+    border-radius: 50%;
+
+    border: 2px solid #666;
+
+    flex-shrink: 0;
+
+}
+
+.player-info {
+
+    flex: 1;
+
+}
+
+.player-name {
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+
+}
+
+.player-spec {
+
+    color: #dddddd;
+
+    font-size: 15px;
+
+    margin-bottom: 4px;
+
+}
+
+.player-realm {
+
+    color: #8b8b8b;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+
+}
+
+.player-ilvl {
+
+    color: #f1c40f;
+
+    font-weight: bold;
+
+}
+
+@media (max-width:900px){
+
+    .boss-header{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}

@@ -43,6 +43,19 @@ async function loadGuildMonitor() {
                 : "BEST PULL";
 
             const card = document.createElement("div");
+            card.style.cursor = "pointer";
+
+            card.onclick = () => {
+
+                window.location.href =
+                    `/pages/raid-composition.html` +
+                    `?boss=${encodeURIComponent(boss.slug)}` +
+                    `&raid=${encodeURIComponent(boss.raid)}` +
+                    `&name=${encodeURIComponent(boss.boss)}` +
+                    `&difficulty=${encodeURIComponent(boss.difficulty)}` +
+                    `&image=${encodeURIComponent(boss.image)}`;
+
+            };
 
             card.className = `guild-monitor-card ${boss.lastPull.success ? "boss-killed" : "boss-progress"}`;
 

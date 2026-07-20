@@ -27,12 +27,26 @@
     overflow: hidden;
 
     transition: all .25s ease;
-
+    cursor: pointer;
+    transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .guild-monitor-card:hover {
 
-    transform: translateY(-4px);
+    transform: translateY(-6px) scale(1.02);
+
+    box-shadow: 0 0 26px rgba(212, 175, 55, 0.45);
+
+    border-color: #d4af37;
+
+}
+
+.guild-monitor-card:hover .guild-monitor-image img {
+
+    transform: scale(1.30);
 
 }
 
@@ -86,6 +100,8 @@
     object-position: center;
 
     display: block;
+
+    transition: transform .25s ease;
 
 }
 
