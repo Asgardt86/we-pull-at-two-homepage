@@ -1,3 +1,6 @@
+import { CACHE } from "../lib/cache-times.js";
+import { getCache, setCache } from "../lib/cache.js";
+
 const REGION = "eu";
 const REALM = "blackrock";
 const GUILD_NAME = "We Pull at Two";
@@ -70,6 +73,21 @@ async function getRaidComposition(
         throw new Error(
             "RAIDERIO_ACCESS_KEY fehlt."
         );
+
+    }
+
+    const cacheKey =
+        `${CACHE.raidComposition.cacheKey}` +
+        `:${raidSlug}` +
+        `:${difficulty}` +
+        `:${bossSlug}`;
+
+    const cached =
+        await getCache(cacheKey);
+
+    if (cached) {
+
+        return cached.data;
 
     }
 
@@ -167,7 +185,7 @@ async function getRaidComposition(
 
     });
 
-    return {
+    const result = {
 
         raid: {
 
@@ -224,6 +242,18 @@ async function getRaidComposition(
         roster
 
     };
+
+    await setCache(
+
+        cacheKey,
+
+        result,
+
+        CACHE.raidComposition.ttl
+
+    );
+
+    return result;
 
 }
 

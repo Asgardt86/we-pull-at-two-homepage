@@ -201,7 +201,7 @@ function buildCache(cache) {
 
         "Status",
 
-        api.status === "HIT"
+        (api.status === "HIT" || api.cacheEntries > 0)
 
             ? "🟢 Cache aktiv"
 
@@ -242,6 +242,14 @@ function buildCache(cache) {
         "Cache-Time",
 
         formatDuration(api.cacheTime)
+
+    )}
+
+    ${infoRow(
+
+        "Einträge",
+
+        api.cacheEntries
 
     )}
 
