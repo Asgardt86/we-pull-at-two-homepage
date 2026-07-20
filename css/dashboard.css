@@ -2813,9 +2813,9 @@
 
     flex-direction: column;
 
-    gap: 35px;
+    gap: 18px;
 
-    margin-bottom: 40px;
+    margin-bottom: 25px;
 
 }
 
@@ -2853,7 +2853,7 @@
 
     font-weight: 700;
 
-    margin-bottom: 16px;
+    margin-bottom: 10px;
 
     user-select: none;
 
@@ -2881,7 +2881,7 @@
 
 .dashboard-accordion p {
 
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 
 }
 

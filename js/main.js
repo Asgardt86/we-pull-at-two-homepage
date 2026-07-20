@@ -334,6 +334,45 @@ if (teamSection) {
 }
 
 /* ===================================================
+   Dashboard Accordion
+=================================================== */
+
+const accordions =
+    document.querySelectorAll(".dashboard-accordion");
+
+accordions.forEach(current => {
+
+    current.addEventListener("toggle", () => {
+
+        if (!current.open) return;
+
+        accordions.forEach(other => {
+
+            if (other !== current) {
+
+                other.open = false;
+
+            }
+
+        });
+
+    });
+
+});
+
+document.addEventListener("click", event => {
+
+    if (event.target.closest(".dashboard-accordion")) return;
+
+    accordions.forEach(accordion => {
+
+        accordion.open = false;
+
+    });
+
+});
+
+/* ===================================================
    Mobile Navigation
 =================================================== */
 
