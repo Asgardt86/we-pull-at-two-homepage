@@ -428,3 +428,31 @@ if (mobileMenuButton && mobileOverlay && sidebar) {
     });
 
 }
+
+/* ===================================================
+   ANIMATE ON SCROLL
+=================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const animatedCards = document.querySelectorAll(".card-recruitment");
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("activated");
+
+            observer.unobserve(entry.target);
+
+        });
+
+    }, {
+        threshold: 0.35
+    });
+
+    animatedCards.forEach(card => observer.observe(card));
+
+});
