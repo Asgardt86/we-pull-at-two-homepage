@@ -145,142 +145,170 @@
 .card-recruitment {
 
     position: relative;
-
     overflow: hidden;
-
     isolation: isolate;
 
     background:
-        radial-gradient(circle at top left,
-            rgba(109, 40, 217, 0.18) 0%,
-            transparent 40%),
+        radial-gradient(
+            circle at top left,
+            rgba(109,40,217,.18) 0%,
+            transparent 40%
+        ),
 
-        radial-gradient(circle at bottom right,
-            rgba(212, 175, 55, 0.08) 0%,
-            transparent 35%),
+        radial-gradient(
+            circle at bottom right,
+            rgba(212,175,55,.08) 0%,
+            transparent 35%
+        ),
 
-        linear-gradient(145deg,
+        linear-gradient(
+            145deg,
             #181b20 0%,
             #1b1f24 45%,
-            #15181d 100%);
+            #15181d 100%
+        );
 
-    border: 1px solid rgba(212, 175, 55, .18);
+    border: 1px solid rgba(212,175,55,.18);
 
     box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, .03),
-        0 12px 30px rgba(0, 0, 0, .35);
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 12px 30px rgba(0,0,0,.35);
 
 }
+
+/* ===================================================
+   FOG 1
+=================================================== */
 
 @keyframes recruitmentFog {
 
     0% {
-
-        transform:
-            translate(-8%, -6%) scale(1);
-
+        transform: translate(-8%,-6%) scale(1);
     }
 
     50% {
-
-        transform:
-            translate(5%, 4%) scale(1.08);
-
+        transform: translate(5%,4%) scale(1.08);
     }
 
     100% {
-
-        transform:
-            translate(-3%, 7%) scale(1.02);
-
+        transform: translate(-3%,7%) scale(1.02);
     }
 
 }
 
 .card-recruitment::before {
 
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    inset: -30%;
+    inset:-30%;
 
-    pointer-events: none;
+    pointer-events:none;
 
     background:
 
-        radial-gradient(circle,
-            rgba(120, 70, 255, .18) 0%,
-            transparent 60%),
+        radial-gradient(
+            circle,
+            rgba(120,70,255,.18) 0%,
+            transparent 60%
+        ),
 
-        radial-gradient(circle,
-            rgba(212, 175, 55, .06) 0%,
-            transparent 55%);
+        radial-gradient(
+            circle,
+            rgba(212,175,55,.06) 0%,
+            transparent 55%
+        );
 
-    filter: blur(70px);
+    filter:blur(70px);
 
-    animation: recruitmentFog 24s ease-in-out infinite alternate;
-    animation-play-state: paused;
+    animation:
+        recruitmentFog 24s ease-in-out infinite alternate;
 
-    opacity: 0;
-    transition: opacity .8s ease;
+    animation-play-state:paused;
+
+    opacity:0;
+
+    transition:opacity .8s ease;
 
 }
 
 .card-recruitment.activated::before {
 
-    opacity: 1;
+    opacity:1;
 
-    animation-play-state: running;
+    animation-play-state:running;
 
 }
+
+/* ===================================================
+   FOG 2
+=================================================== */
 
 @keyframes recruitmentFog2 {
 
     0% {
-
-        transform:
-            translate(10%, -8%) scale(1.05);
-
+        transform:translate(10%,-8%) scale(1.05);
     }
 
     50% {
-
-        transform:
-            translate(-6%, 6%) scale(1.12);
-
+        transform:translate(-6%,6%) scale(1.12);
     }
 
     100% {
-
-        transform:
-            translate(4%, -4%) scale(1.03);
-
+        transform:translate(4%,-4%) scale(1.03);
     }
 
 }
 
 .card-recruitment::after {
 
-    ...
+    content:"";
 
-    animation: recruitmentFog2 12s ease-in-out infinite alternate-reverse;
+    position:absolute;
 
-    animation-play-state: paused;
+    inset:-35%;
 
-    opacity: 0;
+    pointer-events:none;
 
-    transition: opacity .8s ease;
+    background:
+
+        radial-gradient(
+            circle at 70% 30%,
+            rgba(150,90,255,.10) 0%,
+            transparent 55%
+        ),
+
+        radial-gradient(
+            circle at 25% 75%,
+            rgba(212,175,55,.05) 0%,
+            transparent 45%
+        );
+
+    filter:blur(90px);
+
+    animation:
+        recruitmentFog2 14s ease-in-out infinite alternate-reverse;
+
+    animation-play-state:paused;
+
+    opacity:0;
+
+    transition:opacity .8s ease;
 
 }
 
 .card-recruitment.activated::after {
 
-    opacity: 1;
+    opacity:1;
 
-    animation-play-state: running;
+    animation-play-state:running;
 
 }
+
+/* ===================================================
+   ACTIVATION OVERLAY
+=================================================== */
 
 .card-activation {
 
@@ -288,45 +316,68 @@
 
     inset: 0;
 
-    background: rgba(12, 14, 18, .92);
+    overflow: hidden;
 
     pointer-events: none;
 
     z-index: 0;
 
+    background: rgba(12,14,18,.92);
+
+    /* Overlay ist anfangs vollständig sichtbar */
     clip-path: inset(0 0 0 0);
 
-    overflow: hidden;
-
 }
+
+/* ===================================================
+   OVERLAY REVEAL
+=================================================== */
 
 @keyframes revealBackground {
 
-    0% {
-
-        clip-path: inset(0 0 0 0);
-
-    }
-
-    100% {
-
-        clip-path: inset(0 0 0 100%);
-
-    }
-
-}
-
-@keyframes revealFront {
-
     from {
 
-        left: -140px;
+        clip-path: polygon(
+            0% 0%,
+            100% 0%,
+            100% 100%,
+            0% 100%
+        );
 
     }
 
     to {
 
-        left: calc(100% - 120px);
+        clip-path: polygon(
+            108% 0%,
+            100% 0%,
+            92% 100%,
+            100% 100%
+        );
+
+    }
+
+}
+
+/* ===================================================
+   ENERGY FRONT
+=================================================== */
+
+@keyframes revealFront {
+
+    from {
+
+        transform:
+            translateX(0)
+            rotate(-8deg);
+
+    }
+
+    to {
+
+        transform:
+            translateX(calc(100vw + 300px))
+            rotate(-8deg);
 
     }
 
@@ -338,42 +389,80 @@
 
     position: absolute;
 
-    top: -25%;
+    top: -60%;
 
-    left: -140px;
+    left: -220px;
 
-    width: 260px;
+    width: 180px;
 
-    height: 150%;
+    height: 220%;
 
-background:
-    radial-gradient(
-        ellipse at center,
+    pointer-events: none;
 
-        rgba(190,150,255,.38) 0%,
+    transform: translateX(0) rotate(-8deg);
 
-        rgba(140,80,255,.24) 30%,
+    transform-origin: center;
 
-        rgba(212,175,55,.12) 55%,
+    background:
 
-        rgba(255,255,255,.05) 72%,
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255,255,255,.08) 18%,
+            rgba(190,150,255,.32) 45%,
+            rgba(140,80,255,.22) 65%,
+            rgba(212,175,55,.10) 82%,
+            transparent 100%
+        );
 
-        transparent 100%
+    filter: blur(38px);
 
-    );
-
-    filter: blur(55px);
+    will-change: transform;
 
 }
 
+/* ===================================================
+   START ANIMATIONS
+=================================================== */
+
 .card-recruitment.activated .card-activation {
 
-    animation: revealBackground 1.8s ease forwards;
+    animation:
+        revealBackground
+        4.6s
+        ease
+        forwards;
 
 }
 
 .card-recruitment.activated .card-activation::before {
 
-    animation: revealFront 1.8s ease forwards;
+    animation:
+        revealFront
+        4.6s
+        ease
+        forwards;
+
+}
+
+/* ===================================================
+   CONTENT LAYER
+=================================================== */
+
+.card-recruitment .card-text {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+.card-recruitment .card-button,
+.card-recruitment .btn,
+.card-recruitment a {
+
+    position: relative;
+
+    z-index: 2;
 
 }
