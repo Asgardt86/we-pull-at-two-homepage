@@ -269,6 +269,18 @@ function formatDuration(ms) {
 
 async function getGuildMonitor() {
 
+    const cached = await getCache(
+
+        CACHE.guildMonitor.cacheKey
+
+    );
+
+    if (cached) {
+
+        return cached.data;
+
+    }
+
     const raidSlugs = await getGuildProgression();
 
     const bossMap = new Map();
@@ -384,13 +396,25 @@ async function getGuildMonitor() {
 
     }
 
-    return {
+    const result = {
 
         raid: currentRaid,
 
         bosses: Array.from(bossMap.values())
 
     };
+
+    await setCache(
+
+        CACHE.guildMonitor.cacheKey,
+
+        result,
+
+        CACHE.guildMonitor.ttl
+
+    );
+
+    return result;
 
 }
 

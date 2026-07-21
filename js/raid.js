@@ -11,6 +11,8 @@ async function loadRaidProgress() {
         raidData =
             await response.json();
 
+        renderRanking(raidData);
+
         renderRaidHistory(
 
             raidData.raidHistory || []

@@ -2,15 +2,9 @@
    Raid Ranking
 =================================================== */
 
-async function loadRanking() {
+async function renderRanking(data) {
 
     try {
-
-        const response =
-            await fetch("/api/raid");
-
-        const data =
-            await response.json();
 
         if (data.ranking.empty) {
 
@@ -204,9 +198,3 @@ function formatRank(rank) {
     return `#${rank}`;
 
 }
-
-/* ===================================================
-   Initialisierung
-=================================================== */
-
-loadRanking();
