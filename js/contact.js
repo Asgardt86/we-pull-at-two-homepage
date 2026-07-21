@@ -64,7 +64,7 @@ async function loadDiscord() {
 
                    target="_blank">
 
-                    Discord beitreten
+                    ↗ Discord beitreten
 
                 </a>
 
