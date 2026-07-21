@@ -95,7 +95,7 @@
     background:
         linear-gradient(rgba(10, 12, 16, .75),
             rgba(10, 12, 16, .45)),
-        url("../images/backgrounds/raidpause.png");
+        url("../images/backgrounds/raidpause.webp");
 
     background-size: cover;
 
@@ -134,7 +134,7 @@
     background:
         linear-gradient(rgba(10, 12, 16, .75),
             rgba(10, 12, 16, .45)),
-        url("../images/backgrounds/raidfokus.png");
+        url("../images/backgrounds/raidfokus.webp");
 
     background-size: cover;
 
@@ -173,7 +173,7 @@
     background:
         linear-gradient(rgba(10, 12, 16, .75),
             rgba(10, 12, 16, .45)),
-        url("../images/backgrounds/raidzeiten.png");
+        url("../images/backgrounds/raidzeiten.webp");
 
     background-size: cover;
 
@@ -212,7 +212,7 @@
     background:
         linear-gradient(rgba(10, 12, 16, .75),
             rgba(10, 12, 16, .45)),
-        url("../images/backgrounds/raidphilosopie.png");
+        url("../images/backgrounds/raidphilosopie.webp");
 
     background-size: cover;
 

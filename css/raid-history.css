@@ -50,7 +50,7 @@
 
     background:
         linear-gradient(rgba(15,19,24,.40), rgba(27,32,39,.88)),
-        url("../images/expansions/nerub-ar-palace-small.png");
+        url("../images/expansions/nerub-ar-palace-small.webp");
 
     background-size: cover;
 
@@ -62,7 +62,7 @@
 
     background:
         linear-gradient(rgba(15,19,24,.40), rgba(27,32,39,.88)),
-        url("../images/expansions/liberation-of-undermine-small.png");
+        url("../images/expansions/liberation-of-undermine-small.webp");
 
     background-size: cover;
 
@@ -74,7 +74,7 @@
 
     background:
         linear-gradient(rgba(15,19,24,.40), rgba(27,32,39,.88)),
-        url("../images/expansions/manaforge-omega-small.png");
+        url("../images/expansions/manaforge-omega-small.webp");
 
     background-size: cover;
 

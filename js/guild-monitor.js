@@ -30,7 +30,7 @@ async function loadGuildMonitor() {
 
             if (isDeveloper) {
 
-                console.log(`${boss.boss} → ${boss.slug}.png`);
+                console.log(`${boss.boss} → ${boss.slug}.webp`);
 
             }
 
@@ -152,11 +152,11 @@ async function loadGuildMonitor() {
 
                 image.onerror = null;
 
-                image.src = "/images/boss-images/placeholder.png";
+                image.src = "/images/boss-images/placeholder.webp";
 
                 if (isDeveloper) {
 
-                    console.warn(`⚠ Bossbild fehlt: ${boss.slug}.png`);
+                    console.warn(`⚠ Bossbild fehlt: ${boss.slug}.webp`);
 
                 }
 

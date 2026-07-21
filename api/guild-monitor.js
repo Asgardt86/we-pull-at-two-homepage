@@ -347,7 +347,7 @@ async function getGuildMonitor() {
                     difficulty: liveData.raid.difficulty,
 
                     image:
-                        `/images/boss-images/${boss.encounter.slug}.png`,
+                        `/images/boss-images/${boss.encounter.slug}.webp`,
 
                     pullCount: boss.count,
 

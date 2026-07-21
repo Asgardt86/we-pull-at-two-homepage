@@ -46,7 +46,7 @@ async function loadNextRaid() {
             difficulty.classList.add("difficulty-custom");
 
             difficultyIcon.src =
-                "../images/icons/custom-mode-icon.png";
+                "../images/icons/custom-mode-icon.webp";
 
         }
 
@@ -65,7 +65,7 @@ async function loadNextRaid() {
                     difficulty.classList.add("difficulty-mythic");
 
                     difficultyIcon.src =
-                        "../images/icons/mythic-mode-icon.png";
+                        "../images/icons/mythic-mode-icon.webp";
 
                     break;
 
@@ -76,7 +76,7 @@ async function loadNextRaid() {
                     difficulty.classList.add("difficulty-heroic");
 
                     difficultyIcon.src =
-                        "../images/icons/heroic-mode-icon.png";
+                        "../images/icons/heroic-mode-icon.webp";
 
                     break;
 
@@ -85,7 +85,7 @@ async function loadNextRaid() {
                     difficulty.classList.add("difficulty-normal");
 
                     difficultyIcon.src =
-                        "../images/icons/normal-mode-icon.png";
+                        "../images/icons/normal-mode-icon.webp";
 
             }
 

@@ -37,7 +37,7 @@ difficultyElement.className =
     (bossDifficulty || "").toLowerCase();
 
 document.getElementById("boss-image").src =
-    bossImage || "/images/boss-images/placeholder.png";
+    bossImage || "/images/boss-images/placeholder.webp";
 
 const tankContainer = document.getElementById("tank-container");
 const healerContainer = document.getElementById("healer-container");

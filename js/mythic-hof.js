@@ -140,7 +140,7 @@ async function loadMythicHOF() {
             >
 
                 <img
-                    src="../images/icons/m+key-icon.png"
+                    src="../images/icons/m+key-icon.webp"
                     alt="Mythic+"
                 >
 

@@ -118,7 +118,7 @@ function renderCard(
 
             ${renderRow(
 
-        "../images/icons/world-icon.png",
+        "../images/icons/world-icon.webp",
 
         "World",
 
@@ -128,7 +128,7 @@ function renderCard(
 
             ${renderRow(
 
-        "../images/icons/eu-icon.png",
+        "../images/icons/eu-icon.webp",
 
         "Europe",
 
@@ -138,7 +138,7 @@ function renderCard(
 
             ${renderRow(
 
-        "../images/icons/realm-icon.png",
+        "../images/icons/realm-icon.webp",
 
         "Realm",
 

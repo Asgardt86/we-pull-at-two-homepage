@@ -223,7 +223,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            '<img src="../images/role-icons/tank-role-icon.png" class="role-icon"> Tanks',
+            '<img src="../images/role-icons/tank-role-icon.webp" class="role-icon"> Tanks',
 
             data.tanks
 
@@ -231,7 +231,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            '<img src="../images/role-icons/heal-role-icon.png" class="role-icon"> Heiler',
+            '<img src="../images/role-icons/heal-role-icon.webp" class="role-icon"> Heiler',
 
             data.heals
 
@@ -239,7 +239,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            '<img src="../images/role-icons/meele-role-icon.png" class="role-icon"> Melees',
+            '<img src="../images/role-icons/meele-role-icon.webp" class="role-icon"> Melees',
 
             data.melee
 
@@ -247,7 +247,7 @@ async function loadRaidRoster() {
 
         html += createRole(
 
-            '<img src="../images/role-icons/range-role-icon.png" class="role-icon"> Ranges',
+            '<img src="../images/role-icons/range-role-icon.webp" class="role-icon"> Ranges',
 
             data.ranged
 
