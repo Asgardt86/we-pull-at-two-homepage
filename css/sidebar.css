@@ -27,7 +27,11 @@
 }
 
 .sidebar-header {
+
     text-align: center;
+
+    padding-left: 60px;
+
 }
 
 .sidebar-header h1 {
